@@ -37,16 +37,23 @@ if (hamburger && mobileMenu) {
 /* ── Scroll reveal ── */
 const revealEls = document.querySelectorAll('.reveal-up');
 if (revealEls.length) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  revealEls.forEach(el => observer.observe(el));
+    revealEls.forEach(el => {
+      el.classList.add('reveal-ready');
+      observer.observe(el);
+    });
+  } else {
+    revealEls.forEach(el => el.classList.add('revealed'));
+  }
 }
 
 /* ── Smooth scroll for anchor links ── */
