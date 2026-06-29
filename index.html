@@ -842,6 +842,15 @@
       nav.classList.toggle('scrolled', window.scrollY > 10);
     }, { passive: true });
 
+    // Resume video when returning to the page
+    const bgVideo = document.querySelector('.bg-video');
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && bgVideo) bgVideo.play().catch(() => {});
+    });
+    window.addEventListener('focus', () => {
+      if (bgVideo) bgVideo.play().catch(() => {});
+    });
+
     // Mobile menu
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
