@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposal Template — Matthias Campbell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:    #e8e6e2;
+      --ink:   #050505;
+      --muted: #5e5a55;
+      --faint: #9b9690;
+      --line:  #d0cdc7;
+      --serif: "Cormorant", "Cormorant Garamond", Georgia, serif;
+      --sans:  "DM Sans", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    ul { list-style: none; }
+
+    /* ── Helper bar (screen only) ── */
+    .helper-bar {
+      background: var(--ink); color: #e8e6e2;
+      padding: 11px 40px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .helper-bar a {
+      color: #e8e6e2; text-decoration: underline; white-space: nowrap;
+    }
+
+    /* Placeholder highlight */
+    .ph {
+      background: rgba(255, 210, 60, 0.3);
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+
+    /* ── Document wrapper ── */
+    .doc {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 clamp(32px, 6vw, 64px);
+    }
+
+    /* ── Cover ── */
+    .cover {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(64px, 10vw, 100px) 0 clamp(48px, 7vw, 80px);
+    }
+    .cover-logo {
+      font-family: var(--serif);
+      font-size: 2.2rem; font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: auto;
+    }
+    .cover-title-block {
+      padding: clamp(48px, 8vw, 80px) 0 clamp(40px, 6vw, 60px);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: clamp(32px, 5vw, 48px);
+    }
+    .cover-project-name {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800; line-height: 0.88;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+    .cover-subtitle {
+      font-size: 0.88rem; color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .cover-meta {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 28px; row-gap: 8px;
+      margin-bottom: clamp(32px, 5vw, 48px);
+    }
+    .cover-meta-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--faint);
+      padding-top: 2px;
+    }
+    .cover-meta-val {
+      font-family: var(--serif);
+      font-size: 1.05rem; color: var(--ink); line-height: 1.3;
+    }
+    .cover-summary {
+      border: 1px solid var(--line);
+      padding: clamp(24px, 3.5vw, 36px);
+    }
+    .cover-summary-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--faint);
+      margin-bottom: 12px; display: block;
+    }
+    .cover-summary p {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      color: var(--muted); line-height: 1.72;
+    }
+
+    /* ── Sections ── */
+    .section {
+      padding: clamp(52px, 7vw, 80px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-header {
+      display: flex; align-items: baseline; gap: 20px;
+      margin-bottom: clamp(32px, 4vw, 48px);
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-num {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--faint);
+      flex-shrink: 0; padding-top: 4px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+    }
+
+    /* ── Prose ── */
+    .prose p {
+      font-size: 0.92rem; color: var(--muted);
+      line-height: 1.82; margin-bottom: 16px;
+    }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { color: var(--ink); font-weight: 600; }
+
+    /* ── Sub-headings ── */
+    .sub-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 700; line-height: 1; letter-spacing: -0.02em;
+      margin-bottom: 14px; margin-top: 36px;
+    }
+    .sub-heading:first-child { margin-top: 0; }
+
+    /* ── Two-column build section ── */
+    .build-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .build-item {
+      padding: clamp(24px, 3vw, 36px);
+      border: 1px solid var(--line);
+      margin-top: -1px; margin-right: -1px;
+    }
+    .build-num {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--faint);
+      margin-bottom: 10px; display: block;
+    }
+    .build-name {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .build-desc {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.7;
+    }
+
+    /* ── Tables ── */
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead th {
+      text-align: left;
+      padding: 10px 16px 10px 0;
+      border-bottom: 1px solid var(--ink);
+      font-size: 9px; font-weight: 700; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--faint);
+      white-space: nowrap;
+    }
+    thead th:last-child { padding-right: 0; }
+    tbody td {
+      padding: 14px 16px 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.84rem; color: var(--muted);
+      vertical-align: top; line-height: 1.6;
+    }
+    tbody td:last-child { padding-right: 0; }
+    tbody tr:last-child td { border-bottom: none; }
+    td strong, td .td-label {
+      display: block;
+      font-weight: 600; color: var(--ink);
+      font-size: 0.84rem; margin-bottom: 2px;
+    }
+    td .td-num {
+      font-family: var(--serif); font-size: 1rem;
+      color: var(--faint); font-weight: 400;
+    }
+    .col-narrow { width: 36px; }
+    .col-phase  { width: 120px; }
+    .col-who    { width: 140px; }
+    .col-control { width: 190px; }
+
+    /* ── Phase timeline ── */
+    .phase-note {
+      margin-top: 20px;
+      padding: 18px 22px;
+      border: 1px solid var(--line);
+      font-size: 0.83rem; color: var(--muted); line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* ── Pricing callout ── */
+    .pricing-note {
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 32px;
+    }
+    .pricing-note-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 6px;
+    }
+    .pricing-note p {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.7;
+    }
+    .pricing-sub-heading {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--faint);
+      margin: 32px 0 16px; display: block;
+    }
+
+    /* ── Next steps ── */
+    .steps-list {
+      counter-reset: steps;
+    }
+    .steps-list li {
+      display: flex; align-items: baseline; gap: 18px;
+      padding: clamp(14px, 2vw, 20px) 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9rem; color: var(--muted); line-height: 1.5;
+      counter-increment: steps;
+    }
+    .steps-list li:last-child { border-bottom: none; }
+    .steps-list li::before {
+      content: counter(steps, decimal-leading-zero);
+      font-family: var(--serif); font-size: 1.3rem;
+      color: var(--faint); flex-shrink: 0; width: 32px;
+    }
+
+    /* ── Contact block ── */
+    .contact-block {
+      padding: clamp(48px, 7vw, 80px) 0;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 60px);
+      align-items: start;
+    }
+    .contact-mc {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800; line-height: 0.88; letter-spacing: -0.04em;
+    }
+    .contact-details { }
+    .contact-row {
+      display: flex; gap: 16px;
+      padding: 10px 0; border-bottom: 1px solid var(--line);
+      font-size: 0.84rem;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--faint);
+      flex-shrink: 0; width: 64px; padding-top: 2px;
+    }
+    .contact-row-val { color: var(--muted); }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .build-grid { grid-template-columns: 1fr; }
+      .build-item { margin-right: 0; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .cover-meta { grid-template-columns: 1fr; row-gap: 4px; }
+      .cover-meta-label { margin-top: 10px; }
+    }
+
+    /* ── Print styles ── */
+    @media print {
+      @page {
+        size: A4;
+        margin: 18mm 22mm;
+      }
+
+      body { background: #fff; color: #000; }
+      .helper-bar { display: none; }
+      .ph { background: none; }
+      .doc { max-width: 100%; padding: 0; }
+
+      .cover {
+        min-height: 0;
+        height: calc(297mm - 36mm);
+        page-break-after: always;
+      }
+      .cover-logo { color: #000; }
+      .cover-project-name { color: #000; }
+      .cover-summary { border-color: #ccc; }
+      .cover-title-block { border-color: #ccc; }
+
+      .section { page-break-before: always; border-bottom: none; }
+      .section-header { border-color: #ccc; }
+
+      table { page-break-inside: auto; }
+      tr { page-break-inside: avoid; }
+      thead { display: table-header-group; }
+      tbody td { border-color: #ddd; }
+      thead th { border-color: #000; }
+
+      .build-item { border-color: #ccc; }
+      .phase-note { border-color: #ccc; font-style: italic; }
+      .pricing-note { border-color: #ccc; }
+      .steps-list li { border-color: #ddd; }
+      .contact-row { border-color: #ddd; }
+
+      a { text-decoration: none; color: #000; }
+
+      .sub-heading { page-break-after: avoid; }
+      h2, h3 { page-break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Helper bar — screen only -->
+  <div class="helper-bar">
+    <span>Proposal template — duplicate this file and replace all <strong style="background:rgba(255,210,60,0.4);padding:0 4px;border-radius:2px;color:#000">[bracketed placeholders]</strong> before sending to a client.</span>
+    <a href="javascript:window.print()">Print to PDF →</a>
+  </div>
+
+  <div class="doc">
+
+    <!-- ════════════════════════════════
+         COVER
+    ════════════════════════════════ -->
+    <div class="cover">
+      <div class="cover-logo">MC.</div>
+
+      <div>
+        <div class="cover-title-block">
+          <h1 class="cover-project-name"><span class="ph">[PROJECT NAME]</span></h1>
+          <p class="cover-subtitle">System Design &amp; Implementation Proposal</p>
+        </div>
+
+        <div class="cover-meta">
+          <span class="cover-meta-label">Prepared for</span>
+          <span class="cover-meta-val"><span class="ph">[CLIENT NAME]</span></span>
+          <span class="cover-meta-label">Prepared by</span>
+          <span class="cover-meta-val">Matthias Campbell</span>
+          <span class="cover-meta-label">Date</span>
+          <span class="cover-meta-val"><span class="ph">[MONTH YEAR]</span></span>
+        </div>
+
+        <div class="cover-summary">
+          <span class="cover-summary-label">Summary</span>
+          <p><span class="ph">[ONE-PARAGRAPH PROJECT SUMMARY — describe the client's situation, what is being built, and the main benefit in 3–5 sentences.]</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════
+         SECTION 1 — EXECUTIVE OVERVIEW
+    ════════════════════════════════ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Executive Overview</h2>
+      </div>
+      <div class="prose">
+        <p><span class="ph">[CLIENT BUSINESS]</span> currently handles <span class="ph">[DESCRIBE CURRENT PROCESS — e.g. enquiries, orders, internal requests]</span> through <span class="ph">[CURRENT METHOD — e.g. email, phone, spreadsheets, manual staff effort]</span>. This works at small scale but creates <span class="ph">[MAIN PROBLEM — e.g. delays, inconsistency, reliance on specific staff, slow response times]</span> as the business grows.</p>
+        <p>This proposal outlines <span class="ph">[PROPOSED SYSTEM — e.g. a structured knowledge platform combined with an AI-assisted workflow layer]</span> that gives <span class="ph">[CLIENT BUSINESS]</span> a faster, more consistent way to handle <span class="ph">[CORE TASK — e.g. customer enquiries, internal requests, product information]</span> without replacing the human judgement and oversight that matters.</p>
+        <p>The long-term value is <span class="ph">[LONG-TERM BUSINESS VALUE — e.g. a business that can respond faster, scale without adding headcount, and maintain consistent quality across every customer interaction]</span>.</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 2 — WHAT IS BEING BUILT
+    ════════════════════════════════ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">What Is Being Built</h2>
+      </div>
+      <div class="build-grid">
+        <div class="build-item">
+          <span class="build-num">Core System 1</span>
+          <p class="build-name"><span class="ph">[SYSTEM / PLATFORM NAME]</span></p>
+          <p class="build-desc"><span class="ph">[Description — e.g. A structured knowledge base containing all product information, pricing, policies, and common questions. Used by staff and as the source of truth for the AI layer.]</span></p>
+        </div>
+        <div class="build-item">
+          <span class="build-num">Core System 2</span>
+          <p class="build-name"><span class="ph">[ASSISTANT / AUTOMATION / WORKFLOW NAME]</span></p>
+          <p class="build-desc"><span class="ph">[Description — e.g. An AI-assisted triage and drafting system that reads incoming enquiries, classifies intent, drafts a suggested response, and routes it to the right person for approval before sending.]</span></p>
+        </div>
+        <div class="build-item">
+          <span class="build-num">Controls &amp; Admin</span>
+          <p class="build-name"><span class="ph">[ADMIN OR WORKFLOW CONTROLS]</span></p>
+          <p class="build-desc"><span class="ph">[Description — e.g. A simple staff dashboard for reviewing, editing, and approving outgoing responses. No response sends without a staff member confirming it.]</span></p>
+        </div>
+        <div class="build-item">
+          <span class="build-num">Integration Layer</span>
+          <p class="build-name"><span class="ph">[INTEGRATIONS / CONNECTIONS]</span></p>
+          <p class="build-desc"><span class="ph">[Description — e.g. Connections to existing email, ERP, or order management systems as required. Designed to work alongside current tools rather than replace them.]</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 3 — CORE PLATFORM DETAILS
+    ════════════════════════════════ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Core Platform / System Details</h2>
+      </div>
+
+      <h3 class="sub-heading">What it contains</h3>
+      <div class="prose">
+        <p><span class="ph">[Describe the content or data that lives in the core system — e.g. product catalogue, pricing tiers, policy documents, FAQs, staff procedures, onboarding material. Be specific to the client.]</span></p>
+      </div>
+
+      <h3 class="sub-heading">How it is built</h3>
+      <div class="prose">
+        <p><span class="ph">[Describe the technology — e.g. Built on a structured database with a lightweight web interface. Content can be updated by authorised staff without developer involvement. Hosted on reliable cloud infrastructure with regular backups.]</span></p>
+      </div>
+
+      <h3 class="sub-heading">What staff and users see</h3>
+      <div class="prose">
+        <p><span class="ph">[Describe the interface — e.g. A clean, searchable internal portal. Staff can look up product details, find approved response language, check current pricing, or access procedure documents. Mobile-accessible from any device.]</span></p>
+      </div>
+
+      <h3 class="sub-heading">What it does not replace</h3>
+      <div class="prose">
+        <p><span class="ph">[Be honest about scope — e.g. This system does not replace your existing accounting software, order management system, or CRM. It connects to them where relevant but is designed to complement, not restructure, existing operations.]</span></p>
+      </div>
+
+      <h3 class="sub-heading">Why this matters long-term</h3>
+      <div class="prose">
+        <p><span class="ph">[Business value — e.g. As the business grows, the knowledge base grows with it. New staff can get up to speed faster. Consistent information means fewer errors, fewer escalations, and better customer experiences at scale.]</span></p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 4 — AUTOMATION / ASSISTANT DETAILS
+    ════════════════════════════════ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Automation / Assistant Details</h2>
+      </div>
+      <div class="prose">
+        <p>The assistant reads or receives <span class="ph">[INPUT — e.g. incoming customer emails, order requests, or internal submissions]</span> and classifies them by <span class="ph">[CLASSIFICATION METHOD — e.g. intent, product type, urgency, and account tier]</span>.</p>
+        <p>Based on that classification, it <span class="ph">[ACTION — e.g. drafts a suggested reply using approved language from the knowledge base, routes the request to the correct team member, and flags anything that falls outside defined parameters for manual review]</span>.</p>
+        <p>Nothing is sent or actioned without <span class="ph">[APPROVAL METHOD — e.g. a staff member reviewing and confirming the suggested response in the dashboard]</span>. The system is designed to reduce time spent on routine work, not to operate autonomously.</p>
+      </div>
+
+      <h3 class="sub-heading">Workflow types</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="col-narrow">#</th>
+              <th>Workflow / Email / Task Type</th>
+              <th>What the system does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="td-num">01</span></td>
+              <td><span class="ph">[WORKFLOW TYPE — e.g. Standard product enquiry]</span></td>
+              <td><span class="ph">[ACTION — e.g. Matches to product, drafts reply with specs and pricing, routes to sales team for approval]</span></td>
+            </tr>
+            <tr>
+              <td><span class="td-num">02</span></td>
+              <td><span class="ph">[WORKFLOW TYPE — e.g. Order follow-up or status request]</span></td>
+              <td><span class="ph">[ACTION — e.g. Looks up order reference, drafts status update, flags to fulfilment team]</span></td>
+            </tr>
+            <tr>
+              <td><span class="td-num">03</span></td>
+              <td><span class="ph">[WORKFLOW TYPE — e.g. Complaint or return request]</span></td>
+              <td><span class="ph">[ACTION — e.g. Classifies as priority, routes to customer service manager, does not draft reply — requires direct handling]</span></td>
+            </tr>
+            <tr>
+              <td><span class="td-num">04</span></td>
+              <td><span class="ph">[WORKFLOW TYPE — e.g. Quote request with custom specs]</span></td>
+              <td><span class="ph">[ACTION — e.g. Flags as requiring manual quote, extracts key details, routes to sales with a structured summary]</span></td>
+            </tr>
+            <tr>
+              <td><span class="td-num">05</span></td>
+              <td><span class="ph">[WORKFLOW TYPE — e.g. Unrecognised or ambiguous request]</span></td>
+              <td><span class="ph">[ACTION — e.g. Flags for manual review, does not attempt to classify or draft, notes the reason]</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 5 — SAFEGUARDS & CONTROLS
+    ════════════════════════════════ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Safeguards &amp; Controls</h2>
+      </div>
+      <div class="prose">
+        <p>Every automated action is subject to controls that protect the business and its customers. The system is built to be safe by default — uncertain, unusual, or high-risk items always go to a human.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="col-control">Control</th>
+              <th>How it works</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Staff approval</strong></td>
+              <td>No response or action is sent without a staff member reviewing and confirming it. The system drafts and suggests — people decide.</td>
+            </tr>
+            <tr>
+              <td><strong>Sender / customer verification</strong></td>
+              <td>The system cross-references known contacts and account records before acting. Unverified senders are flagged rather than handled automatically.</td>
+            </tr>
+            <tr>
+              <td><strong>Minimum access</strong></td>
+              <td>The AI layer only has read access to the systems it needs. It cannot modify orders, pricing, or customer records.</td>
+            </tr>
+            <tr>
+              <td><strong>Safe uncertainty</strong></td>
+              <td>When confidence is below a defined threshold, the item is routed to manual review. The system errs toward caution, not assumption.</td>
+            </tr>
+            <tr>
+              <td><strong>Pricing &amp; commercial protection</strong></td>
+              <td>Pricing, discounts, and contractual terms are never drafted automatically. Any communication involving commercial commitments requires explicit staff input.</td>
+            </tr>
+            <tr>
+              <td><strong>Full logging</strong></td>
+              <td>Every classification, draft, and decision is logged with timestamps and accessible for review. Nothing happens invisibly.</td>
+            </tr>
+            <tr>
+              <td><strong>Manual override</strong></td>
+              <td>Staff can override, reject, or escalate any item at any point. The system adapts based on rejection patterns over time.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 6 — DATA REQUIREMENTS
+    ════════════════════════════════ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2 class="section-title">Data Requirements</h2>
+      </div>
+      <div class="prose">
+        <p>The following inputs are needed to build and train the system. Most of this is information the client already holds — the work is in structuring and importing it correctly.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Input</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong><span class="ph">[Product lists / spreadsheets]</span></strong></td>
+              <td><span class="ph">[e.g. Core knowledge base — product names, codes, specs, pricing tiers, availability]</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="ph">[Product images]</span></strong></td>
+              <td><span class="ph">[e.g. Visual reference for staff portal and customer-facing elements if applicable]</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="ph">[Manuals / documents / policies]</span></strong></td>
+              <td><span class="ph">[e.g. Technical documentation, return policies, warranty terms — used to answer common questions accurately]</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="ph">[Existing email samples]</span></strong></td>
+              <td><span class="ph">[e.g. Historical enquiry and response examples — used to train classification and understand typical request patterns]</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="ph">[Existing system exports]</span></strong></td>
+              <td><span class="ph">[e.g. Order history, customer records, or CRM data — used for account verification and context in responses]</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="ph">[Business rules]</span></strong></td>
+              <td><span class="ph">[e.g. Pricing exceptions, preferred suppliers, escalation rules, who handles what — defines how the routing and approval logic is set up]</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="ph">[User and access requirements]</span></strong></td>
+              <td><span class="ph">[e.g. Which staff need access, what roles they have, and what they should and should not be able to see or action]</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 7 — ROLLOUT PHASES
+    ════════════════════════════════ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2 class="section-title">Rollout Phases</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="col-phase">Phase</th>
+              <th>What gets delivered</th>
+              <th>Notes / dependencies</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Phase 1</strong><br><span style="font-size:0.78rem;color:var(--faint)">Foundation</span></td>
+              <td><span class="ph">[e.g. Core knowledge base structure, data import, staff portal, search and browse interface, access control]</span></td>
+              <td><span class="ph">[e.g. Requires product data and document uploads from client before commencing]</span></td>
+            </tr>
+            <tr>
+              <td><strong>Phase 2</strong><br><span style="font-size:0.78rem;color:var(--faint)">Workflow &amp; Routing</span></td>
+              <td><span class="ph">[e.g. Inbound request intake, classification rules, routing logic, staff review dashboard, logging]</span></td>
+              <td><span class="ph">[e.g. Requires email access or integration credentials. Phase 1 must be complete.]</span></td>
+            </tr>
+            <tr>
+              <td><strong>Phase 3</strong><br><span style="font-size:0.78rem;color:var(--faint)">Automation &amp; Drafting</span></td>
+              <td><span class="ph">[e.g. AI-assisted response drafting, knowledge base retrieval, confidence scoring, rejection and escalation flows]</span></td>
+              <td><span class="ph">[e.g. Requires sample emails and approved response examples from client]</span></td>
+            </tr>
+            <tr>
+              <td><strong>Phase 4</strong><br><span style="font-size:0.78rem;color:var(--faint)">Advanced Processing</span></td>
+              <td><span class="ph">[e.g. Integration with ERP or order management system, automated order lookups, real-time stock or pricing queries]</span></td>
+              <td><span class="ph">[e.g. Requires API access or system credentials. Scope confirmed at Phase 3 completion.]</span></td>
+            </tr>
+            <tr>
+              <td><strong>Phase 5</strong><br><span style="font-size:0.78rem;color:var(--faint)">Optional Enhancements</span></td>
+              <td><span class="ph">[e.g. Customer-facing chat or self-service portal, reporting dashboards, additional workflow types, multi-language support]</span></td>
+              <td><span class="ph">[e.g. Scoped and priced separately based on business priorities at that time]</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="phase-note">
+        Each phase is independently useful. The client can pause, refine, or defer later phases without losing completed work.
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 8 — ONGOING OPERATION
+    ════════════════════════════════ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2 class="section-title">Ongoing Operation</h2>
+      </div>
+      <div class="prose">
+        <p>Once live, the system requires light ongoing maintenance to stay accurate and effective. Running costs are primarily third-party services — hosting, AI API usage, and any connected integrations.</p>
+        <p><span class="ph">[Add any specific ongoing cost estimates here — e.g. Estimated running costs are approximately $X–$X per month depending on message volume, primarily AI API usage and hosting.]</span></p>
+      </div>
+
+      <h3 class="sub-heading">Monthly checks</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="col-control">Check</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Accuracy review</strong></td>
+              <td>Sample of recent drafts reviewed to confirm the system is producing useful, on-brand responses. Any patterns of error are corrected at the prompt or knowledge level.</td>
+            </tr>
+            <tr>
+              <td><strong>Rejection and edit rates</strong></td>
+              <td>Track how often staff are rejecting or heavily editing suggestions. High rates indicate a classification or knowledge base issue.</td>
+            </tr>
+            <tr>
+              <td><strong>Data freshness</strong></td>
+              <td>Confirm that product, pricing, or policy changes have been reflected in the knowledge base. Outdated data leads to incorrect suggestions.</td>
+            </tr>
+            <tr>
+              <td><strong>Usage and cost review</strong></td>
+              <td>Monitor API and hosting costs against expected volume. Flag any unexpected spikes.</td>
+            </tr>
+            <tr>
+              <td><strong>Workflow controls</strong></td>
+              <td>Confirm routing rules, escalation paths, and confidence thresholds are still appropriate as request patterns evolve.</td>
+            </tr>
+            <tr>
+              <td><strong>Quality sample</strong></td>
+              <td>Periodic manual review of a random sample of approved responses to confirm quality and tone remain consistent.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 9 — PRICING
+    ════════════════════════════════ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">09</span>
+        <h2 class="section-title">Pricing</h2>
+      </div>
+
+      <div class="pricing-note">
+        <p class="pricing-note-label">Note on estimates</p>
+        <p>Figures are planning estimates. Before each phase begins, available data and scope are reviewed together and a more precise figure is confirmed. No phase begins without written agreement on scope and cost.</p>
+      </div>
+
+      <span class="pricing-sub-heading">Commencement deposit</span>
+      <div class="prose" style="margin-bottom:24px;">
+        <p>A commencement deposit of <span class="ph">[DEPOSIT AMOUNT]</span> is required before work begins. This covers initial scoping, setup, and data review.</p>
+      </div>
+
+      <span class="pricing-sub-heading">Phase pricing</span>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="col-phase">Phase</th>
+              <th>Scope</th>
+              <th style="white-space:nowrap;text-align:right;">Estimate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Phase 1</strong></td>
+              <td><span class="ph">[Foundation / Platform — brief description]</span></td>
+              <td style="text-align:right;white-space:nowrap;"><span class="ph">[PRICE RANGE]</span></td>
+            </tr>
+            <tr>
+              <td><strong>Phase 2</strong></td>
+              <td><span class="ph">[Workflow / Routing — brief description]</span></td>
+              <td style="text-align:right;white-space:nowrap;"><span class="ph">[PRICE RANGE]</span></td>
+            </tr>
+            <tr>
+              <td><strong>Phase 3</strong></td>
+              <td><span class="ph">[Automation / Drafting — brief description]</span></td>
+              <td style="text-align:right;white-space:nowrap;"><span class="ph">[PRICE RANGE]</span></td>
+            </tr>
+            <tr>
+              <td><strong>Phase 4</strong></td>
+              <td><span class="ph">[Advanced Processing — brief description]</span></td>
+              <td style="text-align:right;white-space:nowrap;"><span class="ph">[PRICE RANGE]</span></td>
+            </tr>
+            <tr>
+              <td><strong>Phase 5</strong></td>
+              <td><span class="ph">[Optional Enhancements — brief description]</span></td>
+              <td style="text-align:right;white-space:nowrap;"><span class="ph">[PRICE RANGE]</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span class="pricing-sub-heading">Ongoing operating costs</span>
+      <div class="prose">
+        <p><span class="ph">[Describe monthly running costs — e.g. Third-party services (hosting, AI API, integrations) are estimated at $X–$X per month and billed at cost. Usage is monitored monthly and reported.]</span></p>
+      </div>
+
+      <span class="pricing-sub-heading">Support and maintenance</span>
+      <div class="prose">
+        <p><span class="ph">[Describe support terms — e.g. Minor fixes and adjustments within agreed scope are included for 30 days after each phase delivery. Ongoing support beyond that is available at an agreed hourly or monthly rate.]</span></p>
+      </div>
+
+      <span class="pricing-sub-heading">Work outside agreed scope</span>
+      <div class="prose">
+        <p>Any work outside the agreed phase scope — additional integrations, new features, or changes to requirements — will be scoped and priced separately before proceeding.</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 10 — ASSUMPTIONS & OWNERSHIP
+    ════════════════════════════════ -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">10</span>
+        <h2 class="section-title">Assumptions &amp; Ownership</h2>
+      </div>
+
+      <h3 class="sub-heading">Technology and access</h3>
+      <div class="prose">
+        <p><span class="ph">[List technology assumptions — e.g. The client will provide access to relevant systems (email, ERP, CRM) as required per phase. Third-party API accounts (e.g. OpenAI, hosting) will be set up in the client's name where ongoing costs are involved.]</span></p>
+      </div>
+
+      <h3 class="sub-heading">Data handling</h3>
+      <div class="prose">
+        <p><span class="ph">[Describe data handling — e.g. All client data remains the property of the client. No data is used for any purpose outside the agreed system. Data is handled in line with Australian privacy obligations.]</span></p>
+      </div>
+
+      <h3 class="sub-heading">Ownership</h3>
+      <div class="prose">
+        <p><span class="ph">[Describe IP ownership — e.g. On completion of each phase and receipt of payment, the client owns the deliverables for that phase. Custom code, configurations, and content developed for this project belong to the client.]</span></p>
+      </div>
+
+      <h3 class="sub-heading">Responsibilities</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="col-who">Who</th>
+              <th>Primary responsibilities</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Client</strong></td>
+              <td>Provide data, access, and feedback in a timely way. Nominate a point of contact for approvals. Review and approve deliverables at the end of each phase. Make payments at agreed milestones.</td>
+            </tr>
+            <tr>
+              <td><strong>Matthias Campbell</strong></td>
+              <td>Design and build the agreed system. Communicate clearly on progress and blockers. Flag scope changes before acting on them. Deliver each phase to agreed specification.</td>
+            </tr>
+            <tr>
+              <td><strong>Both</strong></td>
+              <td>Confirm scope in writing before each phase. Review progress at key milestones. Raise concerns early rather than at the end. Operate in good faith throughout.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         SECTION 11 — NEXT STEPS
+    ════════════════════════════════ -->
+    <section class="section" style="border-bottom:none;">
+      <div class="section-header">
+        <span class="section-num">11</span>
+        <h2 class="section-title">Next Steps</h2>
+      </div>
+      <ul class="steps-list">
+        <li>Confirm scope and phase priorities</li>
+        <li>Collect required data and access credentials</li>
+        <li>Confirm implementation agreement in writing</li>
+        <li>Confirm deposit and milestone arrangement</li>
+        <li>Commence Phase 1</li>
+      </ul>
+    </section>
+
+    <!-- ════════════════════════════════
+         CONTACT
+    ════════════════════════════════ -->
+    <div class="contact-block">
+      <div style="border-top:1px solid var(--line);padding-top:clamp(40px,6vw,64px);">
+        <div class="contact-grid">
+          <div class="contact-mc">Matthias<br>Campbell.</div>
+          <div class="contact-details">
+            <div class="contact-row">
+              <span class="contact-row-label">Role</span>
+              <span class="contact-row-val">Freelance Software Developer</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">Location</span>
+              <span class="contact-row-val">Brisbane, Australia</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">Email</span>
+              <span class="contact-row-val"><a href="mailto:matthiasdevelopment@gmail.com">matthiasdevelopment@gmail.com</a></span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">Phone</span>
+              <span class="contact-row-val"><span class="ph">[YOUR PHONE NUMBER]</span></span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">Website</span>
+              <span class="contact-row-val"><a href="https://matthias.com.au">matthias.com.au</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /doc -->
+
+</body>
+</html>

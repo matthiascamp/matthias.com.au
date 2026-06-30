@@ -8,12 +8,11 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg:    #e8e6e2;
       --ink:   #050505;
-      --paper: #e8e6e2;
       --muted: #5e5a55;
       --faint: #9b9690;
       --line:  #d0cdc7;
@@ -29,13 +28,8 @@
     ul { list-style: none; }
     img { display: block; max-width: 100%; }
 
-    .wrap {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 clamp(24px, 5.5vw, 80px);
-    }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(24px, 5.5vw, 80px); }
 
-    /* ── Iridescent background ── */
     @keyframes iris-bg-drift {
       0%   { transform: translate(0%, 0%) rotate(0deg); }
       33%  { transform: translate(6%, -4%) rotate(3deg); }
@@ -43,9 +37,7 @@
       100% { transform: translate(0%, 0%) rotate(0deg); }
     }
     body::before {
-      content: '';
-      position: fixed; inset: -30%;
-      width: 160%; height: 160%;
+      content: ''; position: fixed; inset: -30%; width: 160%; height: 160%;
       z-index: -1; pointer-events: none;
       background:
         radial-gradient(ellipse 45% 35% at 20% 20%, rgba(232,180,255,0.11), transparent 70%),
@@ -58,26 +50,18 @@
     /* ── Nav ── */
     .top-nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 72px;
-      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; display: flex; align-items: center; justify-content: space-between;
       padding: 0 clamp(24px, 5.5vw, 80px);
       background: rgba(232,230,226,0.92);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s var(--ease);
+      border-bottom: 1px solid transparent; transition: border-color 0.3s var(--ease);
     }
     .top-nav.scrolled { border-bottom-color: var(--line); }
-    .nav-logo {
-      font-family: var(--serif); font-size: 2rem;
-      font-weight: 700; letter-spacing: -0.03em; color: var(--ink);
-    }
-    .nav-links {
-      display: flex; align-items: center; gap: 40px;
-    }
+    .nav-logo { font-family: var(--serif); font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; }
+    .nav-links { display: flex; align-items: center; gap: 40px; }
     .nav-links a {
       font-family: var(--serif); font-size: 19px; font-weight: 400;
-      letter-spacing: 0.01em; color: var(--ink);
-      position: relative; padding-bottom: 2px;
+      letter-spacing: 0.01em; position: relative; padding-bottom: 2px;
     }
     .nav-links a::after {
       content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
@@ -86,44 +70,50 @@
     }
     .nav-links a:hover::after { left: 0; right: 0; }
     .nav-right { display: flex; align-items: center; gap: 28px; }
-    .nav-back {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
-      color: var(--faint); transition: color 0.2s;
-    }
+    .nav-back { font-size: 11px; font-weight: 500; letter-spacing: 0.05em; color: var(--faint); transition: color 0.2s; }
     .nav-back:hover { color: var(--ink); }
     .nav-cta {
-      height: 38px; padding: 0 22px;
-      display: inline-flex; align-items: center;
+      height: 38px; padding: 0 22px; display: inline-flex; align-items: center;
       background: var(--ink); color: #fff;
       font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
       transition: opacity 0.2s;
     }
     .nav-cta:hover { opacity: 0.75; }
-
-    /* Mobile */
     .nav-hamburger {
       display: none; flex-direction: column; justify-content: center;
-      gap: 5px; width: 36px; height: 36px;
-      background: none; border: none; cursor: pointer; padding: 4px;
+      gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 4px;
     }
-    .nav-hamburger span {
-      display: block; width: 100%; height: 1.5px;
-      background: var(--ink); transition: transform 0.3s var(--ease), opacity 0.3s;
-    }
+    .nav-hamburger span { display: block; width: 100%; height: 1.5px; background: var(--ink); transition: transform 0.3s var(--ease), opacity 0.3s; }
     .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
     .mobile-menu {
-      display: none; position: fixed;
-      top: 52px; left: 0; right: 0; bottom: 0; z-index: 99;
-      background: var(--bg);
-      flex-direction: column; justify-content: center; align-items: center; gap: 40px;
+      display: none; position: fixed; top: 52px; left: 0; right: 0; bottom: 0; z-index: 99;
+      background: var(--bg); flex-direction: column; justify-content: center; align-items: center; gap: 40px;
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: var(--serif); font-size: clamp(2rem, 8vw, 3rem);
-      font-weight: 700; letter-spacing: -0.02em; color: var(--ink);
+    .mobile-menu a { font-family: var(--serif); font-size: clamp(2rem, 8vw, 3rem); font-weight: 700; letter-spacing: -0.02em; }
+
+    /* ── Buttons ── */
+    .btn-solid {
+      display: inline-flex; align-items: center; height: 46px; padding: 0 28px;
+      background: var(--ink); color: #fff;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: opacity 0.2s;
     }
+    .btn-solid:hover { opacity: 0.75; }
+    .btn-text {
+      font-family: var(--serif); font-size: 1rem; font-weight: 400;
+      border-bottom: 1px solid var(--ink); padding-bottom: 2px; transition: opacity 0.2s;
+    }
+    .btn-text:hover { opacity: 0.5; }
+    .btn-outline {
+      display: inline-flex; align-items: center; height: 40px; padding: 0 22px;
+      border: 1px solid var(--ink); color: var(--ink);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--ink); color: #fff; }
 
     /* ── Hero ── */
     .hero {
@@ -132,10 +122,8 @@
       border-bottom: 1px solid var(--line);
     }
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(48px, 7vw, 100px);
-      align-items: start;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 7vw, 100px); align-items: stretch;
     }
     .hero-kicker {
       font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
@@ -144,295 +132,208 @@
     .hero-heading {
       font-family: var(--serif);
       font-size: clamp(2.8rem, 5vw, 5.6rem);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.035em;
-      margin-bottom: 28px;
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.035em; margin-bottom: 28px;
     }
     .hero-body {
       font-size: clamp(0.93rem, 1.3vw, 1.05rem);
       color: var(--muted); line-height: 1.78; margin-bottom: 36px;
     }
-    .hero-actions {
-      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    .hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .hero-right { }
+    .hero-img {
+      width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--line);
     }
-    .btn-solid {
-      display: inline-flex; align-items: center;
-      height: 46px; padding: 0 28px;
-      background: var(--ink); color: #fff;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      transition: opacity 0.2s;
-    }
-    .btn-solid:hover { opacity: 0.75; }
-    .btn-text {
-      font-family: var(--serif); font-size: 1rem; font-weight: 400;
-      border-bottom: 1px solid var(--ink); padding-bottom: 2px;
-      transition: opacity 0.2s;
-    }
-    .btn-text:hover { opacity: 0.5; }
-    .hero-right {
-      padding-top: clamp(8px, 2vw, 24px);
-    }
-    .hero-trust {
-      padding: clamp(24px, 3vw, 36px);
-      border: 1px solid var(--line);
-    }
-    .hero-trust-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--faint); margin-bottom: 14px;
-    }
-    .hero-trust p {
-      font-family: var(--serif); font-size: clamp(1rem, 1.4vw, 1.2rem);
-      font-weight: 400; color: var(--muted); line-height: 1.72;
-    }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* ── Intro ── */
-    .intro {
-      padding: clamp(64px, 9vw, 120px) 0;
+    /* ── What I fix ── */
+    .fixes { border-bottom: 1px solid var(--line); }
+    .fixes-header {
+      padding: clamp(48px, 6vw, 72px) 0 clamp(28px, 4vw, 44px);
+      display: flex; align-items: baseline; justify-content: space-between; gap: 40px;
       border-bottom: 1px solid var(--line);
     }
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(48px, 7vw, 100px);
-      align-items: start;
-    }
-    .intro-heading {
+    .fixes-heading {
       font-family: var(--serif);
-      font-size: clamp(2rem, 3.6vw, 4rem);
-      font-weight: 800; line-height: 0.92; letter-spacing: -0.03em;
-    }
-    .intro-body {
-      font-size: 0.95rem; color: var(--muted); line-height: 1.82;
-    }
-
-    /* ── Services ── */
-    .services { border-bottom: 1px solid var(--line); }
-    .services-header {
-      padding: clamp(44px, 6vw, 72px) 0 clamp(32px, 4vw, 48px);
-      border-bottom: 1px solid var(--line);
-    }
-    .section-kicker {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--faint); margin-bottom: 12px;
-    }
-    .section-heading {
-      font-family: var(--serif);
-      font-size: clamp(2.2rem, 4vw, 4.4rem);
+      font-size: clamp(2rem, 4vw, 4.4rem);
       font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
     }
-    .services-grid {
+    .fixes-sub {
+      font-size: 0.88rem; color: var(--faint); max-width: 36ch; text-align: right; line-height: 1.6;
+    }
+    .fix-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: clamp(56px, 7vw, 96px) 1fr 1fr;
+      gap: 0 clamp(28px, 4vw, 64px);
+      padding: clamp(28px, 3.5vw, 44px) 0;
+      border-top: 1px solid var(--line);
+      align-items: start;
     }
-    .service-col {
-      padding: clamp(36px, 5vw, 64px) clamp(20px, 2.8vw, 44px);
-      border-right: 1px solid var(--line);
-    }
-    .service-col:last-child { border-right: none; }
-    .service-col:nth-child(4),
-    .service-col:nth-child(5) { border-top: 1px solid var(--line); }
-    .service-icon {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--faint);
-      margin-bottom: 14px; display: block;
-    }
-    .service-title {
+    .fix-row:last-child { border-bottom: 1px solid var(--line); }
+    .fix-num {
       font-family: var(--serif);
-      font-size: clamp(1.3rem, 1.8vw, 1.9rem);
-      font-weight: 800; line-height: 0.92; letter-spacing: -0.025em;
-      margin-bottom: 16px;
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 700; line-height: 0.8; letter-spacing: -0.05em;
+      color: var(--line);
     }
-    .service-list li {
-      display: flex; align-items: baseline; gap: 10px;
-      padding: 8px 0; border-bottom: 1px solid var(--line);
-      font-size: 0.83rem; color: var(--muted); line-height: 1.4;
+    .fix-name {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.4vw, 2.4rem);
+      font-weight: 700; line-height: 0.95; letter-spacing: -0.025em;
+      color: var(--ink); padding-top: 4px;
     }
-    .service-list li:last-child { border-bottom: none; }
-    .service-list li::before {
-      content: '—'; color: var(--faint); flex-shrink: 0; font-size: 0.75rem;
+    .fix-desc {
+      font-size: 0.87rem; color: var(--muted); line-height: 1.75; padding-top: 6px;
+    }
+
+    /* ── Dark band ── */
+    .dark-band {
+      background: var(--ink); color: #e8e6e2;
+      padding: clamp(72px, 10vw, 120px) 0 0;
+    }
+    .dark-band-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4.5vw, 5.2rem);
+      font-weight: 800; line-height: 0.88; letter-spacing: -0.035em;
+      color: #e8e6e2; margin-bottom: 20px; max-width: 16ch;
+    }
+    .dark-band-body {
+      font-size: 0.95rem; color: rgba(232,230,226,0.55);
+      line-height: 1.78; max-width: 52ch; margin-bottom: clamp(48px, 6vw, 72px);
+    }
+    .dark-quad {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(232,230,226,0.13);
+    }
+    .dark-item {
+      padding: clamp(28px, 3.5vw, 44px) clamp(20px, 2.8vw, 40px);
+      border-right: 1px solid rgba(232,230,226,0.13);
+    }
+    .dark-item:first-child { padding-left: 0; }
+    .dark-item:last-child  { border-right: none; padding-right: 0; }
+    .dark-item-num {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(232,230,226,0.3); margin-bottom: 14px; display: block;
+    }
+    .dark-item-title {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 1.8vw, 1.7rem);
+      font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; color: #e8e6e2;
     }
 
     /* ── Packages ── */
     .packages { border-bottom: 1px solid var(--line); }
     .packages-header {
-      padding: clamp(44px, 6vw, 72px) 0 clamp(32px, 4vw, 48px);
+      padding: clamp(48px, 6vw, 72px) 0 clamp(28px, 4vw, 44px);
+      display: flex; align-items: baseline; justify-content: space-between; gap: 40px;
       border-bottom: 1px solid var(--line);
     }
-    .packages-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .package-col {
-      padding: clamp(36px, 5vw, 60px) clamp(20px, 2.8vw, 44px);
-      border-right: 1px solid var(--line);
-      display: flex; flex-direction: column;
-    }
-    .package-col:last-child { border-right: none; }
-    .package-tag {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--faint);
-      margin-bottom: 14px; display: block;
-    }
-    .package-name {
+    .packages-heading {
       font-family: var(--serif);
-      font-size: clamp(1.4rem, 2vw, 2.2rem);
-      font-weight: 800; line-height: 0.92; letter-spacing: -0.03em;
-      margin-bottom: 10px;
+      font-size: clamp(2rem, 4vw, 4.4rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
     }
-    .package-best {
-      font-size: 0.82rem; color: var(--faint); line-height: 1.5;
-      margin-bottom: 24px; padding-bottom: 24px;
-      border-bottom: 1px solid var(--line);
+    .packages-note {
+      font-size: 0.88rem; color: var(--faint); max-width: 36ch; text-align: right; line-height: 1.6;
     }
-    .package-list { flex: 1; }
-    .package-list li {
+    .pkg-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0 clamp(28px, 4vw, 64px);
+      padding: clamp(32px, 4.5vw, 56px) 0;
+      border-top: 1px solid var(--line);
+      align-items: start;
+    }
+    .pkg-row:last-child { border-bottom: 1px solid var(--line); }
+    .pkg-tag {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 10px; display: block;
+    }
+    .pkg-name {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.2vw, 2.4rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em; margin-bottom: 10px;
+    }
+    .pkg-for {
+      font-size: 0.82rem; color: var(--faint); line-height: 1.6;
+    }
+    .pkg-items { }
+    .pkg-items li {
       display: flex; align-items: baseline; gap: 10px;
       padding: 8px 0; border-bottom: 1px solid var(--line);
-      font-size: 0.83rem; color: var(--muted); line-height: 1.4;
+      font-size: 0.84rem; color: var(--muted); line-height: 1.4;
     }
-    .package-list li:last-child { border-bottom: none; }
-    .package-list li::before {
-      content: '—'; color: var(--faint); flex-shrink: 0; font-size: 0.75rem;
-    }
-    .package-cta {
-      margin-top: 28px;
-      display: inline-flex; align-items: center;
-      height: 42px; padding: 0 24px;
-      border: 1px solid var(--ink); color: var(--ink);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      transition: background 0.2s, color 0.2s;
-      align-self: flex-start;
-    }
-    .package-cta:hover { background: var(--ink); color: #fff; }
-
-    /* ── Expectations ── */
-    .expectations {
-      padding: clamp(64px, 9vw, 120px) 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .expectations-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(48px, 7vw, 100px);
-      align-items: start;
-    }
-    .expectations-left {}
-    .exp-heading {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 3.8rem);
-      font-weight: 800; line-height: 0.92; letter-spacing: -0.03em;
+    .pkg-items li:last-child { border-bottom: none; }
+    .pkg-items li::before { content: '—'; color: var(--line); flex-shrink: 0; }
+    .pkg-action { padding-top: clamp(20px, 3vw, 32px); }
+    .pkg-outcome {
+      font-family: var(--serif); font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+      font-style: italic; color: var(--muted); line-height: 1.5;
       margin-bottom: 20px;
     }
-    .exp-body {
-      font-size: 0.95rem; color: var(--muted); line-height: 1.82;
-    }
-    .exp-timeline { }
-    .exp-timeline-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--faint);
-      margin-bottom: 16px; display: block;
-    }
-    .exp-timeline li {
-      display: flex; align-items: baseline; gap: 14px;
-      padding: clamp(14px, 1.8vw, 20px) 0;
-      border-bottom: 1px solid var(--line);
-      font-size: 0.88rem; color: var(--muted); line-height: 1.55;
-    }
-    .exp-timeline li:last-child { border-bottom: none; }
-    .exp-step {
-      font-family: var(--serif); font-size: 0.8rem;
-      color: var(--faint); flex-shrink: 0; width: 80px;
-    }
 
-    /* ── No promises ── */
-    .no-promises {
-      border-bottom: 1px solid var(--line);
+    /* ── Bottom: No promises + CTA ── */
+    .bottom {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border-bottom: 1px solid var(--line);
     }
-    .no-promises-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(48px, 7vw, 100px);
-      padding: clamp(56px, 8vw, 100px) 0;
-      align-items: start;
+    .bottom-promises {
+      padding: clamp(56px, 8vw, 100px) clamp(28px, 4vw, 64px) clamp(56px, 8vw, 100px) 0;
+      border-right: 1px solid var(--line);
     }
-    .no-promises-heading {
+    .bottom-promises-heading {
       font-family: var(--serif);
-      font-size: clamp(1.8rem, 3vw, 3.4rem);
-      font-weight: 800; line-height: 0.92; letter-spacing: -0.03em;
+      font-size: clamp(1.6rem, 2.8vw, 3rem);
+      font-weight: 800; line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 28px;
     }
-    .no-promises-list li {
+    .np-item {
       display: flex; align-items: baseline; gap: 12px;
-      padding: clamp(12px, 1.5vw, 18px) 0;
-      border-bottom: 1px solid var(--line);
-      font-size: 0.88rem; color: var(--muted);
+      padding: 11px 0; border-bottom: 1px solid var(--line);
+      font-size: 0.87rem; color: var(--muted);
     }
-    .no-promises-list li:last-child { border-bottom: none; }
-    .no-promises-list li::before {
-      content: '×'; color: var(--faint); flex-shrink: 0; font-size: 0.85rem;
+    .np-item:last-child { border-bottom: none; }
+    .np-item::before { content: '×'; color: var(--faint); flex-shrink: 0; font-weight: 700; }
+    .bottom-cta {
+      padding: clamp(56px, 8vw, 100px) 0 clamp(56px, 8vw, 100px) clamp(28px, 4vw, 64px);
+      display: flex; flex-direction: column; justify-content: center;
     }
-
-    /* ── CTA ── */
-    .cta {
-      padding: clamp(80px, 11vw, 140px) 0;
-      text-align: center;
-    }
-    .cta-heading {
+    .bottom-cta-heading {
       font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
-      margin-bottom: 16px;
+      font-size: clamp(2rem, 3.8vw, 4.2rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.035em; margin-bottom: 16px;
     }
-    .cta-sub {
-      font-size: 0.95rem; color: var(--muted); line-height: 1.7;
-      margin-bottom: clamp(32px, 4vw, 48px);
+    .bottom-cta-sub {
+      font-size: 0.92rem; color: var(--muted); line-height: 1.72; margin-bottom: 32px;
     }
-    .cta-actions {
-      display: flex; align-items: center; justify-content: center;
-      gap: 28px; flex-wrap: wrap;
-    }
-    .btn-cta {
-      display: inline-flex; align-items: center;
-      height: 52px; padding: 0 36px;
-      background: var(--ink); color: #fff;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      transition: opacity 0.2s;
-    }
-    .btn-cta:hover { opacity: 0.75; }
+    .bottom-cta-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 
     /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--line);
-      padding: clamp(36px, 5vw, 56px) 0;
-    }
-    .footer-inner {
-      display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 20px;
-    }
-    .footer-logo {
-      font-family: var(--serif); font-size: 1.5rem;
-      font-weight: 700; letter-spacing: -0.03em; color: var(--ink);
-    }
+    footer { border-top: 1px solid var(--line); padding: clamp(36px, 5vw, 56px) 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; }
     .footer-copy { font-size: 0.8rem; color: var(--faint); line-height: 1.7; }
     .footer-copy a { color: var(--muted); transition: color 0.2s; }
     .footer-copy a:hover { color: var(--ink); }
-    .footer-back {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
-      color: var(--faint); transition: color 0.2s;
-    }
+    .footer-back { font-size: 11px; font-weight: 500; letter-spacing: 0.05em; color: var(--faint); transition: color 0.2s; }
     .footer-back:hover { color: var(--ink); }
 
     /* ── Responsive ── */
     @media (max-width: 960px) {
       .hero-grid { grid-template-columns: 1fr; }
-      .intro-grid { grid-template-columns: 1fr; gap: 28px; }
-      .services-grid { grid-template-columns: 1fr 1fr; }
-      .service-col:nth-child(2) { border-right: none; }
-      .service-col:nth-child(3) { border-top: 1px solid var(--line); border-right: 1px solid var(--line); }
-      .service-col:nth-child(3):last-child { border-right: none; }
-      .packages-grid { grid-template-columns: 1fr; }
-      .package-col { border-right: none; border-bottom: 1px solid var(--line); }
-      .package-col:last-child { border-bottom: none; }
-      .expectations-grid { grid-template-columns: 1fr; gap: 40px; }
-      .no-promises-inner { grid-template-columns: 1fr; gap: 32px; }
+      .fixes-header { flex-direction: column; gap: 12px; }
+      .fixes-sub { text-align: left; max-width: none; }
+      .fix-row { grid-template-columns: clamp(48px, 6vw, 72px) 1fr; }
+      .fix-desc { grid-column: 2; }
+      .packages-header { flex-direction: column; gap: 12px; }
+      .packages-note { text-align: left; max-width: none; }
+      .pkg-row { grid-template-columns: 1fr 1fr; }
+      .pkg-row > *:first-child { grid-column: 1 / -1; border-bottom: 1px solid var(--line); padding-bottom: 20px; margin-bottom: 4px; }
+      .dark-quad { grid-template-columns: 1fr 1fr; }
+      .dark-item:nth-child(2) { border-right: none; padding-right: 0; }
+      .dark-item:nth-child(3) { border-top: 1px solid rgba(232,230,226,0.13); padding-left: 0; }
+      .dark-item:nth-child(4) { border-top: 1px solid rgba(232,230,226,0.13); }
+      .bottom { grid-template-columns: 1fr; }
+      .bottom-promises { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; }
+      .bottom-cta { padding-left: 0; }
     }
     @media (max-width: 640px) {
       .top-nav { height: 52px; padding: 0 20px; }
@@ -440,24 +341,23 @@
       .nav-back { display: none; }
       .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
-      .services-grid { grid-template-columns: 1fr; }
-      .service-col { border-right: none; border-top: 1px solid var(--line); }
-      .service-col:first-child { border-top: none; }
-      .service-col:nth-child(4),
-      .service-col:nth-child(5) { border-top: 1px solid var(--line); }
-      .cta-actions { flex-direction: column; align-items: center; }
+      .fix-row { grid-template-columns: 1fr; gap: 8px; }
+      .fix-num { display: none; }
+      .pkg-row { grid-template-columns: 1fr; }
+      .pkg-row > *:first-child { grid-column: auto; }
+      .dark-quad { grid-template-columns: 1fr; }
+      .dark-item { border-right: none; border-top: 1px solid rgba(232,230,226,0.13); padding-left: 0; padding-right: 0; }
+      .dark-item:first-child { border-top: none; }
       .footer-inner { flex-direction: column; gap: 12px; }
-      .exp-step { width: 60px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="top-nav" id="nav">
     <a href="index.html" class="nav-logo">MC.</a>
     <ul class="nav-links">
-      <li><a href="#included">Services</a></li>
+      <li><a href="#included">What I fix</a></li>
       <li><a href="#packages">Packages</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -470,7 +370,7 @@
     </button>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#included" class="mobile-link">Services</a>
+    <a href="#included" class="mobile-link">What I fix</a>
     <a href="#packages" class="mobile-link">Packages</a>
     <a href="index.html#contact" class="mobile-link">Start an audit</a>
     <a href="index.html" class="mobile-link">← Back</a>
@@ -480,114 +380,82 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-grid">
-        <div class="hero-left">
+        <div>
           <p class="hero-kicker">Search Engine Optimisation</p>
           <h1 class="hero-heading">Practical SEO for businesses that want to be found.</h1>
-          <p class="hero-body">I help small businesses clean up the technical, local, and content issues that stop them showing up properly in Google. No ranking guarantees, no jargon-heavy reports — just steady improvements that make your website easier for search engines and customers to understand.</p>
+          <p class="hero-body">I help small businesses fix the technical, local, and content problems that stop them showing up in Google. No ranking guarantees — just steady improvements that make your website easier to find and trust.</p>
           <div class="hero-actions">
             <a href="index.html#contact" class="btn-solid">Start with an SEO audit &nbsp;→</a>
-            <a href="#included" class="btn-text">See what's included &nbsp;↓</a>
+            <a href="#included" class="btn-text">See what I fix &nbsp;↓</a>
           </div>
         </div>
         <div class="hero-right">
-          <div class="hero-trust">
-            <p class="hero-trust-label">Positioning</p>
-            <p>Built around the basics Google actually recommends: crawlable pages, useful content, clear structure, local business information, and measurable search performance.</p>
+          <div class="hero-img">
+            <img src="seo.png" alt="SEO services" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- INTRO -->
-  <section class="intro" id="included">
+  <!-- WHAT I FIX -->
+  <section class="fixes" id="included">
     <div class="wrap">
-      <div class="intro-grid">
-        <h2 class="intro-heading">SEO should make your website clearer, faster, and easier to trust.</h2>
-        <p class="intro-body">Most small business websites do not need complicated tricks. They need the basics done properly: page titles that make sense, service pages that match what people search for, a Google Business Profile that is complete, a fast site, working metadata, internal links, schema, and Search Console reporting.</p>
+      <div class="fixes-header">
+        <h2 class="fixes-heading">What usually holds<br>a site back.</h2>
+        <p class="fixes-sub">These are the five problems I look for first — and what I do about each one.</p>
+      </div>
+
+      <div class="fix-row">
+        <span class="fix-num">01</span>
+        <p class="fix-name">Technical SEO</p>
+        <p class="fix-desc">Crawl and indexability check, page titles, meta descriptions, canonical tags, sitemap, robots.txt, broken links, and basic schema markup.</p>
+      </div>
+      <div class="fix-row">
+        <span class="fix-num">02</span>
+        <p class="fix-name">On-page SEO</p>
+        <p class="fix-desc">Service pages aligned to what people actually search for — clear headings, keyword-focused titles, strong structure, and internal linking.</p>
+      </div>
+      <div class="fix-row">
+        <span class="fix-num">03</span>
+        <p class="fix-name">Local SEO</p>
+        <p class="fix-desc">Google Business Profile review, LocalBusiness schema, and consistent name, address, and phone number across the web.</p>
+      </div>
+      <div class="fix-row">
+        <span class="fix-num">04</span>
+        <p class="fix-name">Performance &amp; UX</p>
+        <p class="fix-desc">Core Web Vitals review, oversized image checks, mobile usability, and page speed recommendations.</p>
+      </div>
+      <div class="fix-row">
+        <span class="fix-num">05</span>
+        <p class="fix-name">Tracking &amp; Reporting</p>
+        <p class="fix-desc">Search Console setup or review, monthly keyword and page performance, and a short plain-English report with clear next steps.</p>
       </div>
     </div>
   </section>
 
-  <!-- SERVICE AREAS -->
-  <section class="services">
+  <!-- DARK BAND -->
+  <section class="dark-band">
     <div class="wrap">
-      <div class="services-header">
-        <p class="section-kicker">What's included</p>
-        <h2 class="section-heading">Five areas of focus.</h2>
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="services-grid">
-
-        <div class="service-col">
-          <span class="service-icon">01</span>
-          <h3 class="service-title">Technical SEO</h3>
-          <ul class="service-list">
-            <li>Website crawl and indexability check</li>
-            <li>Page titles and meta descriptions</li>
-            <li>H1 structure review</li>
-            <li>Canonical tags</li>
-            <li>Sitemap and robots.txt</li>
-            <li>Broken links and redirect issues</li>
-            <li>Basic schema markup</li>
-            <li>Search Console setup or review</li>
-          </ul>
+      <h2 class="dark-band-heading">No tricks. Just the boring things done properly.</h2>
+      <p class="dark-band-body">Good SEO is mostly clarity, consistency, and useful pages. I focus on the work that actually helps search engines understand your site.</p>
+      <div class="dark-quad">
+        <div class="dark-item">
+          <span class="dark-item-num">01</span>
+          <p class="dark-item-title">Technical foundations</p>
         </div>
-
-        <div class="service-col">
-          <span class="service-icon">02</span>
-          <h3 class="service-title">On-page SEO</h3>
-          <ul class="service-list">
-            <li>Keyword and search intent research</li>
-            <li>Service page optimisation</li>
-            <li>Clear headings and page structure</li>
-            <li>Internal linking improvements</li>
-            <li>Image alt text</li>
-            <li>Better calls to action</li>
-            <li>Content gap and thin content checks</li>
-          </ul>
+        <div class="dark-item">
+          <span class="dark-item-num">02</span>
+          <p class="dark-item-title">Local search signals</p>
         </div>
-
-        <div class="service-col">
-          <span class="service-icon">03</span>
-          <h3 class="service-title">Local SEO</h3>
-          <ul class="service-list">
-            <li>Google Business Profile review</li>
-            <li>Business category and service checks</li>
-            <li>NAP consistency: name, address, phone</li>
-            <li>Local landing page recommendations</li>
-            <li>Review strategy guidance</li>
-            <li>Location and service keyword targeting</li>
-            <li>LocalBusiness schema</li>
-          </ul>
+        <div class="dark-item">
+          <span class="dark-item-num">03</span>
+          <p class="dark-item-title">Better service pages</p>
         </div>
-
-        <div class="service-col">
-          <span class="service-icon">04</span>
-          <h3 class="service-title">Performance &amp; UX</h3>
-          <ul class="service-list">
-            <li>Core Web Vitals review</li>
-            <li>Large image checks</li>
-            <li>Mobile usability checks</li>
-            <li>Layout shift issues</li>
-            <li>Page speed recommendations</li>
-            <li>Simple conversion improvements</li>
-          </ul>
+        <div class="dark-item">
+          <span class="dark-item-num">04</span>
+          <p class="dark-item-title">Plain-English reporting</p>
         </div>
-
-        <div class="service-col">
-          <span class="service-icon">05</span>
-          <h3 class="service-title">Tracking &amp; Reporting</h3>
-          <ul class="service-list">
-            <li>Google Search Console setup or review</li>
-            <li>Google Analytics review if available</li>
-            <li>Monthly keyword and page performance</li>
-            <li>Plain-English report</li>
-            <li>Next-month priority list</li>
-          </ul>
-        </div>
-
       </div>
     </div>
   </section>
@@ -596,130 +464,90 @@
   <section class="packages" id="packages">
     <div class="wrap">
       <div class="packages-header">
-        <p class="section-kicker">Packages</p>
-        <h2 class="section-heading">Choose a starting point.</h2>
+        <h2 class="packages-heading">Choose a starting point.</h2>
+        <p class="packages-note">No lock-in contracts. Start with an audit or go straight to monthly work.</p>
       </div>
-    </div>
-    <div class="wrap">
-      <div class="packages-grid">
 
-        <div class="package-col">
-          <span class="package-tag">Tier 1</span>
-          <h3 class="package-name">SEO Audit &amp; Setup</h3>
-          <p class="package-best">Best for businesses that need the basics fixed first.</p>
-          <ul class="package-list">
-            <li>Technical SEO audit</li>
-            <li>Search Console setup or review</li>
-            <li>Sitemap and robots.txt check</li>
-            <li>Metadata review for key pages</li>
-            <li>Basic local SEO check</li>
-            <li>Prioritised action list</li>
-            <li>Plain-English findings report</li>
-          </ul>
-          <a href="index.html#contact" class="package-cta">Ask about Audit &amp; Setup &nbsp;→</a>
-        </div>
-
-        <div class="package-col">
-          <span class="package-tag">Tier 2</span>
-          <h3 class="package-name">Local SEO Monthly</h3>
-          <p class="package-best">Best for local Brisbane businesses that want steady search improvement.</p>
-          <ul class="package-list">
-            <li>Everything in Audit &amp; Setup</li>
-            <li>Monthly on-page improvements</li>
-            <li>Google Business Profile optimisation</li>
-            <li>Local keyword targeting</li>
-            <li>Service and location page recommendations</li>
-            <li>Internal linking improvements</li>
-            <li>Monthly Search Console report</li>
-            <li>Next-month priorities</li>
-          </ul>
-          <a href="index.html#contact" class="package-cta">Ask about Local SEO &nbsp;→</a>
-        </div>
-
-        <div class="package-col">
-          <span class="package-tag">Tier 3</span>
-          <h3 class="package-name">SEO Growth Monthly</h3>
-          <p class="package-best">Best for businesses that want ongoing content and technical improvements.</p>
-          <ul class="package-list">
-            <li>Everything in Local SEO Monthly</li>
-            <li>Broader keyword research</li>
-            <li>Content gap planning</li>
-            <li>New page or blog brief recommendations</li>
-            <li>Technical fixes over time</li>
-            <li>Competitor page comparisons</li>
-            <li>Conversion improvements on key pages</li>
-            <li>Monthly performance report</li>
-          </ul>
-          <a href="index.html#contact" class="package-cta">Ask about SEO Growth &nbsp;→</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- HONEST EXPECTATIONS -->
-  <section class="expectations">
-    <div class="wrap">
-      <div class="expectations-grid">
-        <div class="expectations-left">
-          <h2 class="exp-heading">SEO is steady work, not a switch.</h2>
-          <p class="exp-body">Good SEO usually starts with fixing what is unclear or broken, then improving the pages that matter most. Some changes help quickly, while others build over months. The goal is to make your site easier to crawl, easier to understand, and more useful to the people searching for what you offer.</p>
-        </div>
+      <div class="pkg-row">
         <div>
-          <span class="exp-timeline-label">Typical timeline</span>
-          <ul class="exp-timeline">
-            <li>
-              <span class="exp-step">First pass</span>
-              Audit, tracking setup, and technical cleanup
-            </li>
-            <li>
-              <span class="exp-step">Month 1–2</span>
-              Key page and local SEO improvements
-            </li>
-            <li>
-              <span class="exp-step">Month 3+</span>
-              Content gaps, stronger internal links, ongoing reporting
-            </li>
-            <li>
-              <span class="exp-step">Ongoing</span>
-              Measure what moved and choose the next useful improvement
-            </li>
-          </ul>
+          <span class="pkg-tag">Tier 1</span>
+          <h3 class="pkg-name">SEO Audit &amp; Setup</h3>
+          <p class="pkg-for">For businesses that need to understand what is holding the site back before committing to anything ongoing.</p>
+        </div>
+        <ul class="pkg-items">
+          <li>Full technical audit and findings report</li>
+          <li>Search Console setup or review</li>
+          <li>Metadata check across key pages</li>
+          <li>Local SEO baseline check</li>
+        </ul>
+        <div class="pkg-action">
+          <p class="pkg-outcome">Know exactly what is blocking the site and what to fix first.</p>
+          <a href="index.html#contact" class="btn-outline">Ask about Audit &amp; Setup &nbsp;→</a>
+        </div>
+      </div>
+
+      <div class="pkg-row">
+        <div>
+          <span class="pkg-tag">Tier 2</span>
+          <h3 class="pkg-name">Local SEO Monthly</h3>
+          <p class="pkg-for">For Brisbane businesses that want steady improvement in local search over time.</p>
+        </div>
+        <ul class="pkg-items">
+          <li>Monthly on-page and local SEO work</li>
+          <li>Google Business Profile optimisation</li>
+          <li>Service page recommendations</li>
+          <li>Monthly Search Console report</li>
+        </ul>
+        <div class="pkg-action">
+          <p class="pkg-outcome">Improve the pages and local signals that matter for Brisbane searches.</p>
+          <a href="index.html#contact" class="btn-outline">Ask about Local SEO &nbsp;→</a>
+        </div>
+      </div>
+
+      <div class="pkg-row">
+        <div>
+          <span class="pkg-tag">Tier 3</span>
+          <h3 class="pkg-name">SEO Growth Monthly</h3>
+          <p class="pkg-for">For businesses ready to go beyond the basics with content, research, and broader reach.</p>
+        </div>
+        <ul class="pkg-items">
+          <li>Everything in Local SEO Monthly</li>
+          <li>Keyword research and content gap planning</li>
+          <li>New page briefs and competitor comparisons</li>
+          <li>Conversion improvements on key pages</li>
+        </ul>
+        <div class="pkg-action">
+          <p class="pkg-outcome">Build a steady cycle of content, fixes, and reporting.</p>
+          <a href="index.html#contact" class="btn-outline">Ask about SEO Growth &nbsp;→</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NO PROMISES + CTA -->
+  <section class="wrap">
+    <div class="bottom">
+      <div class="bottom-promises">
+        <h2 class="bottom-promises-heading">What I do not promise.</h2>
+        <div class="np-item">Guaranteed #1 rankings</div>
+        <div class="np-item">Overnight traffic spikes</div>
+        <div class="np-item">Spammy backlinks</div>
+        <div class="np-item">Keyword stuffing</div>
+        <div class="np-item">Lock-in contracts</div>
+        <div class="np-item">Confusing reports nobody reads</div>
+      </div>
+      <div class="bottom-cta">
+        <h2 class="bottom-cta-heading">Want to know what is holding your site back?</h2>
+        <p class="bottom-cta-sub">Send me your website and I'll take a look at what can be improved.</p>
+        <div class="bottom-cta-actions">
+          <a href="index.html#contact" class="btn-solid">Start with an SEO audit &nbsp;→</a>
+          <a href="index.html" class="btn-text">← Back</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT I DON'T PROMISE -->
-  <section class="no-promises">
-    <div class="wrap">
-      <div class="no-promises-inner">
-        <h2 class="no-promises-heading">What I do not promise.</h2>
-        <ul class="no-promises-list">
-          <li>Guaranteed #1 rankings</li>
-          <li>Overnight traffic spikes</li>
-          <li>Spammy backlinks</li>
-          <li>Keyword stuffing</li>
-          <li>Lock-in contracts</li>
-          <li>Confusing reports nobody reads</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="wrap">
-      <h2 class="cta-heading">Want to know what is<br>holding your site back?</h2>
-      <p class="cta-sub">Send me your website and I'll take a look at what can be improved.</p>
-      <div class="cta-actions">
-        <a href="index.html#contact" class="btn-cta">Start with an SEO audit &nbsp;→</a>
-        <a href="index.html#services" class="btn-text">← Back to services</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
     <div class="wrap">
       <div class="footer-inner">
