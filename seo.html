@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO Services — Matthias Campbell</title>
+  <meta name="description" content="Practical SEO services for Brisbane businesses: technical SEO, local SEO, on-page optimisation, content improvements, search tracking, and monthly reporting." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:    #e8e6e2;
+      --ink:   #050505;
+      --paper: #e8e6e2;
+      --muted: #5e5a55;
+      --faint: #9b9690;
+      --line:  #d0cdc7;
+      --serif: "Cormorant", "Cormorant Garamond", Georgia, serif;
+      --sans:  "DM Sans", system-ui, sans-serif;
+      --ease:  cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5.5vw, 80px);
+    }
+
+    /* ── Iridescent background ── */
+    @keyframes iris-bg-drift {
+      0%   { transform: translate(0%, 0%) rotate(0deg); }
+      33%  { transform: translate(6%, -4%) rotate(3deg); }
+      66%  { transform: translate(-5%, 6%) rotate(-2deg); }
+      100% { transform: translate(0%, 0%) rotate(0deg); }
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: -30%;
+      width: 160%; height: 160%;
+      z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(ellipse 45% 35% at 20% 20%, rgba(232,180,255,0.11), transparent 70%),
+        radial-gradient(ellipse 38% 30% at 78% 68%, rgba(128,232,255,0.09), transparent 65%),
+        radial-gradient(ellipse 32% 28% at 58% 18%, rgba(184,245,192,0.07), transparent 60%),
+        radial-gradient(ellipse 28% 22% at 35% 75%, rgba(200,176,255,0.07), transparent 60%);
+      animation: iris-bg-drift 22s ease-in-out infinite;
+    }
+
+    /* ── Nav ── */
+    .top-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(24px, 5.5vw, 80px);
+      background: rgba(232,230,226,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s var(--ease);
+    }
+    .top-nav.scrolled { border-bottom-color: var(--line); }
+    .nav-logo {
+      font-family: var(--serif); font-size: 2rem;
+      font-weight: 700; letter-spacing: -0.03em; color: var(--ink);
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 40px;
+    }
+    .nav-links a {
+      font-family: var(--serif); font-size: 19px; font-weight: 400;
+      letter-spacing: 0.01em; color: var(--ink);
+      position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+      height: 1px; background: var(--ink);
+      transition: left 0.25s var(--ease), right 0.25s var(--ease);
+    }
+    .nav-links a:hover::after { left: 0; right: 0; }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-back {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
+      color: var(--faint); transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--ink); }
+    .nav-cta {
+      height: 38px; padding: 0 22px;
+      display: inline-flex; align-items: center;
+      background: var(--ink); color: #fff;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.75; }
+
+    /* Mobile */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 100%; height: 1.5px;
+      background: var(--ink); transition: transform 0.3s var(--ease), opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 52px; left: 0; right: 0; bottom: 0; z-index: 99;
+      background: var(--bg);
+      flex-direction: column; justify-content: center; align-items: center; gap: 40px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--serif); font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 700; letter-spacing: -0.02em; color: var(--ink);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding-top: clamp(110px, 15vw, 160px);
+      padding-bottom: clamp(64px, 8vw, 100px);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 7vw, 100px);
+      align-items: start;
+    }
+    .hero-kicker {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 20px;
+    }
+    .hero-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 5.6rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.035em;
+      margin-bottom: 28px;
+    }
+    .hero-body {
+      font-size: clamp(0.93rem, 1.3vw, 1.05rem);
+      color: var(--muted); line-height: 1.78; margin-bottom: 36px;
+    }
+    .hero-actions {
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .btn-solid {
+      display: inline-flex; align-items: center;
+      height: 46px; padding: 0 28px;
+      background: var(--ink); color: #fff;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .btn-solid:hover { opacity: 0.75; }
+    .btn-text {
+      font-family: var(--serif); font-size: 1rem; font-weight: 400;
+      border-bottom: 1px solid var(--ink); padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .btn-text:hover { opacity: 0.5; }
+    .hero-right {
+      padding-top: clamp(8px, 2vw, 24px);
+    }
+    .hero-trust {
+      padding: clamp(24px, 3vw, 36px);
+      border: 1px solid var(--line);
+    }
+    .hero-trust-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 14px;
+    }
+    .hero-trust p {
+      font-family: var(--serif); font-size: clamp(1rem, 1.4vw, 1.2rem);
+      font-weight: 400; color: var(--muted); line-height: 1.72;
+    }
+
+    /* ── Intro ── */
+    .intro {
+      padding: clamp(64px, 9vw, 120px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 7vw, 100px);
+      align-items: start;
+    }
+    .intro-heading {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.6vw, 4rem);
+      font-weight: 800; line-height: 0.92; letter-spacing: -0.03em;
+    }
+    .intro-body {
+      font-size: 0.95rem; color: var(--muted); line-height: 1.82;
+    }
+
+    /* ── Services ── */
+    .services { border-bottom: 1px solid var(--line); }
+    .services-header {
+      padding: clamp(44px, 6vw, 72px) 0 clamp(32px, 4vw, 48px);
+      border-bottom: 1px solid var(--line);
+    }
+    .section-kicker {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 12px;
+    }
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 4.4rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .service-col {
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 2.8vw, 44px);
+      border-right: 1px solid var(--line);
+    }
+    .service-col:last-child { border-right: none; }
+    .service-col:nth-child(4),
+    .service-col:nth-child(5) { border-top: 1px solid var(--line); }
+    .service-icon {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--faint);
+      margin-bottom: 14px; display: block;
+    }
+    .service-title {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 1.8vw, 1.9rem);
+      font-weight: 800; line-height: 0.92; letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+    .service-list li {
+      display: flex; align-items: baseline; gap: 10px;
+      padding: 8px 0; border-bottom: 1px solid var(--line);
+      font-size: 0.83rem; color: var(--muted); line-height: 1.4;
+    }
+    .service-list li:last-child { border-bottom: none; }
+    .service-list li::before {
+      content: '—'; color: var(--faint); flex-shrink: 0; font-size: 0.75rem;
+    }
+
+    /* ── Packages ── */
+    .packages { border-bottom: 1px solid var(--line); }
+    .packages-header {
+      padding: clamp(44px, 6vw, 72px) 0 clamp(32px, 4vw, 48px);
+      border-bottom: 1px solid var(--line);
+    }
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .package-col {
+      padding: clamp(36px, 5vw, 60px) clamp(20px, 2.8vw, 44px);
+      border-right: 1px solid var(--line);
+      display: flex; flex-direction: column;
+    }
+    .package-col:last-child { border-right: none; }
+    .package-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--faint);
+      margin-bottom: 14px; display: block;
+    }
+    .package-name {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2vw, 2.2rem);
+      font-weight: 800; line-height: 0.92; letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .package-best {
+      font-size: 0.82rem; color: var(--faint); line-height: 1.5;
+      margin-bottom: 24px; padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .package-list { flex: 1; }
+    .package-list li {
+      display: flex; align-items: baseline; gap: 10px;
+      padding: 8px 0; border-bottom: 1px solid var(--line);
+      font-size: 0.83rem; color: var(--muted); line-height: 1.4;
+    }
+    .package-list li:last-child { border-bottom: none; }
+    .package-list li::before {
+      content: '—'; color: var(--faint); flex-shrink: 0; font-size: 0.75rem;
+    }
+    .package-cta {
+      margin-top: 28px;
+      display: inline-flex; align-items: center;
+      height: 42px; padding: 0 24px;
+      border: 1px solid var(--ink); color: var(--ink);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+      align-self: flex-start;
+    }
+    .package-cta:hover { background: var(--ink); color: #fff; }
+
+    /* ── Expectations ── */
+    .expectations {
+      padding: clamp(64px, 9vw, 120px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .expectations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 7vw, 100px);
+      align-items: start;
+    }
+    .expectations-left {}
+    .exp-heading {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3.8rem);
+      font-weight: 800; line-height: 0.92; letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .exp-body {
+      font-size: 0.95rem; color: var(--muted); line-height: 1.82;
+    }
+    .exp-timeline { }
+    .exp-timeline-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--faint);
+      margin-bottom: 16px; display: block;
+    }
+    .exp-timeline li {
+      display: flex; align-items: baseline; gap: 14px;
+      padding: clamp(14px, 1.8vw, 20px) 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.88rem; color: var(--muted); line-height: 1.55;
+    }
+    .exp-timeline li:last-child { border-bottom: none; }
+    .exp-step {
+      font-family: var(--serif); font-size: 0.8rem;
+      color: var(--faint); flex-shrink: 0; width: 80px;
+    }
+
+    /* ── No promises ── */
+    .no-promises {
+      border-bottom: 1px solid var(--line);
+    }
+    .no-promises-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 7vw, 100px);
+      padding: clamp(56px, 8vw, 100px) 0;
+      align-items: start;
+    }
+    .no-promises-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 3.4rem);
+      font-weight: 800; line-height: 0.92; letter-spacing: -0.03em;
+    }
+    .no-promises-list li {
+      display: flex; align-items: baseline; gap: 12px;
+      padding: clamp(12px, 1.5vw, 18px) 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.88rem; color: var(--muted);
+    }
+    .no-promises-list li:last-child { border-bottom: none; }
+    .no-promises-list li::before {
+      content: '×'; color: var(--faint); flex-shrink: 0; font-size: 0.85rem;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      padding: clamp(80px, 11vw, 140px) 0;
+      text-align: center;
+    }
+    .cta-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .cta-sub {
+      font-size: 0.95rem; color: var(--muted); line-height: 1.7;
+      margin-bottom: clamp(32px, 4vw, 48px);
+    }
+    .cta-actions {
+      display: flex; align-items: center; justify-content: center;
+      gap: 28px; flex-wrap: wrap;
+    }
+    .btn-cta {
+      display: inline-flex; align-items: center;
+      height: 52px; padding: 0 36px;
+      background: var(--ink); color: #fff;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .btn-cta:hover { opacity: 0.75; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: clamp(36px, 5vw, 56px) 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo {
+      font-family: var(--serif); font-size: 1.5rem;
+      font-weight: 700; letter-spacing: -0.03em; color: var(--ink);
+    }
+    .footer-copy { font-size: 0.8rem; color: var(--faint); line-height: 1.7; }
+    .footer-copy a { color: var(--muted); transition: color 0.2s; }
+    .footer-copy a:hover { color: var(--ink); }
+    .footer-back {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
+      color: var(--faint); transition: color 0.2s;
+    }
+    .footer-back:hover { color: var(--ink); }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .intro-grid { grid-template-columns: 1fr; gap: 28px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .service-col:nth-child(2) { border-right: none; }
+      .service-col:nth-child(3) { border-top: 1px solid var(--line); border-right: 1px solid var(--line); }
+      .service-col:nth-child(3):last-child { border-right: none; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .package-col { border-right: none; border-bottom: 1px solid var(--line); }
+      .package-col:last-child { border-bottom: none; }
+      .expectations-grid { grid-template-columns: 1fr; gap: 40px; }
+      .no-promises-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 640px) {
+      .top-nav { height: 52px; padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-back { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-col { border-right: none; border-top: 1px solid var(--line); }
+      .service-col:first-child { border-top: none; }
+      .service-col:nth-child(4),
+      .service-col:nth-child(5) { border-top: 1px solid var(--line); }
+      .cta-actions { flex-direction: column; align-items: center; }
+      .footer-inner { flex-direction: column; gap: 12px; }
+      .exp-step { width: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="top-nav" id="nav">
+    <a href="index.html" class="nav-logo">MC.</a>
+    <ul class="nav-links">
+      <li><a href="#included">Services</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="index.html" class="nav-back">← matthias.com.au</a>
+      <a href="index.html#contact" class="nav-cta">Start an audit</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#included" class="mobile-link">Services</a>
+    <a href="#packages" class="mobile-link">Packages</a>
+    <a href="index.html#contact" class="mobile-link">Start an audit</a>
+    <a href="index.html" class="mobile-link">← Back</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <p class="hero-kicker">Search Engine Optimisation</p>
+          <h1 class="hero-heading">Practical SEO for businesses that want to be found.</h1>
+          <p class="hero-body">I help small businesses clean up the technical, local, and content issues that stop them showing up properly in Google. No ranking guarantees, no jargon-heavy reports — just steady improvements that make your website easier for search engines and customers to understand.</p>
+          <div class="hero-actions">
+            <a href="index.html#contact" class="btn-solid">Start with an SEO audit &nbsp;→</a>
+            <a href="#included" class="btn-text">See what's included &nbsp;↓</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-trust">
+            <p class="hero-trust-label">Positioning</p>
+            <p>Built around the basics Google actually recommends: crawlable pages, useful content, clear structure, local business information, and measurable search performance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="included">
+    <div class="wrap">
+      <div class="intro-grid">
+        <h2 class="intro-heading">SEO should make your website clearer, faster, and easier to trust.</h2>
+        <p class="intro-body">Most small business websites do not need complicated tricks. They need the basics done properly: page titles that make sense, service pages that match what people search for, a Google Business Profile that is complete, a fast site, working metadata, internal links, schema, and Search Console reporting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section class="services">
+    <div class="wrap">
+      <div class="services-header">
+        <p class="section-kicker">What's included</p>
+        <h2 class="section-heading">Five areas of focus.</h2>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="services-grid">
+
+        <div class="service-col">
+          <span class="service-icon">01</span>
+          <h3 class="service-title">Technical SEO</h3>
+          <ul class="service-list">
+            <li>Website crawl and indexability check</li>
+            <li>Page titles and meta descriptions</li>
+            <li>H1 structure review</li>
+            <li>Canonical tags</li>
+            <li>Sitemap and robots.txt</li>
+            <li>Broken links and redirect issues</li>
+            <li>Basic schema markup</li>
+            <li>Search Console setup or review</li>
+          </ul>
+        </div>
+
+        <div class="service-col">
+          <span class="service-icon">02</span>
+          <h3 class="service-title">On-page SEO</h3>
+          <ul class="service-list">
+            <li>Keyword and search intent research</li>
+            <li>Service page optimisation</li>
+            <li>Clear headings and page structure</li>
+            <li>Internal linking improvements</li>
+            <li>Image alt text</li>
+            <li>Better calls to action</li>
+            <li>Content gap and thin content checks</li>
+          </ul>
+        </div>
+
+        <div class="service-col">
+          <span class="service-icon">03</span>
+          <h3 class="service-title">Local SEO</h3>
+          <ul class="service-list">
+            <li>Google Business Profile review</li>
+            <li>Business category and service checks</li>
+            <li>NAP consistency: name, address, phone</li>
+            <li>Local landing page recommendations</li>
+            <li>Review strategy guidance</li>
+            <li>Location and service keyword targeting</li>
+            <li>LocalBusiness schema</li>
+          </ul>
+        </div>
+
+        <div class="service-col">
+          <span class="service-icon">04</span>
+          <h3 class="service-title">Performance &amp; UX</h3>
+          <ul class="service-list">
+            <li>Core Web Vitals review</li>
+            <li>Large image checks</li>
+            <li>Mobile usability checks</li>
+            <li>Layout shift issues</li>
+            <li>Page speed recommendations</li>
+            <li>Simple conversion improvements</li>
+          </ul>
+        </div>
+
+        <div class="service-col">
+          <span class="service-icon">05</span>
+          <h3 class="service-title">Tracking &amp; Reporting</h3>
+          <ul class="service-list">
+            <li>Google Search Console setup or review</li>
+            <li>Google Analytics review if available</li>
+            <li>Monthly keyword and page performance</li>
+            <li>Plain-English report</li>
+            <li>Next-month priority list</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages" id="packages">
+    <div class="wrap">
+      <div class="packages-header">
+        <p class="section-kicker">Packages</p>
+        <h2 class="section-heading">Choose a starting point.</h2>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="packages-grid">
+
+        <div class="package-col">
+          <span class="package-tag">Tier 1</span>
+          <h3 class="package-name">SEO Audit &amp; Setup</h3>
+          <p class="package-best">Best for businesses that need the basics fixed first.</p>
+          <ul class="package-list">
+            <li>Technical SEO audit</li>
+            <li>Search Console setup or review</li>
+            <li>Sitemap and robots.txt check</li>
+            <li>Metadata review for key pages</li>
+            <li>Basic local SEO check</li>
+            <li>Prioritised action list</li>
+            <li>Plain-English findings report</li>
+          </ul>
+          <a href="index.html#contact" class="package-cta">Ask about Audit &amp; Setup &nbsp;→</a>
+        </div>
+
+        <div class="package-col">
+          <span class="package-tag">Tier 2</span>
+          <h3 class="package-name">Local SEO Monthly</h3>
+          <p class="package-best">Best for local Brisbane businesses that want steady search improvement.</p>
+          <ul class="package-list">
+            <li>Everything in Audit &amp; Setup</li>
+            <li>Monthly on-page improvements</li>
+            <li>Google Business Profile optimisation</li>
+            <li>Local keyword targeting</li>
+            <li>Service and location page recommendations</li>
+            <li>Internal linking improvements</li>
+            <li>Monthly Search Console report</li>
+            <li>Next-month priorities</li>
+          </ul>
+          <a href="index.html#contact" class="package-cta">Ask about Local SEO &nbsp;→</a>
+        </div>
+
+        <div class="package-col">
+          <span class="package-tag">Tier 3</span>
+          <h3 class="package-name">SEO Growth Monthly</h3>
+          <p class="package-best">Best for businesses that want ongoing content and technical improvements.</p>
+          <ul class="package-list">
+            <li>Everything in Local SEO Monthly</li>
+            <li>Broader keyword research</li>
+            <li>Content gap planning</li>
+            <li>New page or blog brief recommendations</li>
+            <li>Technical fixes over time</li>
+            <li>Competitor page comparisons</li>
+            <li>Conversion improvements on key pages</li>
+            <li>Monthly performance report</li>
+          </ul>
+          <a href="index.html#contact" class="package-cta">Ask about SEO Growth &nbsp;→</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HONEST EXPECTATIONS -->
+  <section class="expectations">
+    <div class="wrap">
+      <div class="expectations-grid">
+        <div class="expectations-left">
+          <h2 class="exp-heading">SEO is steady work, not a switch.</h2>
+          <p class="exp-body">Good SEO usually starts with fixing what is unclear or broken, then improving the pages that matter most. Some changes help quickly, while others build over months. The goal is to make your site easier to crawl, easier to understand, and more useful to the people searching for what you offer.</p>
+        </div>
+        <div>
+          <span class="exp-timeline-label">Typical timeline</span>
+          <ul class="exp-timeline">
+            <li>
+              <span class="exp-step">First pass</span>
+              Audit, tracking setup, and technical cleanup
+            </li>
+            <li>
+              <span class="exp-step">Month 1–2</span>
+              Key page and local SEO improvements
+            </li>
+            <li>
+              <span class="exp-step">Month 3+</span>
+              Content gaps, stronger internal links, ongoing reporting
+            </li>
+            <li>
+              <span class="exp-step">Ongoing</span>
+              Measure what moved and choose the next useful improvement
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I DON'T PROMISE -->
+  <section class="no-promises">
+    <div class="wrap">
+      <div class="no-promises-inner">
+        <h2 class="no-promises-heading">What I do not promise.</h2>
+        <ul class="no-promises-list">
+          <li>Guaranteed #1 rankings</li>
+          <li>Overnight traffic spikes</li>
+          <li>Spammy backlinks</li>
+          <li>Keyword stuffing</li>
+          <li>Lock-in contracts</li>
+          <li>Confusing reports nobody reads</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="cta-heading">Want to know what is<br>holding your site back?</h2>
+      <p class="cta-sub">Send me your website and I'll take a look at what can be improved.</p>
+      <div class="cta-actions">
+        <a href="index.html#contact" class="btn-cta">Start with an SEO audit &nbsp;→</a>
+        <a href="index.html#services" class="btn-text">← Back to services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-logo">MC.</a>
+        <p class="footer-copy">&copy; 2026 Matthias Campbell &nbsp;&middot;&nbsp; Brisbane &nbsp;&middot;&nbsp; <a href="mailto:matthiasdevelopment@gmail.com">matthiasdevelopment@gmail.com</a></p>
+        <a href="index.html" class="footer-back">← matthias.com.au</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
