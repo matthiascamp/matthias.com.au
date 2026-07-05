@@ -369,48 +369,121 @@
     }
 
     /* ── Projects ── */
-    .projects { padding: clamp(40px, 5vw, 64px) 0 0; }
-    .projects-top {
-      display: flex; align-items: baseline; justify-content: space-between;
-      gap: 32px;
-      padding-bottom: clamp(32px, 4vw, 48px);
+    .projects {
+      padding: clamp(72px, 10vw, 140px) 0;
       border-bottom: 1px solid var(--line);
-      margin-bottom: clamp(40px, 5vw, 64px);
+      overflow: hidden;
+    }
+    .projects-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
+      gap: clamp(36px, 7vw, 100px);
+      align-items: center;
+    }
+    .projects-copy {
+      align-self: start;
+      position: sticky;
+      top: 112px;
+      padding-top: 8px;
+    }
+    .projects-kicker {
+      display: block;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--faint);
+      margin-bottom: 16px;
     }
     .projects-heading {
       font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+      font-size: clamp(2.5rem, 5vw, 5.2rem);
+      font-weight: 800; line-height: 0.88; letter-spacing: -0.035em;
+      margin-bottom: 28px;
     }
     .projects-side {
-      font-size: clamp(0.9rem, 1.3vw, 1.1rem);
-      line-height: 1.6; color: var(--muted); max-width: 260px;
-      text-align: right; flex-shrink: 0;
+      font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+      line-height: 1.72; color: var(--muted);
+      max-width: 390px;
+      margin-bottom: 32px;
     }
-    /* Projects — full bleed editorial grid */
-    .projects-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 28px;
+    .projects-note {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--muted);
+      border-bottom: 1px solid var(--ink);
+      display: inline-block;
+      padding-bottom: 2px;
+    }
+    .project-slider {
+      position: relative;
+      height: clamp(560px, 74vh, 760px);
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .project-slider::before,
+    .project-slider::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 18%;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .project-slider::before {
+      top: 0;
+      background: linear-gradient(to bottom, var(--bg), rgba(232,230,226,0));
+    }
+    .project-slider::after {
+      bottom: 0;
+      background: linear-gradient(to top, var(--bg), rgba(232,230,226,0));
+    }
+    .project-track {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding: 22px 0;
+      animation: projectDrift 42s linear infinite;
+      will-change: transform;
+    }
+    .project-slider:hover .project-track,
+    .project-slider:focus-within .project-track {
+      animation-play-state: paused;
+    }
+    @keyframes projectDrift {
+      from { transform: translateY(0); }
+      to { transform: translateY(-50%); }
     }
     .project-card {
       position: relative; overflow: hidden;
       cursor: pointer; display: block;
       background: #111;
+      min-height: clamp(360px, 47vh, 520px);
+      border: 1px solid var(--line);
     }
     /* Full-bleed image */
     .project-card .project-img-wrap {
-      width: 100%; aspect-ratio: 16/9; overflow: hidden;
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%; overflow: hidden;
     }
     .project-card .project-img {
       width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform 0.8s var(--ease);
     }
-    .project-card:hover .project-img { transform: scale(1.04); }
+    .project-card::after {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(135deg, rgba(232,180,255,0.2), rgba(128,232,255,0.16), rgba(184,245,192,0.1)),
+        linear-gradient(to top, rgba(0,0,0,0.74), rgba(0,0,0,0.05) 58%);
+      opacity: 0.88;
+      transition: opacity 0.5s var(--ease);
+    }
+    .project-card:hover .project-img { transform: scale(1.045); }
+    .project-card:hover::after { opacity: 1; }
     /* Text overlay at bottom */
     .project-overlay {
       position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 60px 28px 28px;
-      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+      padding: clamp(28px, 4vw, 48px);
       z-index: 2;
     }
     .project-num {
@@ -419,11 +492,15 @@
       margin-bottom: 6px;
     }
     .project-name {
-      font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2.6rem);
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 4.4rem);
       font-weight: 600; letter-spacing: -0.02em; color: #fff;
       line-height: 1; margin-bottom: 4px;
     }
-    .project-desc { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+    .project-desc {
+      font-size: clamp(0.82rem, 1.1vw, 0.95rem);
+      color: rgba(255,255,255,0.68); line-height: 1.58;
+      max-width: 480px;
+    }
     /* Live embed cards */
     .project-card--live .project-img-wrap { display: none; }
     .project-iframe-wrap {
@@ -575,9 +652,9 @@
     @media (max-width: 860px) {
       .problems-intro { flex-direction: column; gap: 16px; }
       .problems-aside { text-align: left; }
-      .projects-grid { grid-template-columns: 1fr; width: 100%; margin-left: 0; }
-      .projects-top { flex-direction: column; gap: 12px; }
-      .projects-side { text-align: left; }
+      .projects-layout { grid-template-columns: 1fr; }
+      .projects-copy { position: static; }
+      .project-slider { height: 640px; }
     }
     @media (max-width: 640px) {
       .top-nav { height: 52px; padding: 0 20px; }
@@ -589,7 +666,10 @@
       .hero-caption { font-size: 13px; white-space: normal; width: 90%; text-align: center; top: 59%; }
       .corner-text { display: none; }
       .scroll-down span { font-size: 1rem; }
-      .projects-grid { grid-template-columns: 1fr; width: 100%; margin-left: 0; }
+      .projects { padding: clamp(56px, 12vw, 84px) 0; }
+      .project-slider { height: 540px; margin-left: -20px; margin-right: -20px; }
+      .project-track { gap: 14px; padding: 14px 20px; animation-duration: 36s; }
+      .project-card { min-height: 340px; }
       .form-row { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
@@ -600,8 +680,17 @@
       .social-fixed svg { width: 22px; height: 22px; }
       .why-list li { grid-template-columns: 1fr; gap: 8px; }
       .project-overlay { padding: 40px 18px 18px; }
-      .project-name { font-size: 1.3rem; }
+      .project-name { font-size: 2rem; }
       .custom-select-list { position: fixed; left: 20px; right: 20px; top: auto; bottom: 80px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .project-track {
+        animation: none;
+        transform: none;
+      }
+      .project-slider {
+        overflow-y: auto;
+      }
     }
   </style>
 </head>
@@ -658,8 +747,15 @@
   <!-- PROJECTS -->
   <section class="projects" id="projects">
     <div class="wrap">
-      <h2 class="services-heading">My Software &amp; Services.</h2>
-      <div class="projects-grid">
+      <div class="projects-layout">
+        <div class="projects-copy">
+          <span class="projects-kicker">Selected work</span>
+          <h2 class="projects-heading">Software &amp; services in motion.</h2>
+          <p class="projects-side">A small set of practical systems and services for businesses that need cleaner operations, better booking flows, stronger local search, or hands-on technical support.</p>
+          <span class="projects-note">Slow vertical showcase</span>
+        </div>
+        <div class="project-slider" aria-label="Project highlights">
+          <div class="project-track">
 
         <a href="yieldpos.html" class="project-card">
           <div class="project-img-wrap">
@@ -701,10 +797,56 @@
           <div class="project-overlay">
             <span class="project-num">SEO</span>
             <h3 class="project-name">Search Engine Optimisation</h3>
-            <p class="project-desc">Ranking local Brisbane businesses higher on Google — technical SEO, on-page content, and local search optimisation.</p>
+            <p class="project-desc">Technical SEO, local search setup, and content improvements for Brisbane businesses.</p>
           </div>
         </a>
 
+        <a href="yieldpos.html" class="project-card" tabindex="-1" aria-hidden="true">
+          <div class="project-img-wrap">
+            <img class="project-img" src="yieldpos.png" alt="" />
+          </div>
+          <div class="project-overlay">
+            <span class="project-num">Point of Sale</span>
+            <h3 class="project-name">YieldPOS</h3>
+            <p class="project-desc">Touchscreen POS for independent retail. Used by Australian businesses.</p>
+          </div>
+        </a>
+
+        <article class="project-card" aria-hidden="true">
+          <div class="project-img-wrap">
+            <img class="project-img" src="mcbook.png" alt="" />
+          </div>
+          <div class="project-overlay">
+            <span class="project-num">Booking System</span>
+            <h3 class="project-name">MCBook</h3>
+            <p class="project-desc">Online bookings, Stripe card-on-file, and no-show protection.</p>
+          </div>
+        </article>
+
+        <article class="project-card" aria-hidden="true">
+          <div class="project-img-wrap">
+            <img class="project-img" src="it-support.png" alt="" />
+          </div>
+          <div class="project-overlay">
+            <span class="project-num">IT Support</span>
+            <h3 class="project-name">Onsite IT Support</h3>
+            <p class="project-desc">Certified IT technician with hands-on industry experience. Hardware setup, network troubleshooting, software installs, and day-to-day tech issues resolved on-site across Brisbane.</p>
+          </div>
+        </article>
+
+        <a href="seo.html" class="project-card" tabindex="-1" aria-hidden="true">
+          <div class="project-img-wrap">
+            <img class="project-img" src="seo.png" alt="" />
+          </div>
+          <div class="project-overlay">
+            <span class="project-num">SEO</span>
+            <h3 class="project-name">Search Engine Optimisation</h3>
+            <p class="project-desc">Technical SEO, local search setup, and content improvements for Brisbane businesses.</p>
+          </div>
+        </a>
+
+          </div>
+        </div>
       </div>
     </div>
   </section>
