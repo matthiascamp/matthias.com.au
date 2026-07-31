@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Matthias Campbell — Brisbane Software Contractor</title>
+  <meta name="description" content="Matthias Campbell is a Brisbane software contractor building custom software and AI automation, and offering practical technology support. Coding since nine, now studying computer science at UQ." />
+  <link rel="canonical" href="https://matthias.com.au/about.html" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="About Matthias Campbell — Brisbane Software Contractor" />
+  <meta property="og:description" content="A direct, practical approach to software and support. Brisbane-based." />
+  <meta property="og:url" content="https://matthias.com.au/about.html" />
+  <meta property="og:image" content="https://matthias.com.au/rpp-workflow-editor.png" />
+  <meta property="og:locale" content="en_AU" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#e8e6e2;--ink:#050505;--muted:#5e5a55;--faint:#9b9690;--line:#d0cdc7;--serif:"Cormorant","Cormorant Garamond",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;--ease:cubic-bezier(0.25,0.1,0.25,1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;} ul{list-style:none;} img{display:block;max-width:100%;}
+    .wrap{max-width:1280px;margin:0 auto;padding:0 clamp(24px,5.5vw,80px);}
+    a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+    @keyframes iris-bg-drift{0%{transform:translate(0,0) rotate(0)}33%{transform:translate(6%,-4%) rotate(3deg)}66%{transform:translate(-5%,6%) rotate(-2deg)}100%{transform:translate(0,0) rotate(0)}}
+    body::before{content:'';position:fixed;inset:-30%;width:160%;height:160%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 45% 35% at 20% 20%,rgba(232,180,255,0.11),transparent 70%),radial-gradient(ellipse 38% 30% at 78% 68%,rgba(128,232,255,0.09),transparent 65%),radial-gradient(ellipse 32% 28% at 58% 18%,rgba(184,245,192,0.07),transparent 60%),radial-gradient(ellipse 28% 22% at 35% 75%,rgba(200,176,255,0.07),transparent 60%);animation:iris-bg-drift 22s ease-in-out infinite;}
+    @media (prefers-reduced-motion:reduce){body::before{animation:none;}}
+    .top-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,5.5vw,80px);background:rgba(232,230,226,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s var(--ease);}
+    .top-nav.scrolled{border-bottom-color:var(--line);}
+    .nav-logo{font-family:var(--serif);font-size:2rem;font-weight:700;letter-spacing:-0.03em;}
+    .nav-links{display:flex;align-items:center;gap:40px;}
+    .nav-links a{font-family:var(--serif);font-size:19px;font-weight:400;position:relative;padding-bottom:2px;}
+    .nav-links a::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:1px;background:var(--ink);transition:left .25s var(--ease),right .25s var(--ease);}
+    .nav-links a:hover::after{left:0;right:0;}
+    .nav-cta{height:38px;padding:0 22px;display:inline-flex;align-items:center;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:opacity .2s;}
+    .nav-cta:hover{opacity:.75;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px;}
+    .nav-hamburger span{display:block;width:100%;height:1.5px;background:var(--ink);transition:transform .3s var(--ease),opacity .3s;}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;bottom:0;z-index:99;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:36px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:var(--serif);font-size:clamp(2rem,8vw,3rem);font-weight:700;letter-spacing:-0.02em;}
+    .btn-solid{display:inline-flex;align-items:center;height:46px;padding:0 28px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:opacity .2s;}
+    .btn-solid:hover{opacity:.75;}
+    .btn-outline{display:inline-flex;align-items:center;height:46px;padding:0 28px;border:1px solid var(--ink);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,color .2s;}
+    .btn-outline:hover{background:var(--ink);color:#fff;}
+
+    .page-hero{padding-top:clamp(120px,16vw,180px);padding-bottom:clamp(40px,6vw,72px);border-bottom:1px solid var(--line);}
+    .hero-kicker{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:20px;}
+    .hero-heading{font-family:var(--serif);font-size:clamp(2.8rem,6vw,6.2rem);font-weight:800;line-height:0.9;letter-spacing:-0.035em;max-width:16ch;}
+
+    .story{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(48px,8vw,120px);padding:clamp(64px,9vw,120px) 0;align-items:start;}
+    .story-prose p{font-family:var(--serif);font-size:clamp(1.15rem,1.7vw,1.5rem);color:var(--muted);line-height:1.7;margin-bottom:28px;}
+    .story-prose p:last-child{margin-bottom:0;}
+    .story-prose strong{color:var(--ink);font-weight:600;}
+    .facts{border-top:1px solid var(--ink);}
+    .fact{display:flex;flex-direction:column;gap:4px;padding:16px 0;border-bottom:1px solid var(--line);}
+    .fact .k{font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);}
+    .fact .v{font-family:var(--serif);font-size:1.15rem;color:var(--ink);line-height:1.3;}
+    .fact .v a{border-bottom:1px solid var(--line);} .fact .v a:hover{border-color:var(--ink);}
+
+    .values{padding:clamp(64px,9vw,120px) 0;border-bottom:1px solid var(--line);}
+    .values-heading{font-family:var(--serif);font-size:clamp(2rem,4vw,4.2rem);font-weight:800;line-height:0.9;letter-spacing:-0.03em;margin-bottom:clamp(32px,4vw,52px);}
+    .values-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);}
+    .value{padding:clamp(26px,3vw,40px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+    .value h3{font-family:var(--serif);font-size:clamp(1.2rem,1.8vw,1.6rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;}
+    .value p{font-size:0.86rem;color:var(--muted);line-height:1.65;}
+
+    .cta{padding:clamp(80px,12vw,150px) 0;text-align:center;border-bottom:1px solid var(--line);}
+    .cta-heading{font-family:var(--serif);font-size:clamp(2.2rem,5.5vw,5.4rem);font-weight:800;line-height:0.9;letter-spacing:-0.03em;margin-bottom:16px;}
+    .cta-sub{font-size:0.95rem;color:var(--muted);line-height:1.7;margin-bottom:clamp(32px,4vw,48px);}
+    .cta-actions{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
+    footer{padding:clamp(36px,5vw,56px) 0;}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+    .footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;}
+    .footer-copy{font-size:0.8rem;color:var(--faint);line-height:1.7;}
+    .footer-copy a{color:var(--muted);transition:color .2s;} .footer-copy a:hover{color:var(--ink);}
+    .footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+    .footer-links a{font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--faint);transition:color .2s;}
+    .footer-links a:hover{color:var(--ink);}
+    @media (max-width:900px){.story{grid-template-columns:1fr;gap:40px;} .values-grid{grid-template-columns:1fr 1fr;}}
+    @media (max-width:640px){.top-nav{height:52px;padding:0 20px;} .nav-links,.nav-cta{display:none;} .nav-hamburger{display:flex;} .values-grid{grid-template-columns:1fr;} .footer-inner{flex-direction:column;text-align:center;} .footer-links{justify-content:center;}}
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav" id="nav">
+    <a href="index.html" class="nav-logo">MC.</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get in touch</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#services" class="mobile-link">Services</a>
+    <a href="work.html" class="mobile-link">Work</a>
+    <a href="about.html" class="mobile-link">About</a>
+    <a href="contact.html" class="mobile-link">Contact</a>
+  </div>
+
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="hero-kicker">About</p>
+      <h1 class="hero-heading">A practical way to build and fix things.</h1>
+    </div>
+  </header>
+
+  <section style="border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="story">
+      <div class="story-prose">
+        <p>I've been writing software since I was nine. What started as curiosity became the thing I'm best at — and the way I tend to look at most problems: <strong>what's the simplest system that makes this work better?</strong></p>
+        <p>The turn towards business software came from real work. In warehouse and grocery-store jobs I kept running into slow, outdated processes — tasks done by hand that a bit of software could handle in seconds. So I started building tools to fix them, and found that's the work I care about most.</p>
+        <p>I'm now in my second year of a <strong>Bachelor of Computer Science at the University of Queensland</strong>, which keeps the fundamentals sharp while I build real things for real businesses. My strongest areas are Python, databases, AI workflow automation and working with large datasets, and I build web, Java and Electron interfaces where they fit.</p>
+        <p>However it's framed, the approach is the same: understand the actual problem, be honest about what's worth building, and stay <strong>patient, practical and reasonable</strong> — whether that's a business system or helping someone get their laptop working. I'm based in Brisbane and available for new projects and technology-support bookings.</p>
+      </div>
+      <aside class="facts" aria-label="Quick facts">
+        <div class="fact"><span class="k">Name</span><span class="v">Matthias Campbell</span></div>
+        <div class="fact"><span class="k">Based in</span><span class="v">Brisbane, Queensland</span></div>
+        <div class="fact"><span class="k">Focus</span><span class="v">Custom software &amp; AI automation · Technology support</span></div>
+        <div class="fact"><span class="k">Strengths</span><span class="v">Python · Databases · AI workflows · Large datasets</span></div>
+        <div class="fact"><span class="k">Studying</span><span class="v">Computer Science, UQ (2nd year)</span></div>
+        <div class="fact"><span class="k">ABN</span><span class="v">19 469 850 250</span></div>
+        <div class="fact"><span class="k">GitHub</span><span class="v"><a href="https://github.com/matthiascamp" target="_blank" rel="noopener">github.com/matthiascamp</a></span></div>
+      </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="values">
+    <div class="wrap">
+      <h2 class="values-heading">How I work.</h2>
+      <div class="values-grid">
+        <div class="value"><h3>Direct</h3><p>You work with me, not an agency. The person you talk to is the person who builds and supports the work.</p></div>
+        <div class="value"><h3>Honest</h3><p>If custom software isn't the right call, I'll say so — sometimes an existing product is the better answer.</p></div>
+        <div class="value"><h3>Practical</h3><p>I care about what actually helps day to day, not features for their own sake.</p></div>
+        <div class="value"><h3>Patient</h3><p>Whether it's code or a confusing computer, I explain things plainly and take the time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="cta-heading">Let's talk about<br>what you need.</h2>
+      <p class="cta-sub">A software project, or a hand with your technology — either reaches me directly.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-solid">Get in touch &nbsp;→</a>
+        <a href="work.html" class="btn-outline">See my work</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-logo">MC.</a>
+        <p class="footer-copy">&copy; 2026 Matthias Campbell &nbsp;&middot;&nbsp; Brisbane, QLD &nbsp;&middot;&nbsp; ABN 19 469 850 250<br><a href="mailto:hello@matthias.com.au">hello@matthias.com.au</a> &nbsp;&middot;&nbsp; <a href="tel:+61424106527">0424 106 527</a></p>
+        <nav class="footer-links">
+          <a href="custom-software.html">Custom software</a>
+          <a href="technology-support.html">Technology support</a>
+          <a href="work.html">Work</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10),{passive:true});
+    const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
+    hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+    document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}));
+  </script>
+</body>
+</html>

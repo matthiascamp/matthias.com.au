@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found — Matthias Campbell</title>
+  <meta name="description" content="That page couldn't be found. Head back to matthias.com.au." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#e8e6e2;--ink:#050505;--muted:#5e5a55;--faint:#9b9690;--line:#d0cdc7;--serif:"Cormorant","Cormorant Garamond",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;--ease:cubic-bezier(0.25,0.1,0.25,1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;}
+    a{color:inherit;text-decoration:none;}
+    a:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+    @keyframes iris-bg-drift{0%{transform:translate(0,0) rotate(0)}33%{transform:translate(6%,-4%) rotate(3deg)}66%{transform:translate(-5%,6%) rotate(-2deg)}100%{transform:translate(0,0) rotate(0)}}
+    body::before{content:'';position:fixed;inset:-30%;width:160%;height:160%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 45% 35% at 20% 20%,rgba(232,180,255,0.11),transparent 70%),radial-gradient(ellipse 38% 30% at 78% 68%,rgba(128,232,255,0.09),transparent 65%),radial-gradient(ellipse 32% 28% at 58% 18%,rgba(184,245,192,0.07),transparent 60%),radial-gradient(ellipse 28% 22% at 35% 75%,rgba(200,176,255,0.07),transparent 60%);animation:iris-bg-drift 22s ease-in-out infinite;}
+    @media (prefers-reduced-motion:reduce){body::before{animation:none;}}
+    .bar{padding:24px clamp(24px,5.5vw,80px);}
+    .logo{font-family:var(--serif);font-size:2rem;font-weight:700;letter-spacing:-0.03em;}
+    main{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px clamp(24px,5.5vw,80px) 80px;}
+    .m-inner{max-width:640px;}
+    .code{font-family:var(--serif);font-size:clamp(6rem,22vw,15rem);font-weight:800;line-height:0.82;letter-spacing:-0.05em;margin-bottom:20px;}
+    h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;margin-bottom:18px;}
+    p{font-size:1rem;color:var(--muted);line-height:1.75;margin-bottom:36px;}
+    .actions{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+    .btn-solid{display:inline-flex;align-items:center;height:48px;padding:0 30px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:opacity .2s;}
+    .btn-solid:hover{opacity:.78;}
+    .btn-outline{display:inline-flex;align-items:center;height:48px;padding:0 30px;border:1px solid var(--ink);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,color .2s;}
+    .btn-outline:hover{background:var(--ink);color:#fff;}
+    .links{margin-top:40px;font-size:0.85rem;color:var(--faint);}
+    .links a{border-bottom:1px solid var(--line);padding-bottom:1px;margin:0 8px;} .links a:hover{color:var(--ink);border-color:var(--ink);}
+  </style>
+</head>
+<body>
+  <div class="bar"><a href="index.html" class="logo">MC.</a></div>
+  <main>
+    <div class="m-inner">
+      <div class="code">404</div>
+      <h1>That page has wandered off.</h1>
+      <p>The link may be old or slightly mistyped. Nothing's broken on your end — let's get you back on track.</p>
+      <div class="actions">
+        <a href="index.html" class="btn-solid">Back to home &nbsp;→</a>
+        <a href="contact.html" class="btn-outline">Get in touch</a>
+      </div>
+      <div class="links">
+        <a href="custom-software.html">Custom software</a>
+        <a href="technology-support.html">Technology support</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

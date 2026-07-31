@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCBook — Booking System by Matthias Campbell</title>
+  <meta name="description" content="MCBook is a booking system for appointment- and service-based businesses — online bookings, a managed calendar, customer records and reminders, in one simple place." />
+  <link rel="canonical" href="https://matthias.com.au/mcbook.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MCBook — Booking System by Matthias Campbell" />
+  <meta property="og:description" content="Online bookings, calendar and customer records for appointment-based businesses." />
+  <meta property="og:url" content="https://matthias.com.au/mcbook.html" />
+  <meta property="og:image" content="https://matthias.com.au/mcbook.webp" />
+  <meta property="og:locale" content="en_AU" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#e8e6e2;--ink:#050505;--muted:#5e5a55;--faint:#9b9690;--line:#d0cdc7;--serif:"Cormorant","Cormorant Garamond",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;--ease:cubic-bezier(0.25,0.1,0.25,1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;} ul{list-style:none;} img{display:block;max-width:100%;}
+    .wrap{max-width:1280px;margin:0 auto;padding:0 clamp(24px,5.5vw,80px);}
+    a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+    @keyframes iris-bg-drift{0%{transform:translate(0,0) rotate(0)}33%{transform:translate(6%,-4%) rotate(3deg)}66%{transform:translate(-5%,6%) rotate(-2deg)}100%{transform:translate(0,0) rotate(0)}}
+    body::before{content:'';position:fixed;inset:-30%;width:160%;height:160%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 45% 35% at 20% 20%,rgba(232,180,255,0.11),transparent 70%),radial-gradient(ellipse 38% 30% at 78% 68%,rgba(128,232,255,0.09),transparent 65%),radial-gradient(ellipse 32% 28% at 58% 18%,rgba(184,245,192,0.07),transparent 60%),radial-gradient(ellipse 28% 22% at 35% 75%,rgba(200,176,255,0.07),transparent 60%);animation:iris-bg-drift 22s ease-in-out infinite;}
+    @media (prefers-reduced-motion:reduce){body::before{animation:none;}}
+    .top-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,5.5vw,80px);background:rgba(232,230,226,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s var(--ease);}
+    .top-nav.scrolled{border-bottom-color:var(--line);}
+    .nav-logo{font-family:var(--serif);font-size:2rem;font-weight:700;letter-spacing:-0.03em;}
+    .nav-links{display:flex;align-items:center;gap:40px;}
+    .nav-links a{font-family:var(--serif);font-size:19px;font-weight:400;position:relative;padding-bottom:2px;}
+    .nav-links a::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:1px;background:var(--ink);transition:left .25s var(--ease),right .25s var(--ease);}
+    .nav-links a:hover::after{left:0;right:0;}
+    .nav-right{display:flex;align-items:center;gap:28px;}
+    .nav-back{font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--faint);transition:color .2s;}
+    .nav-back:hover{color:var(--ink);}
+    .nav-cta{height:38px;padding:0 22px;display:inline-flex;align-items:center;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:opacity .2s;}
+    .nav-cta:hover{opacity:.75;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px;}
+    .nav-hamburger span{display:block;width:100%;height:1.5px;background:var(--ink);transition:transform .3s var(--ease),opacity .3s;}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;bottom:0;z-index:99;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:36px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:var(--serif);font-size:clamp(2rem,8vw,3rem);font-weight:700;letter-spacing:-0.02em;}
+    .btn-solid{display:inline-flex;align-items:center;height:46px;padding:0 28px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:opacity .2s;}
+    .btn-solid:hover{opacity:.75;}
+    .btn-outline{display:inline-flex;align-items:center;gap:8px;font-family:var(--serif);font-size:1rem;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:opacity .2s;}
+    .btn-outline:hover{opacity:.5;}
+
+    .hero{padding-top:clamp(110px,15vw,160px);border-bottom:1px solid var(--line);overflow:hidden;}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center;padding-bottom:clamp(48px,6vw,72px);}
+    .hero-kicker{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:20px;}
+    .hero-heading{font-family:var(--serif);font-size:clamp(3rem,5.5vw,6rem);font-weight:800;line-height:0.88;letter-spacing:-0.035em;margin-bottom:28px;}
+    .hero-body{font-size:clamp(0.93rem,1.3vw,1.1rem);color:var(--muted);line-height:1.78;margin-bottom:36px;}
+    .hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+    .hero-shot{border:1px solid var(--line);box-shadow:0 20px 64px rgba(0,0,0,0.12);overflow:hidden;background:#111;}
+    .hero-shot img{width:100%;display:block;}
+
+    .cap-strip{border-bottom:1px solid var(--line);}
+    .cap-strip-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+    .cap-item{padding:clamp(22px,3vw,36px) clamp(20px,2.5vw,36px);border-right:1px solid var(--line);}
+    .cap-item:last-child{border-right:none;}
+    .cap-title{font-family:var(--serif);font-size:clamp(1.4rem,2.2vw,2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:6px;line-height:1;}
+    .cap-desc{font-size:0.8rem;color:var(--faint);line-height:1.5;}
+
+    .section{padding:clamp(64px,9vw,120px) 0;border-bottom:1px solid var(--line);}
+    .sec-kicker{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:14px;}
+    .sec-heading{font-family:var(--serif);font-size:clamp(2rem,4vw,4.2rem);font-weight:800;line-height:0.9;letter-spacing:-0.03em;margin-bottom:clamp(32px,4vw,52px);}
+    .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);}
+    .feat{padding:clamp(26px,3.2vw,40px);border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+    .feat h3{font-family:var(--serif);font-size:clamp(1.25rem,1.9vw,1.7rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;}
+    .feat p{font-size:0.87rem;color:var(--muted);line-height:1.7;}
+
+    .case-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);}
+    .cs{padding:clamp(24px,3vw,40px) 0;padding-right:clamp(20px,2.4vw,36px);border-right:1px solid var(--line);}
+    .cs:last-child{border-right:none;padding-right:0;}
+    .cs .k{font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-bottom:12px;display:block;}
+    .cs p{font-size:0.9rem;color:var(--muted);line-height:1.65;}
+
+    .cta{padding:clamp(80px,12vw,150px) 0;text-align:center;border-bottom:1px solid var(--line);}
+    .cta-heading{font-family:var(--serif);font-size:clamp(2.2rem,5.5vw,5.4rem);font-weight:800;line-height:0.9;letter-spacing:-0.03em;margin-bottom:16px;}
+    .cta-sub{font-size:0.95rem;color:var(--muted);line-height:1.7;margin-bottom:clamp(32px,4vw,48px);}
+    .cta-actions{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
+    footer{padding:clamp(36px,5vw,56px) 0;}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+    .footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;}
+    .footer-copy{font-size:0.8rem;color:var(--faint);line-height:1.7;}
+    .footer-copy a{color:var(--muted);transition:color .2s;} .footer-copy a:hover{color:var(--ink);}
+    .footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+    .footer-links a{font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--faint);transition:color .2s;}
+    .footer-links a:hover{color:var(--ink);}
+    @media (max-width:900px){.hero-grid{grid-template-columns:1fr;} .cap-strip-grid{grid-template-columns:1fr 1fr;} .cap-item:nth-child(2){border-right:none;} .cap-item:nth-child(n+3){border-top:1px solid var(--line);} .feat-grid{grid-template-columns:1fr 1fr;} .case-strip{grid-template-columns:1fr 1fr;} .cs:nth-child(2){border-right:none;} .cs:nth-child(n+3){border-top:1px solid var(--line);padding-top:24px;}}
+    @media (max-width:640px){.top-nav{height:52px;padding:0 20px;} .nav-links,.nav-right{display:none;} .nav-hamburger{display:flex;} .cap-strip-grid{grid-template-columns:1fr 1fr;} .feat-grid{grid-template-columns:1fr;} .case-strip{grid-template-columns:1fr;} .cs{border-right:none;padding-right:0;} .footer-inner{flex-direction:column;text-align:center;} .footer-links{justify-content:center;}}
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav" id="nav">
+    <a href="index.html" class="nav-logo">MC.</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="work.html" class="nav-back">← All work</a>
+      <a href="contact.html" class="nav-cta">Enquire</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#services" class="mobile-link">Services</a>
+    <a href="work.html" class="mobile-link">Work</a>
+    <a href="about.html" class="mobile-link">About</a>
+    <a href="contact.html" class="mobile-link">Contact</a>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="hero-kicker">Booking System</p>
+          <h1 class="hero-heading">Bookings, in one calm place.</h1>
+          <p class="hero-body">MCBook is a booking system for appointment- and service-based businesses that have outgrown a paper diary or a run of text messages. Customers book online, you manage it all from one calendar, and the details are kept together instead of scattered.</p>
+          <div class="hero-actions">
+            <a href="contact.html" class="btn-solid">Enquire about MCBook &nbsp;→</a>
+            <a href="#features" class="btn-outline">See features &nbsp;↓</a>
+          </div>
+        </div>
+        <div class="hero-shot"><img src="mcbook.webp" width="1448" height="1086" decoding="async" fetchpriority="high" alt="MCBook booking dashboard" /></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cap-strip">
+    <div class="cap-strip-grid">
+      <div class="cap-item"><div class="cap-title">Online</div><div class="cap-desc">Customers book themselves in, any time.</div></div>
+      <div class="cap-item"><div class="cap-title">Calendar</div><div class="cap-desc">One clear view of the day and week.</div></div>
+      <div class="cap-item"><div class="cap-title">Records</div><div class="cap-desc">Customer details kept together.</div></div>
+      <div class="cap-item"><div class="cap-title">Reminders</div><div class="cap-desc">Prompts that cut down no-shows.</div></div>
+    </div>
+  </div>
+
+  <section class="section" id="features">
+    <div class="wrap">
+      <p class="sec-kicker">What it does</p>
+      <h2 class="sec-heading">Built around the booking.</h2>
+      <div class="feat-grid">
+        <div class="feat"><h3>Online booking</h3><p>A simple booking flow customers can use themselves, without needing to call during business hours.</p></div>
+        <div class="feat"><h3>Managed calendar</h3><p>See and manage every booking in one place, with availability you control.</p></div>
+        <div class="feat"><h3>Customer records</h3><p>Contact details and booking history kept together, so you're not hunting for information.</p></div>
+        <div class="feat"><h3>Reminders</h3><p>Automated reminders help reduce missed appointments and last-minute gaps.</p></div>
+        <div class="feat"><h3>Your availability</h3><p>Set the hours, services and slots that make sense for how you actually work.</p></div>
+        <div class="feat"><h3>Fits your business</h3><p>Set up for your services and adjusted to suit — it's built to be practical, not generic.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="sec-kicker">In short</p>
+      <h2 class="sec-heading">The problem, and the fix.</h2>
+      <div class="case-strip">
+        <div class="cs"><span class="k">Problem</span><p>Bookings taken by phone, paper or messages — easy to double-book, forget, or lose.</p></div>
+        <div class="cs"><span class="k">Built</span><p>Online bookings, a managed calendar, customer records and reminders in one system.</p></div>
+        <div class="cs"><span class="k">Approach</span><p>Web-based and quick to set up, easy for non-technical staff to run day to day.</p></div>
+        <div class="cs"><span class="k">Benefit</span><p>Less admin, fewer missed bookings, and a clearer picture of what's coming up.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="cta-heading">Taking bookings<br>the hard way?</h2>
+      <p class="cta-sub">Tell me how your bookings work now and I'll show you how MCBook could fit. Same business-day response.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-solid">Enquire about MCBook &nbsp;→</a>
+        <a href="work.html" class="btn-outline">← All work</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-logo">MC.</a>
+        <p class="footer-copy">&copy; 2026 Matthias Campbell &nbsp;&middot;&nbsp; Brisbane, QLD &nbsp;&middot;&nbsp; ABN 19 469 850 250<br><a href="mailto:hello@matthias.com.au">hello@matthias.com.au</a> &nbsp;&middot;&nbsp; <a href="tel:+61424106527">0424 106 527</a></p>
+        <nav class="footer-links">
+          <a href="custom-software.html">Custom software</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10),{passive:true});
+    const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
+    hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+    document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}));
+  </script>
+</body>
+</html>

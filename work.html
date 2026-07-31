@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work &amp; Case Studies — Matthias Campbell</title>
+  <meta name="description" content="Selected work from Matthias Campbell — YieldPOS point of sale, MCBook, and an RPP product-knowledge and AI workflow design. Real systems and restrained claims." />
+  <link rel="canonical" href="https://matthias.com.au/work.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Work & Case Studies — Matthias Campbell" />
+  <meta property="og:description" content="Real systems built for real businesses in and around Brisbane." />
+  <meta property="og:url" content="https://matthias.com.au/work.html" />
+  <meta property="og:image" content="https://matthias.com.au/rpp-workflow-editor.png" />
+  <meta property="og:locale" content="en_AU" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#e8e6e2;--ink:#050505;--muted:#5e5a55;--faint:#9b9690;--line:#d0cdc7;--serif:"Cormorant","Cormorant Garamond",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;--ease:cubic-bezier(0.25,0.1,0.25,1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;} ul{list-style:none;} img{display:block;max-width:100%;}
+    .wrap{max-width:1280px;margin:0 auto;padding:0 clamp(24px,5.5vw,80px);}
+    a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+    @keyframes iris-bg-drift{0%{transform:translate(0,0) rotate(0)}33%{transform:translate(6%,-4%) rotate(3deg)}66%{transform:translate(-5%,6%) rotate(-2deg)}100%{transform:translate(0,0) rotate(0)}}
+    body::before{content:'';position:fixed;inset:-30%;width:160%;height:160%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 45% 35% at 20% 20%,rgba(232,180,255,0.11),transparent 70%),radial-gradient(ellipse 38% 30% at 78% 68%,rgba(128,232,255,0.09),transparent 65%),radial-gradient(ellipse 32% 28% at 58% 18%,rgba(184,245,192,0.07),transparent 60%),radial-gradient(ellipse 28% 22% at 35% 75%,rgba(200,176,255,0.07),transparent 60%);animation:iris-bg-drift 22s ease-in-out infinite;}
+    @media (prefers-reduced-motion:reduce){body::before{animation:none;}}
+    .top-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,5.5vw,80px);background:rgba(232,230,226,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s var(--ease);}
+    .top-nav.scrolled{border-bottom-color:var(--line);}
+    .nav-logo{font-family:var(--serif);font-size:2rem;font-weight:700;letter-spacing:-0.03em;}
+    .nav-links{display:flex;align-items:center;gap:40px;}
+    .nav-links a{font-family:var(--serif);font-size:19px;font-weight:400;position:relative;padding-bottom:2px;}
+    .nav-links a::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:1px;background:var(--ink);transition:left .25s var(--ease),right .25s var(--ease);}
+    .nav-links a:hover::after{left:0;right:0;}
+    .nav-cta{height:38px;padding:0 22px;display:inline-flex;align-items:center;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:opacity .2s;}
+    .nav-cta:hover{opacity:.75;}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px;}
+    .nav-hamburger span{display:block;width:100%;height:1.5px;background:var(--ink);transition:transform .3s var(--ease),opacity .3s;}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;bottom:0;z-index:99;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:36px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:var(--serif);font-size:clamp(2rem,8vw,3rem);font-weight:700;letter-spacing:-0.02em;}
+    .btn-solid{display:inline-flex;align-items:center;height:46px;padding:0 28px;background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:opacity .2s;}
+    .btn-solid:hover{opacity:.75;}
+    .btn-outline{display:inline-flex;align-items:center;height:46px;padding:0 28px;border:1px solid var(--ink);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,color .2s;}
+    .btn-outline:hover{background:var(--ink);color:#fff;}
+    .btn-text{font-family:var(--serif);font-size:1rem;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:opacity .2s;}
+    .btn-text:hover{opacity:.5;}
+
+    .page-hero{padding-top:clamp(120px,16vw,180px);padding-bottom:clamp(48px,7vw,80px);border-bottom:1px solid var(--line);}
+    .hero-kicker{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:20px;}
+    .hero-heading{font-family:var(--serif);font-size:clamp(2.8rem,6vw,6rem);font-weight:800;line-height:0.9;letter-spacing:-0.035em;margin-bottom:28px;max-width:15ch;}
+    .hero-body{font-size:clamp(0.95rem,1.4vw,1.15rem);color:var(--muted);line-height:1.78;max-width:60ch;}
+
+    /* Case rows */
+    .case{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center;padding:clamp(56px,8vw,110px) 0;border-bottom:1px solid var(--line);}
+    .case--flip .case-media{order:2;}
+    .case-tag{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:16px;display:block;}
+    .case-name{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:800;line-height:0.92;letter-spacing:-0.03em;margin-bottom:20px;}
+    .case-desc{font-size:0.97rem;color:var(--muted);line-height:1.78;margin-bottom:24px;}
+    .case-facts{margin-bottom:30px;}
+    .case-facts li{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);font-size:0.86rem;color:var(--muted);line-height:1.5;}
+    .case-facts li:first-child{border-top:1px solid var(--line);}
+    .case-facts .k{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);flex:0 0 92px;padding-top:3px;}
+    .case-media{aspect-ratio:4/3;overflow:hidden;border:1px solid var(--line);background:#d4d1cc;}
+    .case-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
+    .case:hover .case-media img{transform:scale(1.03);}
+    .case-media--workflow{aspect-ratio:16/9;background:#04111f;}
+    .case-media--workflow img{object-fit:contain;}
+
+    .secondary{padding:clamp(56px,8vw,100px) 0;border-bottom:1px solid var(--line);}
+    .secondary-inner{display:flex;align-items:baseline;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+    .secondary h2{font-family:var(--serif);font-size:clamp(1.8rem,3.2vw,3rem);font-weight:800;letter-spacing:-0.03em;line-height:0.95;max-width:20ch;}
+    .secondary p{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:44ch;margin-top:12px;}
+
+    .cta{padding:clamp(80px,12vw,150px) 0;text-align:center;border-bottom:1px solid var(--line);}
+    .cta-heading{font-family:var(--serif);font-size:clamp(2.2rem,5.5vw,5.4rem);font-weight:800;line-height:0.9;letter-spacing:-0.03em;margin-bottom:16px;}
+    .cta-sub{font-size:0.95rem;color:var(--muted);line-height:1.7;margin-bottom:clamp(32px,4vw,48px);}
+    .cta-actions{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
+    footer{padding:clamp(36px,5vw,56px) 0;}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+    .footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;}
+    .footer-copy{font-size:0.8rem;color:var(--faint);line-height:1.7;}
+    .footer-copy a{color:var(--muted);transition:color .2s;} .footer-copy a:hover{color:var(--ink);}
+    .footer-links{display:flex;gap:22px;flex-wrap:wrap;}
+    .footer-links a{font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--faint);transition:color .2s;}
+    .footer-links a:hover{color:var(--ink);}
+    @media (max-width:840px){
+      .case{grid-template-columns:1fr;gap:28px;} .case--flip .case-media{order:0;}
+      .secondary-inner{flex-direction:column;gap:20px;}
+    }
+    @media (max-width:640px){
+      .top-nav{height:52px;padding:0 20px;} .nav-links,.nav-cta{display:none;} .nav-hamburger{display:flex;}
+      .footer-inner{flex-direction:column;text-align:center;} .footer-links{justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav" id="nav">
+    <a href="index.html" class="nav-logo">MC.</a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="work.html" aria-current="page">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get in touch</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#services" class="mobile-link">Services</a>
+    <a href="work.html" class="mobile-link">Work</a>
+    <a href="about.html" class="mobile-link">About</a>
+    <a href="contact.html" class="mobile-link">Contact</a>
+  </div>
+
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="hero-kicker">Selected work</p>
+      <h1 class="hero-heading">Real systems, built to hold up.</h1>
+      <p class="hero-body">A few projects that show how I work: understand the problem, build something practical, and keep it running. I've kept the claims here to what I can stand behind — no invented numbers or borrowed results.</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <!-- YIELDPOS -->
+    <section class="case">
+      <div class="case-body">
+        <span class="case-tag">Point of Sale · Retail</span>
+        <h2 class="case-name">YieldPOS at Crisp on Creek</h2>
+        <p class="case-desc">Crisp on Creek is a fruit-and-veg shop in Mt Gravatt, Brisbane. Their register ran on an ageing system that was increasingly hard to work with. I built YieldPOS — a Windows point-of-sale designed for fresh retail — to replace it, and it runs in the shop day to day.</p>
+        <ul class="case-facts">
+          <li><span class="k">Problem</span><span>An old register system that was dated and awkward for fresh-food retail.</span></li>
+          <li><span class="k">Built</span><span>A touchscreen register plus back-office admin — weighed produce, barcode scanning, receipts, cash drawer and a customer display.</span></li>
+          <li><span class="k">Approach</span><span>An Electron desktop app with an offline-first local database, so it keeps selling even without internet, with optional cloud sync.</span></li>
+          <li><span class="k">Benefit</span><span>A faster, staff-friendly checkout the shop owns outright — no subscription and no reliance on a live connection.</span></li>
+        </ul>
+        <a href="yieldpos.html" class="btn-solid">View YieldPOS &nbsp;→</a>
+      </div>
+      <a href="yieldpos.html" class="case-media" aria-label="YieldPOS"><img src="yieldpos.webp" width="1619" height="972" loading="lazy" decoding="async" alt="YieldPOS point-of-sale software" /></a>
+    </section>
+
+    <!-- MCBOOK -->
+    <section class="case case--flip">
+      <a href="mcbook.html" class="case-media" aria-label="MCBook"><img src="mcbook.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="MCBook booking system dashboard" /></a>
+      <div class="case-body">
+        <span class="case-tag">Booking System</span>
+        <h2 class="case-name">MCBook</h2>
+        <p class="case-desc">A booking system for appointment- and service-based businesses that were juggling their diary by phone, paper, or messages. MCBook gives them a single place to take and manage bookings.</p>
+        <ul class="case-facts">
+          <li><span class="k">Problem</span><span>Manual booking that was easy to double-up, forget, or lose track of.</span></li>
+          <li><span class="k">Built</span><span>Online bookings, a managed calendar, and customer records in one place.</span></li>
+          <li><span class="k">Approach</span><span>A web-based system that's quick to set up and easy for non-technical staff to run.</span></li>
+          <li><span class="k">Benefit</span><span>Less admin, fewer missed or clashing bookings, and a clearer view of the day.</span></li>
+        </ul>
+        <a href="mcbook.html" class="btn-solid">View MCBook &nbsp;→</a>
+      </div>
+    </section>
+
+    <!-- RPP PRODUCT KNOWLEDGE & WORKFLOWS -->
+    <section class="case">
+      <div class="case-body">
+        <span class="case-tag">AI Workflow Automation · Product Data</span>
+        <h2 class="case-name">RPP Product Knowledge &amp; Workflows</h2>
+        <p class="case-desc">A proposal and working system design for turning a large collection of supplier documents, pricing and product records into structured information that staff can search and use in controlled customer-email workflows.</p>
+        <ul class="case-facts">
+          <li><span class="k">Problem</span><span>Product knowledge was spread across supplier catalogues, price lists and internal records, making reliable answers slow to assemble.</span></li>
+          <li><span class="k">Built</span><span>A structured product-knowledge foundation, supplier-data processing tools and a visual design for routing common email enquiries.</span></li>
+          <li><span class="k">Approach</span><span>Classify each request, retrieve the relevant approved data, prepare a useful draft and hand uncertain or sensitive work to a person.</span></li>
+          <li><span class="k">Safeguard</span><span>Human review remains part of the workflow wherever judgement, approval or escalation is required.</span></li>
+        </ul>
+        <p style="font-size:0.82rem;color:var(--faint);line-height:1.6;">Operational and customer details are intentionally kept general.</p>
+      </div>
+      <div class="case-media case-media--workflow">
+        <img src="rpp-workflow-editor.png" width="1574" height="828" loading="lazy" decoding="async" alt="AutoFlow workflow editor showing an AI-assisted customer email process with stock checks, order lookups, drafting, sending, and human handoff steps" />
+      </div>
+    </section>
+
+    <!-- SEO SECONDARY -->
+    <section class="secondary">
+      <div class="secondary-inner">
+        <div>
+          <h2>Search engine optimisation</h2>
+          <p>Alongside software and support, I also do practical SEO for Brisbane businesses — technical fixes, local search, and better content, with no ranking guarantees.</p>
+        </div>
+        <a href="seo.html" class="btn-outline">See SEO services &nbsp;→</a>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="cta-heading">Something similar<br>in mind?</h2>
+      <p class="cta-sub">Tell me about your business and what's slowing it down. I'll reply the same business day.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-solid">Discuss a project &nbsp;→</a>
+        <a href="custom-software.html" class="btn-outline">Custom software</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-logo">MC.</a>
+        <p class="footer-copy">&copy; 2026 Matthias Campbell &nbsp;&middot;&nbsp; Brisbane, QLD &nbsp;&middot;&nbsp; ABN 19 469 850 250<br><a href="mailto:hello@matthias.com.au">hello@matthias.com.au</a> &nbsp;&middot;&nbsp; <a href="tel:+61424106527">0424 106 527</a></p>
+        <nav class="footer-links">
+          <a href="custom-software.html">Custom software</a>
+          <a href="technology-support.html">Technology support</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10),{passive:true});
+    const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
+    hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+    document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}));
+  </script>
+</body>
+</html>
