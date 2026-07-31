@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://matthias.com.au/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Matthias Campbell — Custom Software & Technology Support, Brisbane" />
-  <meta property="og:description" content="Custom software for businesses. Practical technology support for people. Brisbane-based, direct, no agency hand-offs." />
+  <meta property="og:description" content="Brisbane software contractor specialising in custom software, AI workflow automation and practical technology support." />
   <meta property="og:url" content="https://matthias.com.au/" />
   <meta property="og:image" content="https://matthias.com.au/rpp-workflow-editor.png" />
   <meta property="og:locale" content="en_AU" />
@@ -200,44 +200,11 @@
     .social-fixed a:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
     .social-fixed svg { width: 18px; height: 18px; }
 
-    /* ── Statement ── */
-    .statement {
-      padding: clamp(80px, 11vw, 150px) 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .statement-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(40px, 8vw, 120px);
-      align-items: start;
-    }
-    .statement-heading {
-      font-family: var(--serif);
-      font-size: clamp(2.6rem, 5.5vw, 5.4rem);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.035em;
-    }
-    .statement-right {
-      padding-top: 12px;
-    }
-    .statement-body {
-      font-family: var(--serif);
-      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
-      font-weight: 400;
-      line-height: 1.75; color: var(--muted);
-      margin-bottom: 40px;
-    }
-    .statement-link {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
-      border-bottom: 1px solid var(--ink); padding-bottom: 2px;
-      transition: opacity 0.2s;
-    }
-    .statement-link:hover { opacity: 0.55; }
-
     /* ── Services ── */
     .services {
       padding: clamp(80px, 11vw, 150px) 0;
     }
+    .hero + .services { padding-top: clamp(32px, 5vw, 64px); }
     .services-heading {
       font-family: var(--serif);
       font-size: clamp(2.4rem, 5vw, 5rem);
@@ -246,21 +213,6 @@
       padding-bottom: clamp(20px, 2.4vw, 29px);
       border-bottom: 1px solid var(--line);
     }
-    .services-intro {
-      padding-bottom: clamp(48px, 6vw, 72px);
-      border-bottom: 1px solid var(--line);
-      margin-bottom: clamp(48px, 6vw, 72px);
-    }
-    .services-intro-kicker {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--faint); margin-bottom: 14px;
-    }
-    .services-intro-heading {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 4vw, 3.8rem);
-      font-weight: 800; line-height: 0.92; letter-spacing: -0.03em;
-    }
-
     .service-row {
       display: grid; grid-template-columns: 5fr 4fr;
       gap: clamp(32px, 5vw, 80px);
@@ -589,7 +541,6 @@
 
     /* ── Responsive ── */
     @media (max-width: 960px) {
-      .statement-inner { grid-template-columns: 1fr; gap: 28px; }
       .why-list li { grid-template-columns: 1fr; gap: 8px; }
       .contact-grid { grid-template-columns: 1fr; }
     }
@@ -666,27 +617,9 @@
     </div>
   </section>
 
-  <!-- STATEMENT -->
-  <section class="statement">
-    <div class="wrap">
-      <div class="statement-inner">
-        <h2 class="statement-heading">Custom software for businesses. Practical technology support for people.</h2>
-        <div class="statement-right">
-          <p class="statement-body">Two things I do well. I build custom software and AI workflow automation for businesses tired of slow, manual processes — and I offer patient, one-to-one technology support for people who just want their computers, Wi-Fi, and devices to work. Brisbane-based, and you deal with me directly the whole way through.</p>
-          <a href="#services" class="statement-link">What I offer &nbsp;→</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- SERVICES -->
   <section class="services" id="services">
     <div class="wrap">
-      <div class="services-intro">
-        <p class="services-intro-kicker">Services</p>
-        <h2 class="services-intro-heading">Two ways I can help.</h2>
-      </div>
-
       <div class="service-row">
         <div class="service-content">
           <span class="service-kicker">Primary · For businesses</span>
@@ -699,7 +632,7 @@
           </div>
         </div>
         <a class="service-img-wrap" href="custom-software.html" aria-label="Custom software development">
-          <img src="mcbook.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="A custom software dashboard on a laptop" />
+          <img src="mcbook.webp" width="1448" height="1086" loading="eager" decoding="async" fetchpriority="high" alt="A custom software dashboard on a laptop" />
         </a>
       </div>
 
@@ -707,7 +640,7 @@
         <div class="service-content">
           <span class="service-kicker">For people &amp; small business</span>
           <h3 class="service-name">Technology support</h3>
-          <p class="service-desc">Patient, practical, one-to-one help with the technology in your home or business — computers, Wi-Fi, printers, phones, smart TVs, email and accounts, backups and scam awareness. Onsite across Brisbane, with remote help where it suits. $99 for the first hour; anything further is agreed before we go ahead.</p>
+          <p class="service-desc">Patient, practical, one-to-one help with the technology in your home or business — computers, Wi-Fi, printers, phones, smart TVs, email and accounts, backups and scam awareness. Onsite across Brisbane, with remote help where it suits.</p>
           <p class="service-features">Computers &amp; software · Wi-Fi &amp; internet · Printers &amp; devices · Email &amp; accounts · New-device setup · Patient tech lessons</p>
           <div class="service-actions">
             <a href="technology-support.html" class="btn-solid">See technology support &nbsp;→</a>
@@ -737,9 +670,8 @@
       </div>
 
       <div class="work-grid">
-
         <a href="yieldpos.html" class="work-card work-card--feature">
-          <div class="work-media"><img src="yieldpos.webp" width="1619" height="972" loading="lazy" decoding="async" alt="YieldPOS point-of-sale software" /></div>
+          <div class="work-media"><img src="yieldpos.webp" width="1619" height="972" loading="eager" decoding="async" fetchpriority="high" alt="YieldPOS point-of-sale software" /></div>
           <div class="work-overlay">
             <span class="work-cat">Point of Sale · Retail</span>
             <h3 class="work-name">YieldPOS</h3>
@@ -774,11 +706,10 @@
           <div class="work-overlay">
             <span class="work-cat">Technology Support · Brisbane</span>
             <h3 class="work-name">Technology Support</h3>
-            <p class="work-desc">Patient onsite and remote help with computers, Wi-Fi, printers, phones and everyday tech. $99 for the first hour.</p>
+            <p class="work-desc">Patient onsite and remote help with computers, Wi-Fi, printers, phones and everyday technology.</p>
             <span class="work-tag">View service <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
         </a>
-
       </div>
     </div>
   </section>
