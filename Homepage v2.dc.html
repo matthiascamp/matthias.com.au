@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matthias Campbell — Custom Software & Technology Support, Brisbane</title>
+  <meta name="description" content="Brisbane software contractor building custom software and AI workflow automation for businesses — plus patient, practical technology support for people. Direct, no agency hand-offs." />
+  <link rel="canonical" href="https://matthias.com.au/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Matthias Campbell — Custom Software & Technology Support, Brisbane" />
+  <meta property="og:description" content="Brisbane software contractor specialising in custom software, AI workflow automation and practical technology support." />
+  <meta property="og:url" content="https://matthias.com.au/" />
+  <meta property="og:image" content="https://matthias.com.au/rpp-workflow-editor.png" />
+  <meta property="og:locale" content="en_AU" />
+  <meta name="twitter:card" content="summary" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Matthias Campbell",
+    "description": "Custom software, AI workflow automation, and practical technology support in Brisbane.",
+    "url": "https://matthias.com.au/",
+    "email": "hello@matthias.com.au",
+    "telephone": "+61424106527",
+    "areaServed": "Brisbane, Queensland, Australia",
+    "founder": { "@type": "Person", "name": "Matthias Campbell" }
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:     #e8e6e2;
+      --ink:    #050505;
+      --paper:  #e8e6e2;
+      --muted:  #5e5a55;
+      --faint:  #9b9690;
+      --line:   #d0cdc7;
+      --serif:  "Cormorant", "Cormorant Garamond", Georgia, serif;
+      --sans:   "DM Sans", system-ui, sans-serif;
+      --ease:   cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; font-optical-sizing: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5.5vw, 80px);
+    }
+    .wrap-wide {
+      max-width: 1760px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 3.2vw, 56px);
+    }
+
+    /* ── Nav ── */
+    .top-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(24px, 5.5vw, 80px);
+      background: rgba(232,230,226,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s var(--ease);
+    }
+    .top-nav.scrolled { border-bottom-color: var(--line); }
+    .nav-logo {
+      font-family: var(--serif); font-size: 2rem;
+      font-weight: 700; letter-spacing: -0.03em; color: var(--ink);
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 40px;
+    }
+    .nav-links a {
+      font-family: var(--serif); font-size: 19px; font-weight: 400;
+      letter-spacing: 0.01em; color: var(--ink);
+      position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+      height: 1px; background: var(--ink);
+      transition: left 0.25s var(--ease), right 0.25s var(--ease);
+    }
+    .nav-links a:hover::after { left: 0; right: 0; }
+    .nav-cta {
+      font-family: var(--serif); font-size: 19px; font-weight: 400;
+      letter-spacing: 0.01em; color: var(--ink);
+      position: relative; padding-bottom: 2px;
+    }
+    .nav-cta::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+      height: 1px; background: var(--ink);
+      transition: left 0.25s var(--ease), right 0.25s var(--ease);
+    }
+    .nav-cta:hover::after { left: 0; right: 0; }
+
+    /* ── Mobile menu ── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 100%; height: 1.5px;
+      background: var(--ink); transition: transform 0.3s var(--ease), opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 52px; left: 0; right: 0; bottom: 0; z-index: 99;
+      background: var(--bg);
+      flex-direction: column; justify-content: center; align-items: center;
+      gap: 40px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--serif); font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 700; letter-spacing: -0.02em; color: var(--ink);
+      transition: opacity 0.2s;
+    }
+    .mobile-menu a:hover { opacity: 0.5; }
+
+    /* ── Hero ── */
+    .hero {
+      height: 100vh; height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center;
+      padding: 64px 0 20px;
+    }
+    .stage {
+      position: relative; width: 100%; flex: 1; overflow: hidden;
+    }
+    .stage::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 30%; z-index: 3;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+    .hero-photo {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+    .bg-video {
+      position: absolute; inset: 0; z-index: 1;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      mix-blend-mode: multiply;
+    }
+    .wordmark {
+      position: absolute; left: 50%; top: 46%; width: 100%;
+      transform: translate(-50%, -50%);
+      font-family: var(--serif);
+      font-size: clamp(52px, 8.5vw, 118px);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+      text-align: center; text-transform: uppercase;
+      pointer-events: none; z-index: 2; color: #000;
+    }
+    .hero-caption {
+      position: absolute; left: 50%; top: 68.5%; z-index: 4;
+      transform: translateX(-50%);
+      font-family: var(--serif);
+      font-size: clamp(15px, 1.35vw, 20px);
+      font-weight: 400; letter-spacing: 0.01em;
+      white-space: nowrap; color: #2a261f;
+    }
+    /* ── Scroll indicator ── */
+    .scroll-down {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      flex-shrink: 0; padding-bottom: 4px;
+      animation: floatBob 2.2s ease-in-out infinite;
+    }
+    .scroll-down span {
+      font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.4rem);
+      font-weight: 700; color: var(--ink);
+    }
+    @keyframes floatBob {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(7px); opacity: 0.6; }
+    }
+
+    /* ── Fixed social icons ── */
+    .social-fixed {
+      position: fixed; left: 22px; bottom: 26px; z-index: 200;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .social-fixed a {
+      display: flex; align-items: center; justify-content: center;
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--paper); border: 1px solid var(--line); color: var(--ink);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .social-fixed a:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .social-fixed svg { width: 18px; height: 18px; }
+
+    /* ── Showcase ── */
+    .showcase {
+      padding: clamp(80px, 11vw, 150px) 0;
+    }
+    .hero + .showcase { padding-top: clamp(32px, 5vw, 64px); }
+    .showcase-head { margin-bottom: clamp(28px, 3.6vw, 48px); }
+    .showcase-kicker {
+      display: block;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--faint); margin-bottom: 16px;
+    }
+    .showcase-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+      padding-bottom: clamp(20px, 2.4vw, 29px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .btn-solid {
+      display: inline-flex; align-items: center;
+      height: 40px; padding: 0 22px;
+      background: var(--ink); color: #fff;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+      transition: opacity 0.2s;
+    }
+    .btn-solid:hover { opacity: 0.75; }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(16px, 2vw, 28px);
+    }
+    .card {
+      position: relative; overflow: hidden;
+      border-radius: 22px;
+      aspect-ratio: 4 / 3.05;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      isolation: isolate;
+    }
+    .card-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #1c1c1c; }
+    .card-media img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.7s var(--ease);
+    }
+    .card-media--contain { background: #071522; }
+    .card-media--contain img { object-fit: contain; padding: clamp(20px, 4vw, 48px) clamp(20px, 4vw, 48px) clamp(64px, 12vw, 140px); }
+    .card::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    }
+    .card--photo::before {
+      background: linear-gradient(to top, rgba(4,4,4,0.88) 0%, rgba(4,4,4,0.35) 45%, rgba(4,4,4,0.05) 70%);
+    }
+    .card:hover .card-media img { transform: scale(1.045); }
+
+    .card-content {
+      position: relative; z-index: 2;
+      padding: clamp(26px, 3.4vw, 46px);
+      color: #fff;
+    }
+    .card-eyebrow-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .card-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: rgba(255,255,255,0.68);
+    }
+    .card-status {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #fff;
+      background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 100px; padding: 3px 11px;
+    }
+    .card-title {
+      font-family: var(--serif); font-weight: 700; letter-spacing: -0.02em;
+      line-height: 0.98; font-size: clamp(2rem, 3.6vw, 2.9rem); margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+      color: rgba(255,255,255,0.78); line-height: 1.62; max-width: 42ch;
+    }
+    .card-note {
+      margin-top: 12px; padding-left: 14px;
+      border-left: 2px solid rgba(255,255,255,0.35);
+      font-size: 0.87rem; color: rgba(255,255,255,0.72); line-height: 1.55; max-width: 40ch;
+    }
+    .card-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+    .card-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      height: 40px; padding: 0 20px; border-radius: 100px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+      transition: transform 0.2s var(--ease), background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .card-pill svg { transition: transform 0.25s var(--ease); }
+    .card-pill:hover svg { transform: translateX(3px); }
+    .card-pill:hover { transform: translateY(-1px); }
+    .card-pill--fill-light { background: #fff; color: #050505; }
+    .card-pill--fill-light:hover { background: rgba(255,255,255,0.86); }
+    .card-pill--ghost-light { border: 1px solid rgba(255,255,255,0.5); color: #fff; }
+    .card-pill--ghost-light:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+    .card-pill--fill-dark { background: var(--ink); color: #fff; }
+    .card-pill--fill-dark:hover { background: #2a2a2a; }
+    .card:focus-within { outline: 2px solid var(--ink); outline-offset: 3px; }
+    .card-pill:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .card--light .card-pill:focus-visible,
+    .card-pill--fill-dark:focus-visible { outline-color: var(--ink); }
+
+    /* Light, image-free cards */
+    .card--light {
+      background: linear-gradient(155deg, #f3f1ed, #dfdbd3);
+      color: var(--ink);
+    }
+    .card--light::after {
+      content: ''; position: absolute; z-index: 0; pointer-events: none;
+      width: 60%; aspect-ratio: 1; right: -18%; top: -18%; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(255,255,255,0) 70%);
+    }
+    .card--light .card-content { color: var(--ink); }
+    .card--light .card-eyebrow { color: var(--muted); }
+    .card--light .card-desc { color: var(--muted); }
+    .card--light .card-grid-lines {
+      position: absolute; inset: 0; z-index: 0; opacity: 0.5; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(5,5,5,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(5,5,5,0.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask-image: linear-gradient(to top, #000, transparent 75%);
+              mask-image: linear-gradient(to top, #000, transparent 75%);
+    }
+
+    /* Dark, image-free card with mesh accent */
+    .card--mesh {
+      background: var(--ink); color: #fff;
+    }
+    .card--mesh::after {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(circle at 82% 12%, rgba(232,180,255,0.28), transparent 45%),
+        radial-gradient(circle at 8% 88%, rgba(128,232,255,0.22), transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(184,245,192,0.10), transparent 60%);
+    }
+    .card--mesh .card-grid-lines {
+      position: absolute; inset: 0; z-index: 0; opacity: 0.35; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask-image: radial-gradient(circle at 30% 30%, #000, transparent 70%);
+              mask-image: radial-gradient(circle at 30% 30%, #000, transparent 70%);
+    }
+
+    @media (max-width: 720px) {
+      .card-grid { grid-template-columns: 1fr; }
+      .card { aspect-ratio: auto; min-height: 420px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card-media img, .card-pill, .card-pill svg { transition: none; }
+      .card:hover .card-media img { transform: none; }
+      .card-pill:hover { transform: none; }
+    }
+
+    /* ── Problems ── */
+    .problems {
+      background: var(--ink); color: #fff;
+      padding: clamp(80px, 11vw, 150px) 0;
+    }
+    .problems-intro {
+      display: flex; align-items: baseline;
+      justify-content: space-between; gap: 40px;
+      padding-bottom: clamp(48px, 6vw, 72px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 0;
+    }
+    .problems-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+    }
+    .problems-aside {
+      font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+      line-height: 1.65; color: rgba(255,255,255,0.38);
+      max-width: 240px; text-align: right; flex-shrink: 0;
+    }
+    .problem-list { list-style: none; }
+    .problem-list li {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 0 24px;
+      align-items: baseline;
+      padding: clamp(22px, 2.8vw, 32px) 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      cursor: default;
+      transition: background 0.15s;
+    }
+    .problem-list li:hover { background: rgba(255,255,255,0.02); }
+    .problem-num {
+      font-family: var(--serif); font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 400; color: rgba(255,255,255,0.2);
+      letter-spacing: 0.04em;
+    }
+    .problem-text {
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 400; line-height: 1.4;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ── Why ── */
+    .why { padding: clamp(80px, 11vw, 150px) 0 clamp(40px, 6vw, 80px); }
+    .why-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+      margin-bottom: clamp(28px, 3.6vw, 44px);
+      padding-bottom: clamp(20px, 2.4vw, 32px);
+      border-bottom: 1px solid var(--line);
+    }
+    .why-list { list-style: none; }
+    .why-list li {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0 clamp(40px, 6vw, 100px);
+      align-items: baseline;
+      padding: clamp(26px, 3.2vw, 40px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .why-title {
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+      font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;
+    }
+    .why-desc {
+      font-size: 0.93rem; color: var(--muted); line-height: 1.7;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      background: var(--bg); color: var(--ink);
+      padding: clamp(80px, 11vw, 140px) 0;
+      text-align: center;
+    }
+    .cta-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5.5vw, 5.6rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+      margin-bottom: clamp(32px, 4vw, 52px);
+    }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      height: 52px; padding: 0 36px;
+      background: var(--ink); color: #fff;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .btn-cta:hover { opacity: 0.82; }
+
+    /* ── Contact ── */
+    .contact { padding: clamp(80px, 11vw, 150px) 0; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.3fr;
+      gap: clamp(48px, 8vw, 120px); align-items: start;
+    }
+    .contact-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .contact-body {
+      font-size: 0.95rem; color: var(--muted); line-height: 1.78; margin-bottom: 40px;
+    }
+    .contact-detail {
+      font-size: 0.88rem; color: var(--muted);
+      line-height: 2; border-top: 1px solid var(--line); padding-top: 24px;
+    }
+    .contact-detail a { transition: color 0.2s; }
+    .contact-detail a:hover { color: var(--ink); }
+
+    .contact-form { padding-top: 4px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+    .form-field {
+      margin-bottom: 32px; position: relative;
+    }
+    .form-field label {
+      display: block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--faint); margin-bottom: 10px;
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%; background: transparent;
+      border: none; border-bottom: 1px solid var(--line);
+      padding: 8px 0; padding-right: 4px;
+      font-family: var(--sans); font-size: 0.95rem; color: var(--ink);
+      transition: border-color 0.2s; appearance: none; outline: none;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus { border-bottom-color: var(--ink); }
+    .form-field select {
+      width: 100%; background: transparent; color: var(--ink);
+      border: none; border-bottom: 1px solid var(--line);
+      padding: 8px 28px 8px 0; font-family: var(--sans); font-size: 0.95rem;
+      outline: none; cursor: pointer;
+    }
+    .form-field select:focus { border-bottom-color: var(--ink); }
+    .form-field textarea { resize: none; min-height: 100px; padding-top: 8px; }
+    .form-submit {
+      display: inline-flex; align-items: center;
+      height: 44px; padding: 0 32px;
+      background: var(--ink); color: #fff;
+      font-family: var(--sans); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      border: none; cursor: pointer; transition: opacity 0.2s;
+    }
+    .form-submit:hover { opacity: 0.75; }
+    #formNote { font-size: 0.82rem; margin-top: 16px; color: var(--muted); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: clamp(36px, 5vw, 56px) 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo {
+      font-family: var(--serif); font-size: 1.5rem;
+      font-weight: 700; letter-spacing: -0.03em; color: var(--ink);
+    }
+    .footer-copy { font-size: 0.8rem; color: var(--faint); line-height: 1.7; }
+    .footer-copy a { color: var(--muted); transition: color 0.2s; }
+    .footer-copy a:hover { color: var(--ink); }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
+      color: var(--faint); transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .why-list li { grid-template-columns: 1fr; gap: 8px; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 860px) {
+      .problems-intro { flex-direction: column; gap: 16px; }
+      .problems-aside { text-align: left; }
+    }
+    @media (max-width: 640px) {
+      .top-nav { height: 52px; padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { padding: 52px 0 16px; }
+      .wordmark { font-size: clamp(48px, 14vw, 80px); top: 50%; width: 90%; }
+      .hero-caption { font-size: 13px; white-space: normal; width: 90%; text-align: center; top: 59%; }
+      .scroll-down span { font-size: 1rem; }
+      .showcase { padding: clamp(56px, 12vw, 84px) 0; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+      .cta { padding: clamp(40px, 8vw, 80px) 0; }
+      .cta-heading { margin-bottom: 20px; }
+      .social-fixed { left: 12px; bottom: 16px; gap: 6px; }
+      .social-fixed a { width: 57px; height: 57px; }
+      .social-fixed svg { width: 22px; height: 22px; }
+      .why-list li { grid-template-columns: 1fr; gap: 8px; }
+      .card-content { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="top-nav" id="nav">
+    <a href="index.html" class="nav-logo">MC.</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="work.html" class="mobile-link">Work</a>
+    <a href="about.html" class="mobile-link">About</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="stage">
+      <img class="hero-photo" src="Home-1-scaled.jpg" alt="" aria-hidden="true" loading="eager" decoding="async" fetchpriority="high" />
+      <video class="bg-video" autoplay loop muted playsinline aria-hidden="true">
+        <source src="backgroundbubble.mp4" type="video/mp4" />
+      </video>
+      <h1 class="wordmark">Matthias<br>Campbell</h1>
+      <p class="hero-caption">Freelance software developer &middot; Brisbane</p>
+    </div>
+    <div class="scroll-down" aria-hidden="true">
+      <span>Scroll down</span>
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section class="showcase" id="services">
+    <div class="wrap-wide">
+      <div class="showcase-head">
+        <span class="showcase-kicker">What I build and support</span>
+        <h2 class="showcase-heading">Products &amp; services.</h2>
+      </div>
+
+      <div class="card-grid">
+        <!-- YieldPOS -->
+        <article class="card card--photo">
+          <div class="card-media">
+            <img src="yieldpos.webp" width="1619" height="972" loading="eager" decoding="async" fetchpriority="high" alt="YieldPOS point-of-sale software running on a checkout screen" />
+          </div>
+          <div class="card-content">
+            <div class="card-eyebrow-row"><span class="card-eyebrow">Point-of-sale software</span></div>
+            <h3 class="card-title">YieldPOS</h3>
+            <p class="card-desc">Fast, reliable point-of-sale software built for fresh-food and specialty retailers.</p>
+            <div class="card-actions">
+              <a href="yieldpos.html" class="card-pill card-pill--fill-light">Learn more <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="#contact" class="card-pill card-pill--ghost-light interest-link" data-interest="yieldpos">Enquire</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- MCBook -->
+        <article class="card card--photo">
+          <div class="card-media">
+            <img src="mcbook.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="MCBook online booking and customer-management dashboard" />
+          </div>
+          <div class="card-content">
+            <div class="card-eyebrow-row"><span class="card-eyebrow">Web-based booking system</span></div>
+            <h3 class="card-title">MCBook</h3>
+            <p class="card-desc">A straightforward online booking and customer-management system for appointment and service businesses.</p>
+            <div class="card-actions">
+              <a href="mcbook.html" class="card-pill card-pill--fill-light">Learn more <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="#contact" class="card-pill card-pill--ghost-light interest-link" data-interest="mcbook">Enquire</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- MCFlow -->
+        <article class="card card--photo">
+          <div class="card-media card-media--contain">
+            <img src="rpp-workflow-editor.png" width="1574" height="828" loading="lazy" decoding="async" alt="MCFlow workflow editor showing an AI-assisted automation with stock checks, order lookups, drafting, sending and human handoff steps" />
+          </div>
+          <div class="card-content">
+            <div class="card-eyebrow-row">
+              <span class="card-eyebrow">AI-integrated business automation</span>
+              <span class="card-status">In development</span>
+            </div>
+            <h3 class="card-title">MCFlow</h3>
+            <p class="card-desc">A flexible automation framework configured around each business. It maps existing processes, connects tools and information, and uses AI where appropriate to reduce repetitive work while keeping people in control.</p>
+            <div class="card-actions">
+              <a href="custom-software.html" class="card-pill card-pill--fill-light">Explore MCFlow <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="#contact" class="card-pill card-pill--ghost-light interest-link" data-interest="mcflow">Discuss a workflow</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Onsite Tech Support -->
+        <article class="card card--photo">
+          <div class="card-media">
+            <img src="it-support.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Onsite technology support with home networking hardware" />
+          </div>
+          <div class="card-content">
+            <div class="card-eyebrow-row"><span class="card-eyebrow">Patient, practical help in Brisbane</span></div>
+            <h3 class="card-title">Onsite Tech Support</h3>
+            <p class="card-desc">In-person help with computers, Wi-Fi, printers, phones, smart TVs, accounts, backups, security and everyday technology.</p>
+            <p class="card-note">Patient one-to-one technology support for seniors, explained clearly and at your pace.</p>
+            <div class="card-actions">
+              <a href="technology-support.html" class="card-pill card-pill--fill-light">View support <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="#contact" class="card-pill card-pill--ghost-light interest-link" data-interest="techsupport">Book a visit</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Website Design -->
+        <article class="card card--light">
+          <div class="card-grid-lines"></div>
+          <div class="card-content">
+            <div class="card-eyebrow-row"><span class="card-eyebrow">Clear, fast and professional websites</span></div>
+            <h3 class="card-title">Website Design</h3>
+            <p class="card-desc">Responsive websites for businesses that need a credible online presence, clear messaging and a straightforward path for customers to get in touch.</p>
+            <div class="card-actions">
+              <a href="#contact" class="card-pill card-pill--fill-dark interest-link" data-interest="website">Discuss a website <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Custom Software Contracting -->
+        <article class="card card--mesh">
+          <div class="card-grid-lines"></div>
+          <div class="card-content">
+            <div class="card-eyebrow-row"><span class="card-eyebrow">Software built around your business</span></div>
+            <h3 class="card-title">Custom Software Contracting</h3>
+            <p class="card-desc">Direct contract development for internal tools, integrations, databases, desktop applications and custom web systems. Clients work directly with Matthias from planning through delivery.</p>
+            <div class="card-actions">
+              <a href="custom-software.html" class="card-pill card-pill--fill-light">Explore contracting <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a href="#contact" class="card-pill card-pill--ghost-light interest-link" data-interest="customsoftware">Discuss a project</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p style="padding-top: clamp(36px,5vw,56px); font-size:0.95rem; color:var(--muted); line-height:1.7;">
+        Also available: <a href="seo.html" style="border-bottom:1px solid var(--ink); padding-bottom:1px;">search engine optimisation</a> for Brisbane businesses — technical fixes, local search and content, offered alongside the services above.
+      </p>
+      <p style="padding-top: 8px; font-size:0.95rem; color:var(--muted);">
+        <a href="work.html" style="border-bottom:1px solid var(--ink); padding-bottom:1px;">View all work &nbsp;→</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY -->
+  <section class="why" style="padding-bottom: clamp(20px,3vw,40px);" aria-label="Why work with me">
+    <div class="wrap">
+      <h2 class="why-heading">Why work with me.</h2>
+      <ul class="why-list">
+        <li>
+          <h3 class="why-title">You deal with me directly</h3>
+          <p class="why-desc">No agency, no account managers, no hand-offs. The person you talk to is the person who builds and supports the work.</p>
+        </li>
+        <li>
+          <h3 class="why-title">Real, working systems</h3>
+          <p class="why-desc">My point-of-sale software runs day-to-day in a Brisbane grocer, replacing an ageing register system. I build things that have to hold up in practice.</p>
+        </li>
+        <li>
+          <h3 class="why-title">Genuinely technical</h3>
+          <p class="why-desc">Coding since I was nine and now studying computer science at the University of Queensland. Strong in Python, databases, AI automation and working with large datasets.</p>
+        </li>
+        <li>
+          <h3 class="why-title">Patient and practical</h3>
+          <p class="why-desc">Whether it's a business system or helping someone with their laptop, I explain things plainly and stay reasonable about scope and cost.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="why" style="padding-top: clamp(40px,6vw,80px);">
+    <div class="wrap">
+      <h2 class="why-heading">How a software project runs.</h2>
+      <ul class="why-list">
+        <li>
+          <h3 class="why-title">Discovery call</h3>
+          <p class="why-desc">We start with a conversation. You walk me through your business, what you need, and what success looks like. No obligation — just a clear picture of the problem before anything else.</p>
+        </li>
+        <li>
+          <h3 class="why-title">Scope &amp; MVP</h3>
+          <p class="why-desc">If there's a fit, we define exactly what gets built. I'll propose a scope and MVP — the smallest version that delivers real value — so expectations are aligned before a line of code is written.</p>
+        </li>
+        <li>
+          <h3 class="why-title">Contract &amp; deposit</h3>
+          <p class="why-desc">Once scope is agreed, we formalise it. A plain-English contract outlines deliverables, timeline, and payment terms. A deposit is taken to secure your place in the schedule.</p>
+        </li>
+        <li>
+          <h3 class="why-title">Build &amp; delivery</h3>
+          <p class="why-desc">I build to the agreed spec, keeping you informed throughout. On completion, you review, request any final adjustments, and we go live. Ongoing support is available from there.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="cta-heading">Ready to upgrade<br>how your business<br>runs?</h2>
+      <a href="#contact" class="btn-cta">Get in touch &nbsp;→</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <h2 class="contact-heading">Let's<br>talk.</h2>
+          <p class="contact-body">Two ways to get started — tell me about a software project, or book a technology-support visit. Either way it reaches me directly, and I aim to reply the same business day.</p>
+          <div class="contact-paths" style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:36px;">
+            <button type="button" class="btn-solid path-btn" data-interest="customsoftware">Discuss a software project</button>
+            <button type="button" class="btn-solid path-btn" data-interest="techsupport" style="background:transparent; color:var(--ink); border:1px solid var(--ink);">Book technology support</button>
+          </div>
+          <div class="contact-detail">
+            <a href="mailto:hello@matthias.com.au">hello@matthias.com.au</a><br>
+            <a href="tel:+61424106527">0424 106 527</a><br>
+            Brisbane, Queensland<br>
+            Same business-day response
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" required />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="interest">Interested in</label>
+            <div>
+              <select id="interest" name="interest">
+                <option value="">Select…</option>
+                <option value="yieldpos">YieldPOS</option>
+                <option value="mcbook">MCBook</option>
+                <option value="mcflow">MCFlow</option>
+                <option value="techsupport">Onsite Tech Support</option>
+                <option value="website">Website Design</option>
+                <option value="customsoftware">Custom Software Contracting</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your business and what you need…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send message</button>
+          <p id="formNote" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <a href="index.html" class="footer-logo">MC.</a>
+        <p class="footer-copy">&copy; 2026 Matthias Campbell &nbsp;&middot;&nbsp; Brisbane, QLD &nbsp;&middot;&nbsp; ABN 19 469 850 250<br><a href="mailto:hello@matthias.com.au">hello@matthias.com.au</a> &nbsp;&middot;&nbsp; <a href="tel:+61424106527">0424 106 527</a></p>
+        <nav class="footer-links">
+          <a href="custom-software.html">Custom software</a>
+          <a href="technology-support.html">Technology support</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Fixed social -->
+  <aside class="social-fixed" aria-label="Links">
+    <a href="https://github.com/matthiascamp" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+    </a>
+    <a href="mailto:hello@matthias.com.au" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+    </a>
+  </aside>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Resume video when returning to the page
+    const bgVideo = document.querySelector('.bg-video');
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && bgVideo) bgVideo.play().catch(() => {});
+    });
+    window.addEventListener('focus', () => {
+      if (bgVideo) bgVideo.play().catch(() => {});
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Set a dropdown value programmatically (used by the two enquiry-path buttons)
+    function setInterest(val) {
+      const nativeSelect = document.getElementById('interest');
+      if ([...nativeSelect.options].some(option => option.value === val)) nativeSelect.value = val;
+    }
+    document.querySelectorAll('.path-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setInterest(btn.dataset.interest);
+        document.getElementById('message').focus();
+      });
+    });
+
+    // Preselect the interest dropdown from a showcase card's CTA (link still navigates to #contact)
+    document.querySelectorAll('.interest-link').forEach(link => {
+      link.addEventListener('click', () => setInterest(link.dataset.interest));
+    });
+
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        note.textContent = 'Please add your name, a valid email, and a message.';
+        note.style.color = '#b00';
+        form.reportValidity();
+        return;
+      }
+      note.textContent = 'Sending…';
+      note.style.color = '';
+      try {
+        const res = await fetch('https://formspree.io/f/mwvgjozj', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        });
+        const result = await res.json().catch(() => ({}));
+        if (res.ok) {
+          note.textContent = 'Thanks — your message has been sent. I\'ll reply the same business day.';
+          note.style.color = '#2a7a2a';
+          form.reset();
+        } else { throw new Error(result.message || 'Submission failed'); }
+      } catch {
+        note.textContent = 'Something went wrong. Please email hello@matthias.com.au or call 0424 106 527.';
+        note.style.color = '#b00';
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -29,905 +29,508 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg:     #e8e6e2;
-      --ink:    #050505;
-      --paper:  #e8e6e2;
-      --muted:  #5e5a55;
-      --faint:  #9b9690;
-      --line:   #d0cdc7;
-      --serif:  "Cormorant", "Cormorant Garamond", Georgia, serif;
-      --sans:   "DM Sans", system-ui, sans-serif;
-      --ease:   cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; font-optical-sizing: auto; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
+    html { scroll-behavior: smooth; background: #e8e6e2; }
+    body { background: #e8e6e2; color: #050505; font-family: "DM Sans", system-ui, sans-serif; font-weight: 400; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    a { color: #050505; text-decoration: none; }
+    a:hover { color: #5e5a55; }
+    ul, ol { list-style: none; }
     img { display: block; max-width: 100%; }
+    input, select, textarea, button { font-family: inherit; }
+    ::selection { background: #050505; color: #e8e6e2; }
+    @keyframes mcBob { 0%, 100% { transform: translateY(0); opacity: .75; } 50% { transform: translateY(5px); opacity: .3; } }
 
-    .wrap {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 clamp(24px, 5.5vw, 80px);
+    /* Interactive states (converted from the design canvas's style-hover/style-focus hints) */
+    a, button { cursor: pointer; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid #050505; outline-offset: 3px;
     }
+    .nav-pill-link { transition: background 0.18s, color 0.18s; }
+    .nav-pill-link:hover { background: rgba(5,5,5,0.05); color: #050505; }
 
-    /* ── Nav ── */
-    .top-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 72px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 clamp(24px, 5.5vw, 80px);
-      background: rgba(232,230,226,0.92);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s var(--ease);
-    }
-    .top-nav.scrolled { border-bottom-color: var(--line); }
-    .nav-logo {
-      font-family: var(--serif); font-size: 2rem;
-      font-weight: 700; letter-spacing: -0.03em; color: var(--ink);
-    }
-    .nav-links {
-      display: flex; align-items: center; gap: 40px;
-    }
-    .nav-links a {
-      font-family: var(--serif); font-size: 19px; font-weight: 400;
-      letter-spacing: 0.01em; color: var(--ink);
-      position: relative; padding-bottom: 2px;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
-      height: 1px; background: var(--ink);
-      transition: left 0.25s var(--ease), right 0.25s var(--ease);
-    }
-    .nav-links a:hover::after { left: 0; right: 0; }
-    .nav-cta {
-      font-family: var(--serif); font-size: 19px; font-weight: 400;
-      letter-spacing: 0.01em; color: var(--ink);
-      position: relative; padding-bottom: 2px;
-    }
-    .nav-cta::after {
-      content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
-      height: 1px; background: var(--ink);
-      transition: left 0.25s var(--ease), right 0.25s var(--ease);
-    }
-    .nav-cta:hover::after { left: 0; right: 0; }
+    .btn-dark { transition: background 0.18s, color 0.18s; }
+    .btn-dark:hover { background: #2a2723; color: #e8e6e2; }
 
-    /* ── Mobile menu ── */
+    .btn-light { transition: background 0.18s, color 0.18s; }
+    .btn-light:hover { background: #d0cdc7; color: #050505; }
+
+    .btn-ghost-dark { transition: background 0.18s; }
+    .btn-ghost-dark:hover { background: rgba(5,5,5,0.06); }
+
+    .link-dark { transition: border-color 0.18s, color 0.18s; }
+    .link-dark:hover { border-bottom-color: #050505; color: #050505; }
+
+    .link-light { transition: border-color 0.18s, color 0.18s; }
+    .link-light:hover { border-bottom-color: #e8e6e2; color: #e8e6e2; }
+
+    .icon-circle { transition: background 0.18s, color 0.18s, border-color 0.18s; }
+    .icon-circle:hover { background: #050505; color: #e8e6e2; border-color: #050505; }
+
+    .field-input { transition: border-color 0.18s; }
+    .field-input:focus { border-bottom-color: #050505; }
+
+    /* Mobile nav */
     .nav-hamburger {
       display: none; flex-direction: column; justify-content: center;
-      gap: 5px; width: 36px; height: 36px;
+      gap: 5px; width: 34px; height: 34px; flex-shrink: 0;
       background: none; border: none; cursor: pointer; padding: 4px;
     }
     .nav-hamburger span {
       display: block; width: 100%; height: 1.5px;
-      background: var(--ink); transition: transform 0.3s var(--ease), opacity 0.3s;
+      background: #050505; transition: transform 0.3s, opacity 0.3s;
     }
     .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
     .mobile-menu {
-      display: none; position: fixed;
-      top: 52px; left: 0; right: 0; bottom: 0; z-index: 99;
-      background: var(--bg);
+      display: none; position: fixed; inset: 0; z-index: 150;
+      background: #e8e6e2;
       flex-direction: column; justify-content: center; align-items: center;
-      gap: 40px;
+      gap: 34px;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      font-family: var(--serif); font-size: clamp(2rem, 8vw, 3rem);
-      font-weight: 700; letter-spacing: -0.02em; color: var(--ink);
+      font-family: Cormorant, "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 700; letter-spacing: -0.02em; color: #050505;
       transition: opacity 0.2s;
     }
-    .mobile-menu a:hover { opacity: 0.5; }
-
-    /* ── Hero ── */
-    .hero {
-      height: 100vh; height: 100svh;
-      display: flex; flex-direction: column;
-      align-items: center;
-      padding: 64px 0 20px;
-    }
-    .stage {
-      position: relative; width: 100%; flex: 1; overflow: hidden;
-    }
-    .stage::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 30%; z-index: 3;
-      background: linear-gradient(to bottom, transparent, var(--bg));
-      pointer-events: none;
-    }
-    .bg-video {
-      position: absolute; inset: 0; z-index: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
-    }
-    .wordmark {
-      position: absolute; left: 50%; top: 46%; width: 100%;
-      transform: translate(-50%, -50%);
-      font-family: var(--serif);
-      font-size: clamp(52px, 8.5vw, 118px);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
-      text-align: center; text-transform: uppercase;
-      pointer-events: none; z-index: 2; color: #000;
-    }
-    .hero-caption {
-      position: absolute; left: 50%; top: 68.5%; z-index: 4;
-      transform: translateX(-50%);
-      font-family: var(--serif);
-      font-size: clamp(15px, 1.35vw, 20px);
-      font-weight: 400; letter-spacing: 0.01em;
-      white-space: nowrap; color: #2a261f;
-    }
-    .corner-text {
-      position: absolute; right: 24px; bottom: 20px; z-index: 5;
-      font-family: var(--serif); font-size: clamp(14px, 1.8vw, 24px);
-      font-weight: 700; line-height: 1; letter-spacing: 0.12em;
-      text-transform: uppercase; white-space: nowrap;
-    }
-
-    /* ── Scroll indicator ── */
-    .scroll-down {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      flex-shrink: 0; padding-bottom: 4px;
-      animation: floatBob 2.2s ease-in-out infinite;
-    }
-    .scroll-down span {
-      font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.4rem);
-      font-weight: 700; color: var(--ink);
-    }
-    @keyframes floatBob {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(7px); opacity: 0.6; }
-    }
-
-    /* ── Fixed social icons ── */
-    .social-fixed {
-      position: fixed; left: 22px; bottom: 26px; z-index: 200;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-    }
-    .social-fixed a {
-      display: flex; align-items: center; justify-content: center;
-      width: 46px; height: 46px; border-radius: 50%;
-      background: var(--paper); border: 1px solid var(--line); color: var(--ink);
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .social-fixed a:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
-    .social-fixed svg { width: 18px; height: 18px; }
-
-    /* ── Services ── */
-    .services {
-      padding: clamp(80px, 11vw, 150px) 0;
-    }
-    .hero + .services { padding-top: clamp(32px, 5vw, 64px); }
-    .services-heading {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
-      margin-bottom: clamp(28px, 3.6vw, 48px);
-      padding-bottom: clamp(20px, 2.4vw, 29px);
-      border-bottom: 1px solid var(--line);
-    }
-    .service-row {
-      display: grid; grid-template-columns: 5fr 4fr;
-      gap: clamp(32px, 5vw, 80px);
-      align-items: center;
-      padding: clamp(52px, 7vw, 88px) 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .service-row--flip { grid-template-columns: 4fr 5fr; }
-    .service-row--flip .service-content { order: 2; }
-    .service-row--flip .service-img-wrap { order: 1; }
-
-    .service-kicker {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--faint); margin-bottom: 14px; display: block;
-    }
-    .service-name {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.8vw, 3.4rem);
-      font-weight: 800; line-height: 0.94; letter-spacing: -0.03em;
-      margin-bottom: 20px;
-    }
-    .service-desc {
-      font-size: 0.97rem; color: var(--muted); line-height: 1.78;
-      margin-bottom: 22px;
-    }
-    .service-features {
-      font-size: 0.85rem; color: var(--faint); line-height: 1.9;
-      margin-bottom: 34px;
-    }
-    .service-actions { display: flex; align-items: center; gap: 28px; }
-    .btn-solid {
-      display: inline-flex; align-items: center;
-      height: 40px; padding: 0 22px;
-      background: var(--ink); color: #fff;
-      font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
-      transition: opacity 0.2s;
-    }
-    .btn-solid:hover { opacity: 0.75; }
-    .btn-text {
-      font-size: 12px; font-weight: 500; color: var(--muted);
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;
-    }
-    .btn-text:hover { color: var(--ink); border-color: var(--ink); }
-
-    .service-img-wrap {
-      aspect-ratio: 4 / 3; overflow: hidden;
-      background: #d4d1cc;
-    }
-    .service-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.7s var(--ease);
-    }
-    .service-row:hover .service-img-wrap img { transform: scale(1.04); }
-
-    /* ── Problems ── */
-    .problems {
-      background: var(--ink); color: #fff;
-      padding: clamp(80px, 11vw, 150px) 0;
-    }
-    .problems-intro {
-      display: flex; align-items: baseline;
-      justify-content: space-between; gap: 40px;
-      padding-bottom: clamp(48px, 6vw, 72px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: 0;
-    }
-    .problems-heading {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
-    }
-    .problems-aside {
-      font-size: clamp(0.9rem, 1.3vw, 1.1rem);
-      line-height: 1.65; color: rgba(255,255,255,0.38);
-      max-width: 240px; text-align: right; flex-shrink: 0;
-    }
-    .problem-list { list-style: none; }
-    .problem-list li {
-      display: grid;
-      grid-template-columns: 52px 1fr;
-      gap: 0 24px;
-      align-items: baseline;
-      padding: clamp(22px, 2.8vw, 32px) 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      cursor: default;
-      transition: background 0.15s;
-    }
-    .problem-list li:hover { background: rgba(255,255,255,0.02); }
-    .problem-num {
-      font-family: var(--serif); font-size: clamp(1rem, 2vw, 1.35rem);
-      font-weight: 400; color: rgba(255,255,255,0.2);
-      letter-spacing: 0.04em;
-    }
-    .problem-text {
-      font-size: clamp(1rem, 2vw, 1.35rem);
-      font-weight: 400; line-height: 1.4;
-      color: rgba(255,255,255,0.8);
-    }
-
-    /* ── Why ── */
-    .why { padding: clamp(80px, 11vw, 150px) 0 clamp(40px, 6vw, 80px); }
-    .why-heading {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
-      margin-bottom: clamp(28px, 3.6vw, 44px);
-      padding-bottom: clamp(20px, 2.4vw, 32px);
-      border-bottom: 1px solid var(--line);
-    }
-    .why-list { list-style: none; }
-    .why-list li {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 0 clamp(40px, 6vw, 100px);
-      align-items: baseline;
-      padding: clamp(26px, 3.2vw, 40px) 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .why-title {
-      font-family: var(--serif);
-      font-size: clamp(1.15rem, 1.8vw, 1.55rem);
-      font-weight: 700; letter-spacing: -0.02em; line-height: 1.2;
-    }
-    .why-desc {
-      font-size: 0.93rem; color: var(--muted); line-height: 1.7;
-    }
-
-    /* ── Selected work ── */
-    .projects {
-      padding: clamp(72px, 10vw, 140px) 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .projects-head {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      gap: 24px 40px; flex-wrap: wrap;
-      margin-bottom: clamp(28px, 3.6vw, 48px);
-    }
-    .projects-kicker {
-      display: block;
-      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--faint);
-      margin-bottom: 16px;
-    }
-    .projects-heading {
-      font-family: var(--serif);
-      font-size: clamp(2.5rem, 5vw, 5.2rem);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.035em;
-    }
-    .projects-all {
-      font-family: var(--serif); font-size: 1.1rem; color: var(--muted);
-      border-bottom: 1px solid var(--ink); padding-bottom: 2px;
-      white-space: nowrap; transition: opacity 0.2s;
-    }
-    .projects-all:hover { opacity: 0.55; }
-
-    .work-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(14px, 1.5vw, 22px);
-    }
-    .work-card {
-      position: relative; display: block; overflow: hidden;
-      border: 1px solid var(--line); background: #111;
-      min-height: 360px;
-    }
-    .work-card--feature { grid-column: 1 / -1; min-height: clamp(400px, 44vw, 540px); }
-    .work-card--wide    { grid-column: 1 / -1; min-height: clamp(300px, 30vw, 380px); }
-
-    .work-media { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
-    .work-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s var(--ease); }
-    .work-media--workflow { background: #04111f; }
-    .work-media--workflow img { object-fit: contain; }
-
-    /* Project-card overlays */
-    .work-card::after {
-      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background:
-        linear-gradient(135deg, rgba(232,180,255,0.16), rgba(128,232,255,0.13), rgba(184,245,192,0.08)),
-        linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.04) 60%);
-      opacity: 0.9; transition: opacity 0.45s var(--ease);
-    }
-    .work-overlay {
-      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
-      padding: clamp(24px, 3.2vw, 44px);
-      display: flex; flex-direction: column; align-items: flex-start;
-    }
-    .work-cat {
-      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: rgba(255,255,255,0.5);
-      margin-bottom: 8px;
-    }
-    .work-name {
-      font-family: var(--serif); font-weight: 600; color: #fff;
-      line-height: 0.98; letter-spacing: -0.02em;
-      font-size: clamp(1.9rem, 3vw, 2.8rem); margin-bottom: 10px;
-    }
-    .work-card--feature .work-name { font-size: clamp(2.6rem, 5vw, 4.4rem); }
-    .work-desc {
-      font-size: clamp(0.85rem, 1.05vw, 0.96rem);
-      color: rgba(255,255,255,0.72); line-height: 1.6; max-width: 46ch;
-    }
-    .work-tag {
-      margin-top: 18px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.85); display: inline-flex; align-items: center; gap: 8px;
-    }
-    .work-tag svg { transition: transform 0.3s var(--ease); }
-
-    /* Hover — links only */
-    a.work-card:hover .work-media img { transform: scale(1.045); }
-    a.work-card:hover::after { opacity: 1; }
-    a.work-card:hover .work-tag svg { transform: translateX(4px); }
-    a.work-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+    .mobile-menu a:hover { opacity: 0.55; }
 
     @media (max-width: 720px) {
-      .work-grid { grid-template-columns: 1fr; }
-      .work-card, .work-card--feature, .work-card--wide { grid-column: auto; min-height: 320px; }
-      .work-card--feature { min-height: 360px; }
-    }
-
-    /* ── CTA ── */
-    .cta {
-      background: var(--bg); color: var(--ink);
-      padding: clamp(80px, 11vw, 140px) 0;
-      text-align: center;
-    }
-    .cta-heading {
-      font-family: var(--serif);
-      font-size: clamp(2.2rem, 5.5vw, 5.6rem);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
-      margin-bottom: clamp(32px, 4vw, 52px);
-    }
-    .btn-cta {
-      display: inline-flex; align-items: center; gap: 12px;
-      height: 52px; padding: 0 36px;
-      background: var(--ink); color: #fff;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-      transition: opacity 0.2s;
-    }
-    .btn-cta:hover { opacity: 0.82; }
-
-    /* ── Contact ── */
-    .contact { padding: clamp(80px, 11vw, 150px) 0; }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1.3fr;
-      gap: clamp(48px, 8vw, 120px); align-items: start;
-    }
-    .contact-heading {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
-      margin-bottom: 24px;
-    }
-    .contact-body {
-      font-size: 0.95rem; color: var(--muted); line-height: 1.78; margin-bottom: 40px;
-    }
-    .contact-detail {
-      font-size: 0.88rem; color: var(--muted);
-      line-height: 2; border-top: 1px solid var(--line); padding-top: 24px;
-    }
-    .contact-detail a { transition: color 0.2s; }
-    .contact-detail a:hover { color: var(--ink); }
-
-    .contact-form { padding-top: 4px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
-    .form-field {
-      margin-bottom: 32px; position: relative;
-    }
-    .form-field label {
-      display: block; font-size: 10px; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--faint); margin-bottom: 10px;
-    }
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%; background: transparent;
-      border: none; border-bottom: 1px solid var(--line);
-      padding: 8px 0; padding-right: 4px;
-      font-family: var(--sans); font-size: 0.95rem; color: var(--ink);
-      transition: border-color 0.2s; appearance: none; outline: none;
-    }
-    .form-field input:focus,
-    .form-field textarea:focus { border-bottom-color: var(--ink); }
-    .form-field select {
-      width: 100%; background: transparent; color: var(--ink);
-      border: none; border-bottom: 1px solid var(--line);
-      padding: 8px 28px 8px 0; font-family: var(--sans); font-size: 0.95rem;
-      outline: none; cursor: pointer;
-    }
-    .form-field select:focus { border-bottom-color: var(--ink); }
-    .form-field textarea { resize: none; min-height: 100px; padding-top: 8px; }
-    .form-submit {
-      display: inline-flex; align-items: center;
-      height: 44px; padding: 0 32px;
-      background: var(--ink); color: #fff;
-      font-family: var(--sans); font-size: 11px; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      border: none; cursor: pointer; transition: opacity 0.2s;
-    }
-    .form-submit:hover { opacity: 0.75; }
-    #formNote { font-size: 0.82rem; margin-top: 16px; color: var(--muted); }
-
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--line);
-      padding: clamp(36px, 5vw, 56px) 0;
-    }
-    .footer-inner {
-      display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 20px;
-    }
-    .footer-logo {
-      font-family: var(--serif); font-size: 1.5rem;
-      font-weight: 700; letter-spacing: -0.03em; color: var(--ink);
-    }
-    .footer-copy { font-size: 0.8rem; color: var(--faint); line-height: 1.7; }
-    .footer-copy a { color: var(--muted); transition: color 0.2s; }
-    .footer-copy a:hover { color: var(--ink); }
-    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
-    .footer-links a {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
-      color: var(--faint); transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--ink); }
-
-    /* ── Responsive ── */
-    @media (max-width: 960px) {
-      .why-list li { grid-template-columns: 1fr; gap: 8px; }
-      .contact-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 860px) {
-      .service-row, .service-row--flip { grid-template-columns: 1fr; gap: clamp(24px, 5vw, 36px); }
-      .service-row .service-content, .service-row--flip .service-content { order: 1; }
-      .service-row .service-img-wrap, .service-row--flip .service-img-wrap { order: 2; }
-      .problems-intro { flex-direction: column; gap: 16px; }
-      .problems-aside { text-align: left; }
-    }
-    @media (max-width: 640px) {
-      .top-nav { height: 52px; padding: 0 20px; }
-      .nav-links { display: none; }
-      .nav-cta { display: none; }
+      .nav-group-left, .nav-group-right { display: none; }
       .nav-hamburger { display: flex; }
-      .hero { padding: 52px 0 16px; }
-      .wordmark { font-size: clamp(48px, 14vw, 80px); top: 50%; width: 90%; }
-      .hero-caption { font-size: 13px; white-space: normal; width: 90%; text-align: center; top: 59%; }
-      .corner-text { display: none; }
-      .scroll-down span { font-size: 1rem; }
-      .projects { padding: clamp(56px, 12vw, 84px) 0; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; text-align: center; }
-      .footer-links { justify-content: center; }
-      .cta { padding: clamp(40px, 8vw, 80px) 0; }
-      .cta-heading { margin-bottom: 20px; }
-      .social-fixed { left: 12px; bottom: 16px; gap: 6px; }
-      .social-fixed a { width: 57px; height: 57px; }
-      .social-fixed svg { width: 22px; height: 22px; }
-      .why-list li { grid-template-columns: 1fr; gap: 8px; }
-      .work-overlay { padding: 26px 20px 22px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .work-media img, .work-tag svg { transition: none; }
-      a.work-card:hover .work-media img { transform: none; }
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
     }
   </style>
 </head>
 <body>
+<div style="background: #e8e6e2; color: #050505; overflow-x: hidden;">
 
-  <!-- NAV -->
-  <nav class="top-nav" id="nav">
-    <a href="index.html" class="nav-logo">MC.</a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Get in touch</a>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <!-- ── NAV ── -->
+  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: clamp(10px, 1.3vw, 18px) clamp(12px, 2.6vw, 40px); pointer-events: none;">
+    <nav id="nav" style="pointer-events: auto; max-width: 1660px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 18px; height: 58px; padding: 0 8px 0 clamp(16px, 2vw, 26px); background: rgba(232,230,226,0.76); backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6); border: 1px solid #d0cdc7; border-radius: 100px; box-shadow: 0 20px 44px -26px rgba(5,5,5,0.3);">
+      <div class="nav-group-left" style="display: flex; align-items: center; gap: clamp(2px, 1.2vw, 18px); flex: 1; min-width: 0;">
+        <a href="#products" class="nav-pill-link" style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 9px 12px; border-radius: 100px; white-space: nowrap;">Products</a>
+        <a href="#services" class="nav-pill-link" style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 9px 12px; border-radius: 100px; white-space: nowrap;">Services</a>
+        <a href="work.html" class="nav-pill-link" style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 9px 12px; border-radius: 100px; white-space: nowrap;">Work</a>
+      </div>
+      <a href="index.html" style="font-family: Cormorant, 'Cormorant Garamond', Georgia, serif; font-size: 30px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; padding: 0 14px 4px; flex-shrink: 0;">MC.</a>
+      <div class="nav-group-right" style="display: flex; align-items: center; justify-content: flex-end; gap: clamp(2px, 1.2vw, 18px); flex: 1; min-width: 0;">
+        <a href="about.html" class="nav-pill-link" style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 9px 12px; border-radius: 100px; white-space: nowrap;">About</a>
+        <a href="#contact" class="btn-dark" style="display: inline-flex; align-items: center; height: 42px; padding: 0 22px; background: #050505; color: #e8e6e2; border-radius: 100px; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap;">Enquire</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
   <div class="mobile-menu" id="mobileMenu">
+    <a href="#products" class="mobile-link">Products</a>
     <a href="#services" class="mobile-link">Services</a>
     <a href="work.html" class="mobile-link">Work</a>
     <a href="about.html" class="mobile-link">About</a>
-    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="#contact" class="mobile-link">Enquire</a>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="stage">
-      <video class="bg-video" autoplay loop muted playsinline aria-hidden="true">
-        <source src="backgroundbubble.mp4" type="video/mp4" />
-      </video>
-      <h1 class="wordmark">Matthias<br>Campbell</h1>
-      <p class="hero-caption">Freelance software developer &middot; Brisbane</p>
-      <div class="corner-text">EST. 2020</div>
-    </div>
-    <div class="scroll-down" aria-hidden="true">
-      <span>Scroll down</span>
+  <!-- ── HERO ── -->
+  <section style="min-height: 100svh; display: flex; flex-direction: column; padding-top: 58px;">
+    <div style="position: relative; flex: 1; min-height: 68svh; overflow: hidden; background: radial-gradient(120% 90% at 50% 20%, #f5f3ef 0%, #e8e6e2 44%, #dcd8d2 100%);">
+      <img src="Home-1-scaled.jpg" alt="" aria-hidden="true" loading="eager" decoding="async" fetchpriority="high" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;" />
+      <div style="position: absolute; inset: 0; z-index: 2; pointer-events: none; background: radial-gradient(70% 55% at 50% 46%, rgba(232,230,226,0.06) 0%, rgba(232,230,226,0.3) 62%, rgba(232,230,226,0.68) 100%);"></div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 30%; z-index: 3; pointer-events: none; background: linear-gradient(to bottom, rgba(232,230,226,0), #e8e6e2 92%);"></div>
+
+      <div style="position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(18px, 2.4vw, 30px); padding: clamp(40px, 8vh, 100px) clamp(20px, 5vw, 64px) clamp(96px, 15vh, 180px); text-align: center;">
+        <div style="display: flex; align-items: center; gap: 14px; font-size: 9.5px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: #5e5a55;">
+          <span style="width: 26px; height: 1px; background: #9b9690;"></span>
+          Est. Brisbane
+          <span style="width: 26px; height: 1px; background: #9b9690;"></span>
+        </div>
+        <h1 style="font-family: Cormorant, 'Cormorant Garamond', Georgia, serif; font-size: clamp(50px, 9.4vw, 136px); font-weight: 700; line-height: 0.85; letter-spacing: -0.035em; text-transform: uppercase; color: #050505;">Matthias<br />Campbell</h1>
+        <p style="font-family: Cormorant, Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(17px, 1.6vw, 24px); letter-spacing: 0.01em; color: #050505;">Freelance software developer &middot; Brisbane</p>
+      </div>
+
+      <div style="position: absolute; left: 0; right: 0; bottom: clamp(14px, 2.6vh, 28px); z-index: 5; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding: 0 clamp(20px, 3vw, 48px); font-size: 9.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #5e5a55;">
+        <span style="flex: 1;">Custom software &middot; Automation &middot; Support</span>
+        <span style="display: flex; align-items: center; gap: 9px; animation: mcBob 2.8s ease-in-out infinite;">Scroll
+          <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true"><path d="M4.5 0v13M1 9.5l3.5 3.5L8 9.5" stroke="#5e5a55" stroke-width="1.2" /></svg>
+        </span>
+        <span style="flex: 1; text-align: right;">Available for projects</span>
+      </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="wrap">
-      <div class="service-row">
-        <div class="service-content">
-          <span class="service-kicker">Primary · For businesses</span>
-          <h3 class="service-name">Custom software &amp; AI automation</h3>
-          <p class="service-desc">Software built around how your business actually works — AI workflow automation, internal tools, database-backed systems, booking and customer management, and integrations that tie your existing tools together. I start by understanding the real problem, and I'll tell you honestly when an off-the-shelf product would serve you better.</p>
-          <p class="service-features">AI workflow automation · Internal &amp; operational tools · Databases &amp; data processing · Booking systems · Desktop &amp; web interfaces</p>
-          <div class="service-actions">
-            <a href="custom-software.html" class="btn-solid">Explore custom software &nbsp;→</a>
-            <a href="#contact" class="btn-text">Discuss a project</a>
+  <!-- ── 01 · PRODUCTS ── -->
+  <section id="products" style="max-width: 1660px; margin: 0 auto; padding: clamp(40px, 5.5vw, 78px) clamp(20px, 3vw, 48px) clamp(30px, 4vw, 56px);">
+    <!-- YieldPOS -->
+    <article style="border: 1px solid #d0cdc7; border-radius: 24px; background: #edebe7; overflow: hidden;">
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: clamp(14px, 1.7vw, 22px); padding: clamp(44px, 6.4vw, 104px) clamp(24px, 5vw, 80px) clamp(30px, 3.2vw, 48px);">
+        <p style="font-size: 9.5px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: #5e5a55;">Point-of-sale software</p>
+        <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(2.8rem, 6.6vw, 6rem); font-weight: 400; line-height: 0.92; letter-spacing: -0.03em;">YieldPOS</h3>
+        <p style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.3rem, 2.1vw, 1.9rem); font-weight: 300; line-height: 1.32; color: #050505; max-width: 24ch; text-wrap: balance;">Fast, reliable point-of-sale for fresh-food and specialty retailers.</p>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px clamp(18px, 2.6vw, 30px); margin-top: 10px;">
+          <a href="yieldpos.html" class="btn-dark" style="display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 26px; background: #050505; color: #e8e6e2; border-radius: 100px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;">Learn more
+            <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </a>
+          <a href="#contact" class="link-dark interest-link" data-interest="yieldpos" style="font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding-bottom: 3px; border-bottom: 1px solid #9b9690;">Enquire</a>
+        </div>
+      </div>
+      <div style="padding: 0 clamp(18px, 4vw, 76px);">
+        <div style="border-radius: 16px 16px 0 0; overflow: hidden; background: #1c1c1c; box-shadow: 0 44px 90px -56px rgba(5,5,5,0.7);">
+          <img src="yieldpos.webp" width="1619" height="972" loading="eager" decoding="async" fetchpriority="high" alt="YieldPOS point-of-sale software running on a checkout screen" style="width: 100%; height: auto;" />
+        </div>
+      </div>
+    </article>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: clamp(18px, 2vw, 28px); margin-top: clamp(18px, 2vw, 28px);">
+      <!-- MCBook -->
+      <article style="display: flex; flex-direction: column; border: 1px solid #d0cdc7; border-radius: 24px; background: #edebe7; overflow: hidden;">
+        <div style="padding: clamp(32px, 3.6vw, 58px) clamp(28px, 3.4vw, 56px) clamp(24px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 14px; flex: 1;">
+          <p style="font-size: 9.5px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: #5e5a55;">Web-based booking</p>
+          <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(2.3rem, 3.8vw, 3.6rem); font-weight: 400; line-height: 0.96; letter-spacing: -0.028em;">MCBook</h3>
+          <p style="font-size: 0.97rem; font-weight: 300; line-height: 1.8; color: #5e5a55; max-width: 38ch;">Online booking and customer management for appointment and service businesses.</p>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px clamp(18px, 2.4vw, 28px); margin-top: auto; padding-top: 22px;">
+            <a href="mcbook.html" class="btn-dark" style="display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 24px; background: #050505; color: #e8e6e2; border-radius: 100px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;">Learn more
+              <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <a href="#contact" class="link-dark interest-link" data-interest="mcbook" style="font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding-bottom: 3px; border-bottom: 1px solid #9b9690;">Enquire</a>
           </div>
         </div>
-        <a class="service-img-wrap" href="custom-software.html" aria-label="Custom software development">
-          <img src="mcbook.webp" width="1448" height="1086" loading="eager" decoding="async" fetchpriority="high" alt="A custom software dashboard on a laptop" />
-        </a>
-      </div>
-
-      <div class="service-row service-row--flip">
-        <div class="service-content">
-          <span class="service-kicker">For people &amp; small business</span>
-          <h3 class="service-name">Technology support</h3>
-          <p class="service-desc">Patient, practical, one-to-one help with the technology in your home or business — computers, Wi-Fi, printers, phones, smart TVs, email and accounts, backups and scam awareness. Onsite across Brisbane, with remote help where it suits.</p>
-          <p class="service-features">Computers &amp; software · Wi-Fi &amp; internet · Printers &amp; devices · Email &amp; accounts · New-device setup · Patient tech lessons</p>
-          <div class="service-actions">
-            <a href="technology-support.html" class="btn-solid">See technology support &nbsp;→</a>
-            <a href="#contact" class="btn-text">Book support</a>
+        <div style="padding: 0 clamp(22px, 2.8vw, 44px);">
+          <div style="border-radius: 14px 14px 0 0; overflow: hidden; background: #1c1c1c; box-shadow: 0 34px 66px -48px rgba(5,5,5,0.72);">
+            <img src="mcbook.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="MCBook online booking and customer-management dashboard" style="width: 100%; height: auto;" />
           </div>
         </div>
-        <a class="service-img-wrap" href="technology-support.html" aria-label="Technology support">
-          <img src="it-support.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Home and small-business networking hardware" />
-        </a>
-      </div>
+      </article>
 
-      <p style="padding-top: clamp(36px,5vw,56px); font-size:0.95rem; color:var(--muted); line-height:1.7;">
-        Also available: <a href="seo.html" style="border-bottom:1px solid var(--ink); padding-bottom:1px;">search engine optimisation</a> for Brisbane businesses — technical fixes, local search and content, offered alongside the two services above.
-      </p>
+      <!-- MCFlow -->
+      <article style="display: flex; flex-direction: column; border: 1px solid #050505; border-radius: 24px; background: #050505; color: #e8e6e2; overflow: hidden;">
+        <div style="padding: clamp(32px, 3.6vw, 58px) clamp(28px, 3.4vw, 56px) clamp(24px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 14px; flex: 1;">
+          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <p style="font-size: 9.5px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(232,230,226,0.78);">AI business automation</p>
+            <span style="font-size: 9px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #e8e6e2; border: 1px solid rgba(232,230,226,0.38); border-radius: 100px; padding: 4px 11px;">In development</span>
+          </div>
+          <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(2.3rem, 3.8vw, 3.6rem); font-weight: 400; line-height: 0.96; letter-spacing: -0.028em; color: #e8e6e2;">MCFlow</h3>
+          <p style="font-size: 0.97rem; font-weight: 300; line-height: 1.8; color: rgba(232,230,226,0.84); max-width: 40ch;">Automation shaped around how your business already works &mdash; AI where it removes real repetition, people still in control.</p>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px clamp(18px, 2.4vw, 28px); margin-top: auto; padding-top: 22px;">
+            <a href="custom-software.html" class="btn-light" style="display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 24px; background: #e8e6e2; color: #050505; border-radius: 100px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;">Explore MCFlow
+              <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <a href="#contact" class="link-light interest-link" data-interest="mcflow" style="font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #e8e6e2; padding-bottom: 3px; border-bottom: 1px solid rgba(232,230,226,0.45);">Discuss a workflow</a>
+          </div>
+        </div>
+        <div style="padding: 0 clamp(22px, 2.8vw, 44px);">
+          <div style="border-radius: 14px 14px 0 0; overflow: hidden; background: #071522; box-shadow: 0 34px 66px -48px rgba(0,0,0,0.9);">
+            <img src="rpp-workflow-editor.png" width="1574" height="828" loading="lazy" decoding="async" alt="MCFlow workflow editor showing an AI-assisted automation with stock checks, order lookups, drafting, sending and human handoff steps" style="width: 100%; height: auto;" />
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- SELECTED WORK -->
-  <section class="projects" id="projects">
-    <div class="wrap">
-      <div class="projects-head">
+  <!-- ── 02 · SERVICES ── -->
+  <section id="services" style="max-width: 1660px; margin: 0 auto; padding: clamp(52px, 7vw, 108px) clamp(20px, 3vw, 48px) clamp(30px, 4vw, 56px);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(22px, 4vw, 80px); align-items: end; padding-bottom: clamp(24px, 2.8vw, 36px); border-bottom: 1px solid #d0cdc7;">
+      <div>
+        <p style="display: flex; align-items: center; gap: 16px; margin-bottom: 22px;">
+          <span style="font-family: Cormorant, Georgia, serif; font-size: 1.7rem; font-weight: 400; line-height: 1; color: #9b9690;">02</span>
+          <span style="width: 34px; height: 1px; background: #d0cdc7;"></span>
+          <span style="font-size: 9.5px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: #5e5a55;">For businesses &amp; people</span>
+        </p>
+        <h2 style="font-family: Cormorant, Georgia, serif; font-size: clamp(2.8rem, 5.8vw, 5.6rem); font-weight: 400; line-height: 0.92; letter-spacing: -0.028em;">The services.</h2>
+      </div>
+      <p style="font-size: 0.97rem; font-weight: 300; line-height: 1.8; color: #5e5a55; max-width: 38ch; justify-self: start;">Contract development, websites, and patient one-to-one technology help across Brisbane.</p>
+    </div>
+
+    <!-- Onsite support -->
+    <figure style="margin-top: clamp(30px, 3.8vw, 56px);">
+      <article style="position: relative; border-radius: 24px; overflow: hidden; background: #1c1c1c; min-height: clamp(440px, 54vw, 680px); display: flex; align-items: flex-end;">
+        <img src="it-support.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Onsite technology support with home networking hardware" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.4) 48%, rgba(5,5,5,0.04) 78%);"></div>
+        <div style="position: relative; padding: clamp(30px, 4.2vw, 72px); max-width: 720px; display: flex; flex-direction: column; gap: 16px;">
+          <p style="font-size: 9.5px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(232,230,226,0.82);">Patient, practical help</p>
+          <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(2.4rem, 4.8vw, 4.2rem); font-weight: 400; line-height: 0.96; letter-spacing: -0.028em; color: #e8e6e2;">Onsite Tech Support</h3>
+          <p style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.2rem, 1.9vw, 1.7rem); font-weight: 300; line-height: 1.38; color: #e8e6e2; max-width: 34ch;">Computers, Wi-Fi, printers, phones, accounts, backups &mdash; explained clearly, at your pace.</p>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px clamp(18px, 2.6vw, 30px); margin-top: 10px;">
+            <a href="technology-support.html" class="btn-light" style="display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 26px; background: #e8e6e2; color: #050505; border-radius: 100px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;">View support
+              <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <a href="#contact" class="link-light interest-link" data-interest="techsupport" style="font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #e8e6e2; padding-bottom: 3px; border-bottom: 1px solid rgba(232,230,226,0.5);">Book a visit</a>
+          </div>
+        </div>
+      </article>
+      <figcaption style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 14px 4px 0; font-size: 9.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9b9690;">
+        <span>Onsite, across greater Brisbane</span>
+        <span>One-to-one &middot; Senior-friendly</span>
+      </figcaption>
+    </figure>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: clamp(18px, 2vw, 28px); margin-top: clamp(22px, 2.6vw, 36px);">
+      <article style="display: flex; flex-direction: column; gap: 14px; padding: clamp(32px, 3.6vw, 58px); border: 1px solid #d0cdc7; border-radius: 24px; background: #edebe7;">
+        <p style="font-size: 9.5px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: #5e5a55;">Built around your business</p>
+        <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(2.1rem, 3.4vw, 3.2rem); font-weight: 400; line-height: 1; letter-spacing: -0.028em;">Custom Software<br />Contracting</h3>
+        <p style="font-size: 0.97rem; font-weight: 300; line-height: 1.8; color: #5e5a55; max-width: 38ch;">Internal tools, integrations, databases and custom web systems &mdash; planning through delivery, with me the whole way.</p>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px clamp(18px, 2.4vw, 28px); margin-top: auto; padding-top: 26px;">
+          <a href="custom-software.html" class="btn-dark" style="display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 24px; background: #050505; color: #e8e6e2; border-radius: 100px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;">Explore contracting
+            <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </a>
+          <a href="#contact" class="link-dark interest-link" data-interest="customsoftware" style="font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding-bottom: 3px; border-bottom: 1px solid #9b9690;">Discuss a project</a>
+        </div>
+      </article>
+
+      <article style="display: flex; flex-direction: column; gap: 14px; padding: clamp(32px, 3.6vw, 58px); border: 1px solid #d0cdc7; border-radius: 24px; background: #edebe7;">
+        <p style="font-size: 9.5px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: #5e5a55;">Clear, fast, professional</p>
+        <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(2.1rem, 3.4vw, 3.2rem); font-weight: 400; line-height: 1; letter-spacing: -0.028em;">Website Design<br />&amp; Search</h3>
+        <p style="font-size: 0.97rem; font-weight: 300; line-height: 1.8; color: #5e5a55; max-width: 38ch;">Responsive sites with clear messaging and an obvious path to get in touch &mdash; plus <a href="seo.html" style="border-bottom: 1px solid #9b9690;">search optimisation</a> for Brisbane businesses.</p>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px clamp(18px, 2.4vw, 28px); margin-top: auto; padding-top: 26px;">
+          <a href="#contact" class="btn-dark interest-link" data-interest="website" style="display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 24px; background: #050505; color: #e8e6e2; border-radius: 100px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;">Discuss a website
+            <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </a>
+          <a href="work.html" class="link-dark" style="font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding-bottom: 3px; border-bottom: 1px solid #9b9690;">View all work</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── 03 · WHY ── -->
+  <section style="background: #050505; color: #e8e6e2; margin-top: clamp(44px, 6vw, 92px);">
+    <div style="max-width: 1660px; margin: 0 auto; padding: clamp(58px, 8vw, 116px) clamp(20px, 3vw, 48px);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(22px, 4vw, 80px); align-items: end; padding-bottom: clamp(32px, 4vw, 60px); border-bottom: 1px solid rgba(232,230,226,0.16);">
         <div>
-          <span class="projects-kicker">Selected work</span>
-          <h2 class="projects-heading">Selected work.</h2>
+          <p style="display: flex; align-items: center; gap: 16px; margin-bottom: 22px;">
+            <span style="font-family: Cormorant, Georgia, serif; font-size: 1.7rem; font-weight: 400; line-height: 1; color: rgba(232,230,226,0.45);">03</span>
+            <span style="width: 34px; height: 1px; background: rgba(232,230,226,0.28);"></span>
+            <span style="font-size: 9.5px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(232,230,226,0.7);">Why work with me</span>
+          </p>
+          <h2 style="font-family: Cormorant, Georgia, serif; font-size: clamp(2.8rem, 5.8vw, 5.6rem); font-weight: 400; line-height: 0.92; letter-spacing: -0.028em; color: #e8e6e2;">Built by one<br />person who stays.</h2>
         </div>
-        <a href="work.html" class="projects-all">View all work &nbsp;→</a>
+        <p style="font-size: 0.97rem; font-weight: 300; line-height: 1.8; color: rgba(232,230,226,0.72); max-width: 36ch; justify-self: start;">Coding since nine, now studying computer science at UQ. Strong in Python, databases, AI automation and large datasets.</p>
       </div>
 
-      <div class="work-grid">
-        <a href="yieldpos.html" class="work-card work-card--feature">
-          <div class="work-media"><img src="yieldpos.webp" width="1619" height="972" loading="eager" decoding="async" fetchpriority="high" alt="YieldPOS point-of-sale software" /></div>
-          <div class="work-overlay">
-            <span class="work-cat">Point of Sale · Retail</span>
-            <h3 class="work-name">YieldPOS</h3>
-            <p class="work-desc">A Windows point-of-sale running day-to-day in a Brisbane grocer — faster checkouts, weighed produce and full back-office control, with no subscription.</p>
-            <span class="work-tag">View project <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-        </a>
-
-        <a href="mcbook.html" class="work-card">
-          <div class="work-media"><img src="mcbook.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="MCBook booking system dashboard" /></div>
-          <div class="work-overlay">
-            <span class="work-cat">Booking System</span>
-            <h3 class="work-name">MCBook</h3>
-            <p class="work-desc">Online bookings, a managed calendar and reminders in one place — less admin and fewer missed appointments.</p>
-            <span class="work-tag">View project <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-        </a>
-
-        <article class="work-card" aria-label="RPP Product Knowledge and Workflow Automation">
-          <div class="work-media work-media--workflow">
-            <img src="rpp-workflow-editor.png" width="1574" height="828" loading="lazy" decoding="async" alt="AutoFlow workflow editor showing an AI-assisted customer email process with stock checks, order lookups, drafting, sending, and human handoff steps" />
-          </div>
-          <div class="work-overlay">
-            <span class="work-cat">AI Workflow Automation · Product Data</span>
-            <h3 class="work-name">RPP Product Knowledge &amp; Workflows</h3>
-            <p class="work-desc">A structured product-knowledge platform and human-reviewed email workflows designed to make supplier information easier to find and routine enquiries faster to handle.</p>
-          </div>
-        </article>
-
-        <a href="technology-support.html" class="work-card work-card--wide">
-          <div class="work-media"><img src="it-support.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Technology support in Brisbane" /></div>
-          <div class="work-overlay">
-            <span class="work-cat">Technology Support · Brisbane</span>
-            <h3 class="work-name">Technology Support</h3>
-            <p class="work-desc">Patient onsite and remote help with computers, Wi-Fi, printers, phones and everyday technology.</p>
-            <span class="work-tag">View service <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CREDIBILITY -->
-  <section class="why" style="padding-bottom: clamp(20px,3vw,40px);" aria-label="Why work with me">
-    <div class="wrap">
-      <h2 class="why-heading">Why work with me.</h2>
-      <ul class="why-list">
-        <li>
-          <h3 class="why-title">You deal with me directly</h3>
-          <p class="why-desc">No agency, no account managers, no hand-offs. The person you talk to is the person who builds and supports the work.</p>
+      <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1px; background: rgba(232,230,226,0.16); margin-top: 1px;">
+        <li style="background: #050505; padding: clamp(30px, 3.6vw, 52px) clamp(24px, 2.8vw, 38px);">
+          <p style="font-family: Cormorant, Georgia, serif; font-size: 1.15rem; color: rgba(232,230,226,0.45); margin-bottom: 18px;">01</p>
+          <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.4rem, 2vw, 1.85rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.12; margin-bottom: 14px; color: #e8e6e2;">You deal with me directly</h3>
+          <p style="font-size: 0.93rem; font-weight: 300; line-height: 1.8; color: rgba(232,230,226,0.74);">The person you talk to is the person who builds and supports the work.</p>
         </li>
-        <li>
-          <h3 class="why-title">Real, working systems</h3>
-          <p class="why-desc">My point-of-sale software runs day-to-day in a Brisbane grocer, replacing an ageing register system. I build things that have to hold up in practice.</p>
+        <li style="background: #050505; padding: clamp(30px, 3.6vw, 52px) clamp(24px, 2.8vw, 38px);">
+          <p style="font-family: Cormorant, Georgia, serif; font-size: 1.15rem; color: rgba(232,230,226,0.45); margin-bottom: 18px;">02</p>
+          <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.4rem, 2vw, 1.85rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.12; margin-bottom: 14px; color: #e8e6e2;">Real, working systems</h3>
+          <p style="font-size: 0.93rem; font-weight: 300; line-height: 1.8; color: rgba(232,230,226,0.74);">My point-of-sale software runs day-to-day in a Brisbane grocer, replacing an ageing register.</p>
         </li>
-        <li>
-          <h3 class="why-title">Genuinely technical</h3>
-          <p class="why-desc">Coding since I was nine and now studying computer science at the University of Queensland. Strong in Python, databases, AI automation and working with large datasets.</p>
+        <li style="background: #050505; padding: clamp(30px, 3.6vw, 52px) clamp(24px, 2.8vw, 38px);">
+          <p style="font-family: Cormorant, Georgia, serif; font-size: 1.15rem; color: rgba(232,230,226,0.45); margin-bottom: 18px;">03</p>
+          <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.4rem, 2vw, 1.85rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.12; margin-bottom: 14px; color: #e8e6e2;">Genuinely technical</h3>
+          <p style="font-size: 0.93rem; font-weight: 300; line-height: 1.8; color: rgba(232,230,226,0.74);">Deep in the code, not managing someone who is &mdash; which keeps scope honest and timelines real.</p>
         </li>
-        <li>
-          <h3 class="why-title">Patient and practical</h3>
-          <p class="why-desc">Whether it's a business system or helping someone with their laptop, I explain things plainly and stay reasonable about scope and cost.</p>
+        <li style="background: #050505; padding: clamp(30px, 3.6vw, 52px) clamp(24px, 2.8vw, 38px);">
+          <p style="font-family: Cormorant, Georgia, serif; font-size: 1.15rem; color: rgba(232,230,226,0.45); margin-bottom: 18px;">04</p>
+          <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.4rem, 2vw, 1.85rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.12; margin-bottom: 14px; color: #e8e6e2;">Patient and practical</h3>
+          <p style="font-size: 0.93rem; font-weight: 300; line-height: 1.8; color: rgba(232,230,226,0.74);">Business system or a laptop that won&rsquo;t behave &mdash; explained plainly, priced reasonably.</p>
         </li>
       </ul>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section class="why" style="padding-top: clamp(40px,6vw,80px);">
-    <div class="wrap">
-      <h2 class="why-heading">How a software project runs.</h2>
-      <ul class="why-list">
-        <li>
-          <h3 class="why-title">Discovery call</h3>
-          <p class="why-desc">We start with a conversation. You walk me through your business, what you need, and what success looks like. No obligation — just a clear picture of the problem before anything else.</p>
-        </li>
-        <li>
-          <h3 class="why-title">Scope &amp; MVP</h3>
-          <p class="why-desc">If there's a fit, we define exactly what gets built. I'll propose a scope and MVP — the smallest version that delivers real value — so expectations are aligned before a line of code is written.</p>
-        </li>
-        <li>
-          <h3 class="why-title">Contract &amp; deposit</h3>
-          <p class="why-desc">Once scope is agreed, we formalise it. A plain-English contract outlines deliverables, timeline, and payment terms. A deposit is taken to secure your place in the schedule.</p>
-        </li>
-        <li>
-          <h3 class="why-title">Build &amp; delivery</h3>
-          <p class="why-desc">I build to the agreed spec, keeping you informed throughout. On completion, you review, request any final adjustments, and we go live. Ongoing support is available from there.</p>
-        </li>
-      </ul>
+  <!-- ── 04 · PROCESS ── -->
+  <section style="max-width: 1660px; margin: 0 auto; padding: clamp(58px, 8vw, 116px) clamp(20px, 3vw, 48px) clamp(30px, 4vw, 56px);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(22px, 4vw, 80px); align-items: end; padding-bottom: clamp(28px, 3.4vw, 48px);">
+      <div>
+        <p style="display: flex; align-items: center; gap: 16px; margin-bottom: 22px;">
+          <span style="font-family: Cormorant, Georgia, serif; font-size: 1.7rem; font-weight: 400; line-height: 1; color: #9b9690;">04</span>
+          <span style="width: 34px; height: 1px; background: #d0cdc7;"></span>
+          <span style="font-size: 9.5px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: #5e5a55;">How a software project runs</span>
+        </p>
+        <h2 style="font-family: Cormorant, Georgia, serif; font-size: clamp(2.8rem, 5.8vw, 5.6rem); font-weight: 400; line-height: 0.92; letter-spacing: -0.028em;">The process.</h2>
+      </div>
+      <p style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.2rem, 1.9vw, 1.7rem); font-weight: 300; line-height: 1.38; color: #050505; max-width: 30ch; justify-self: start;">Four steps, no surprises. You know the scope and the cost before I write anything.</p>
     </div>
+
+    <ol style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: #d0cdc7; border-top: 1px solid #d0cdc7; border-bottom: 1px solid #d0cdc7;">
+      <li style="background: #e8e6e2; padding: clamp(28px, 3.2vw, 46px) clamp(22px, 2.4vw, 34px) clamp(32px, 3.6vw, 52px); display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+          <span style="font-family: Cormorant, Georgia, serif; font-size: clamp(3.4rem, 5vw, 5rem); font-weight: 300; line-height: 0.8; letter-spacing: -0.04em; color: #050505;">01</span>
+          <span style="font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9b9690;">Step one</span>
+        </div>
+        <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.5rem, 2.1vw, 2rem); font-weight: 400; letter-spacing: -0.022em; line-height: 1.1; padding-top: 4px;">Discovery call</h3>
+        <p style="font-size: 0.94rem; font-weight: 300; line-height: 1.8; color: #5e5a55;">You walk me through your business and what you need. No obligation &mdash; just a clear picture of the problem first.</p>
+      </li>
+      <li style="background: #e8e6e2; padding: clamp(28px, 3.2vw, 46px) clamp(22px, 2.4vw, 34px) clamp(32px, 3.6vw, 52px); display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+          <span style="font-family: Cormorant, Georgia, serif; font-size: clamp(3.4rem, 5vw, 5rem); font-weight: 300; line-height: 0.8; letter-spacing: -0.04em; color: #050505;">02</span>
+          <span style="font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9b9690;">Step two</span>
+        </div>
+        <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.5rem, 2.1vw, 2rem); font-weight: 400; letter-spacing: -0.022em; line-height: 1.1; padding-top: 4px;">Scope &amp; MVP</h3>
+        <p style="font-size: 0.94rem; font-weight: 300; line-height: 1.8; color: #5e5a55;">I propose a scope and MVP &mdash; the smallest version that delivers real value &mdash; so we agree before a line of code is written.</p>
+      </li>
+      <li style="background: #e8e6e2; padding: clamp(28px, 3.2vw, 46px) clamp(22px, 2.4vw, 34px) clamp(32px, 3.6vw, 52px); display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+          <span style="font-family: Cormorant, Georgia, serif; font-size: clamp(3.4rem, 5vw, 5rem); font-weight: 300; line-height: 0.8; letter-spacing: -0.04em; color: #050505;">03</span>
+          <span style="font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9b9690;">Step three</span>
+        </div>
+        <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.5rem, 2.1vw, 2rem); font-weight: 400; letter-spacing: -0.022em; line-height: 1.1; padding-top: 4px;">Contract &amp; deposit</h3>
+        <p style="font-size: 0.94rem; font-weight: 300; line-height: 1.8; color: #5e5a55;">A plain-English contract covers deliverables, timeline and payment terms. A deposit secures your place in the schedule.</p>
+      </li>
+      <li style="background: #050505; color: #e8e6e2; padding: clamp(28px, 3.2vw, 46px) clamp(22px, 2.4vw, 34px) clamp(32px, 3.6vw, 52px); display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+          <span style="font-family: Cormorant, Georgia, serif; font-size: clamp(3.4rem, 5vw, 5rem); font-weight: 300; line-height: 0.8; letter-spacing: -0.04em; color: #e8e6e2;">04</span>
+          <span style="font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(232,230,226,0.6);">Go live</span>
+        </div>
+        <h3 style="font-family: Cormorant, Georgia, serif; font-size: clamp(1.5rem, 2.1vw, 2rem); font-weight: 400; letter-spacing: -0.022em; line-height: 1.1; padding-top: 4px; color: #e8e6e2;">Build &amp; delivery</h3>
+        <p style="font-size: 0.94rem; font-weight: 300; line-height: 1.8; color: rgba(232,230,226,0.8);">I build to the agreed spec, keeping you informed throughout. You review, we adjust, we go live &mdash; ongoing support from there.</p>
+        <a href="#contact" class="link-light" style="display: inline-flex; align-items: center; gap: 9px; margin-top: auto; padding-top: 20px; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #e8e6e2;">Start at step one
+          <svg width="15" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </a>
+      </li>
+    </ol>
   </section>
 
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="wrap">
-      <h2 class="cta-heading">Ready to upgrade<br>how your business<br>runs?</h2>
-      <a href="#contact" class="btn-cta">Get in touch &nbsp;→</a>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="wrap">
-      <div class="contact-grid">
+  <!-- ── CONTACT ── -->
+  <section id="contact" style="border-top: 1px solid #d0cdc7; margin-top: clamp(44px, 6vw, 88px);">
+    <div style="max-width: 1660px; margin: 0 auto; padding: clamp(58px, 8vw, 120px) clamp(20px, 3vw, 48px) clamp(58px, 8vw, 110px);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(40px, 7vw, 110px); align-items: start;">
         <div>
-          <h2 class="contact-heading">Let's<br>talk.</h2>
-          <p class="contact-body">Two ways to get started — tell me about a software project, or book a technology-support visit. Either way it reaches me directly, and I aim to reply the same business day.</p>
-          <div class="contact-paths" style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:36px;">
-            <button type="button" class="btn-solid path-btn" data-interest="software">Discuss a software project</button>
-            <button type="button" class="btn-solid path-btn" data-interest="techsupport" style="background:transparent; color:var(--ink); border:1px solid var(--ink);">Book technology support</button>
+          <p style="font-size: 9.5px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: #5e5a55; margin-bottom: 22px;">Same business-day response</p>
+          <h2 style="font-family: Cormorant, Georgia, serif; font-size: clamp(3rem, 6.2vw, 6rem); font-weight: 400; line-height: 0.88; letter-spacing: -0.03em; margin-bottom: 26px;">Let&rsquo;s<br />talk.</h2>
+          <p style="font-size: 1rem; font-weight: 300; line-height: 1.85; color: #5e5a55; max-width: 40ch; margin-bottom: 34px;">Tell me about a software project, or book a technology-support visit. Either way it reaches me directly.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 38px;">
+            <button type="button" class="btn-dark path-btn" data-interest="customsoftware" style="display: inline-flex; align-items: center; height: 44px; padding: 0 24px; background: #050505; color: #e8e6e2; border: none; border-radius: 100px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;">Software project</button>
+            <button type="button" class="btn-ghost-dark path-btn" data-interest="techsupport" style="display: inline-flex; align-items: center; height: 44px; padding: 0 24px; background: transparent; color: #050505; border: 1px solid #050505; border-radius: 100px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;">Technology support</button>
           </div>
-          <div class="contact-detail">
-            <a href="mailto:hello@matthias.com.au">hello@matthias.com.au</a><br>
-            <a href="tel:+61424106527">0424 106 527</a><br>
-            Brisbane, Queensland<br>
-            Same business-day response
+          <div style="border-top: 1px solid #d0cdc7; padding-top: 28px; display: grid; gap: 10px; font-size: 0.95rem; font-weight: 300; color: #5e5a55;">
+            <a href="mailto:hello@matthias.com.au" style="color: #050505;">hello@matthias.com.au</a>
+            <a href="tel:+61424106527" style="color: #050505;">0424 106 527</a>
+            <span>Brisbane, Queensland</span>
+            <div style="display: flex; gap: 10px; margin-top: 12px;">
+              <a href="https://github.com/matthiascamp" target="_blank" rel="noopener" aria-label="GitHub" class="icon-circle" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid #d0cdc7; border-radius: 50%;">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" /></svg>
+              </a>
+              <a href="mailto:hello@matthias.com.au" aria-label="Email" class="icon-circle" style="display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid #d0cdc7; border-radius: 50%;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+              </a>
+            </div>
           </div>
         </div>
-        <form class="contact-form" id="contactForm">
-          <div class="form-row">
-            <div class="form-field">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" required />
-            </div>
-            <div class="form-field">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" required />
-            </div>
-          </div>
-          <div class="form-field">
-            <label for="interest">Interested in</label>
+
+        <form id="contactForm" style="display: grid; gap: 28px; padding: clamp(28px, 3.4vw, 52px); border: 1px solid #d0cdc7; border-radius: 24px; background: #edebe7;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px;">
             <div>
-              <select id="interest" name="interest">
-                <option value="">Select…</option>
-                <option value="software">Custom software &amp; AI automation</option>
-                <option value="techsupport">Technology support</option>
-                <option value="yieldpos">YieldPOS — Point of Sale</option>
-                <option value="mcbook">MCBook — Booking System</option>
-                <option value="seo">SEO</option>
-                <option value="other">Something else</option>
-              </select>
+              <label for="name" style="display: block; font-size: 9.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9b9690; margin-bottom: 12px;">Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name" required class="field-input" style="width: 100%; background: transparent; border: none; border-bottom: 1px solid #d0cdc7; padding: 8px 0; font-size: 0.98rem; color: #050505; outline: none;" />
+            </div>
+            <div>
+              <label for="email" style="display: block; font-size: 9.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9b9690; margin-bottom: 12px;">Email</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" required class="field-input" style="width: 100%; background: transparent; border: none; border-bottom: 1px solid #d0cdc7; padding: 8px 0; font-size: 0.98rem; color: #050505; outline: none;" />
             </div>
           </div>
-          <div class="form-field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell me about your business and what you need…" required></textarea>
+          <div>
+            <label for="interest" style="display: block; font-size: 9.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9b9690; margin-bottom: 12px;">Interested in</label>
+            <select id="interest" name="interest" class="field-input" style="width: 100%; background: transparent; border: none; border-bottom: 1px solid #d0cdc7; padding: 8px 0; font-size: 0.98rem; color: #050505; outline: none; cursor: pointer;">
+              <option value="">Select&hellip;</option>
+              <option value="yieldpos">YieldPOS</option>
+              <option value="mcbook">MCBook</option>
+              <option value="mcflow">MCFlow</option>
+              <option value="techsupport">Onsite Tech Support</option>
+              <option value="website">Website Design</option>
+              <option value="customsoftware">Custom Software Contracting</option>
+              <option value="other">Something else</option>
+            </select>
           </div>
-          <button type="submit" class="form-submit">Send message</button>
-          <p id="formNote" role="status" aria-live="polite"></p>
+          <div>
+            <label for="message" style="display: block; font-size: 9.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9b9690; margin-bottom: 12px;">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your business and what you need&hellip;" required class="field-input" style="width: 100%; background: transparent; border: none; border-bottom: 1px solid #d0cdc7; padding: 8px 0; font-size: 0.98rem; color: #050505; outline: none; resize: none; min-height: 110px;"></textarea>
+          </div>
+          <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+            <button type="submit" class="btn-dark" style="display: inline-flex; align-items: center; height: 46px; padding: 0 30px; background: #050505; color: #e8e6e2; border: none; border-radius: 100px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;">Send message</button>
+            <p id="formNote" role="status" aria-live="polite" style="font-size: 0.88rem; font-weight: 300; color: #5e5a55;"></p>
+          </div>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="wrap">
-      <div class="footer-inner">
-        <a href="index.html" class="footer-logo">MC.</a>
-        <p class="footer-copy">&copy; 2026 Matthias Campbell &nbsp;&middot;&nbsp; Brisbane, QLD &nbsp;&middot;&nbsp; ABN 19 469 850 250<br><a href="mailto:hello@matthias.com.au">hello@matthias.com.au</a> &nbsp;&middot;&nbsp; <a href="tel:+61424106527">0424 106 527</a></p>
-        <nav class="footer-links">
-          <a href="custom-software.html">Custom software</a>
-          <a href="technology-support.html">Technology support</a>
-          <a href="work.html">Work</a>
-          <a href="about.html">About</a>
-          <a href="#contact">Contact</a>
-          <a href="privacy.html">Privacy</a>
-        </nav>
-      </div>
+  <!-- ── FOOTER ── -->
+  <footer style="border-top: 1px solid #d0cdc7;">
+    <div style="max-width: 1660px; margin: 0 auto; padding: clamp(38px, 5vw, 64px) clamp(20px, 3vw, 48px); display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap;">
+      <a href="index.html" style="font-family: Cormorant, Georgia, serif; font-size: 1.7rem; font-weight: 700; letter-spacing: -0.04em;">MC.</a>
+      <p style="font-size: 0.8rem; font-weight: 300; line-height: 1.9; color: #9b9690;">&copy; 2026 Matthias Campbell &nbsp;&middot;&nbsp; Brisbane, QLD &nbsp;&middot;&nbsp; ABN 19 469 850 250<br /><a href="mailto:hello@matthias.com.au" style="color: #5e5a55;">hello@matthias.com.au</a> &nbsp;&middot;&nbsp; <a href="tel:+61424106527" style="color: #5e5a55;">0424 106 527</a></p>
+      <nav style="display: flex; gap: 24px; flex-wrap: wrap;">
+        <a href="custom-software.html" style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9b9690;">Custom software</a>
+        <a href="technology-support.html" style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9b9690;">Support</a>
+        <a href="work.html" style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9b9690;">Work</a>
+        <a href="about.html" style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9b9690;">About</a>
+        <a href="privacy.html" style="font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9b9690;">Privacy</a>
+      </nav>
     </div>
   </footer>
+</div>
 
-  <!-- Fixed social -->
-  <aside class="social-fixed" aria-label="Links">
-    <a href="https://github.com/matthiascamp" target="_blank" rel="noopener" aria-label="GitHub">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-    </a>
-    <a href="mailto:hello@matthias.com.au" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-    </a>
-  </aside>
-
-  <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
-
-    // Resume video when returning to the page
-    const bgVideo = document.querySelector('.bg-video');
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden && bgVideo) bgVideo.play().catch(() => {});
+<script>
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
     });
-    window.addEventListener('focus', () => {
-      if (bgVideo) bgVideo.play().catch(() => {});
-    });
+  });
 
-    // Mobile menu
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  // Set a dropdown value programmatically (used by the enquiry-path buttons and card CTAs)
+  function setInterest(val) {
+    const sel = document.getElementById('interest');
+    if ([...sel.options].some(o => o.value === val)) sel.value = val;
+  }
+  document.querySelectorAll('.path-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setInterest(btn.dataset.interest);
+      document.getElementById('message').focus();
     });
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
+  });
+  document.querySelectorAll('.interest-link').forEach(link => {
+    link.addEventListener('click', () => setInterest(link.dataset.interest));
+  });
 
-    // Set a dropdown value programmatically (used by the two enquiry-path buttons)
-    function setInterest(val) {
-      const nativeSelect = document.getElementById('interest');
-      if ([...nativeSelect.options].some(option => option.value === val)) nativeSelect.value = val;
+  // Contact form submission
+  const form = document.getElementById('contactForm');
+  const note = document.getElementById('formNote');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      note.textContent = 'Please add your name, a valid email, and a message.';
+      note.style.color = '#b00';
+      form.reportValidity();
+      return;
     }
-    document.querySelectorAll('.path-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        setInterest(btn.dataset.interest);
-        document.getElementById('message').focus();
+    note.textContent = 'Sending…';
+    note.style.color = '';
+    try {
+      const res = await fetch('https://formspree.io/f/mwvgjozj', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
       });
-    });
-
-    const form = document.getElementById('contactForm');
-    const note = document.getElementById('formNote');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (!form.checkValidity()) {
-        note.textContent = 'Please add your name, a valid email, and a message.';
-        note.style.color = '#b00';
-        form.reportValidity();
-        return;
-      }
-      note.textContent = 'Sending…';
-      note.style.color = '';
-      try {
-        const res = await fetch('https://formspree.io/f/mwvgjozj', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(new FormData(form)))
-        });
-        const result = await res.json().catch(() => ({}));
-        if (res.ok) {
-          note.textContent = 'Thanks — your message has been sent. I\'ll reply the same business day.';
-          note.style.color = '#2a7a2a';
-          form.reset();
-        } else { throw new Error(result.message || 'Submission failed'); }
-      } catch {
-        note.textContent = 'Something went wrong. Please email hello@matthias.com.au or call 0424 106 527.';
-        note.style.color = '#b00';
-      }
-    });
-  </script>
-
+      const result = await res.json().catch(() => ({}));
+      if (res.ok) {
+        note.textContent = "Thanks — your message has been sent. I'll reply the same business day.";
+        note.style.color = '#2a7a2a';
+        form.reset();
+      } else { throw new Error(result.message || 'Submission failed'); }
+    } catch {
+      note.textContent = 'Something went wrong. Please email hello@matthias.com.au or call 0424 106 527.';
+      note.style.color = '#b00';
+    }
+  });
+</script>
 </body>
 </html>
