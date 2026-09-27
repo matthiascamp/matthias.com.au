@@ -243,6 +243,7 @@
       aspect-ratio: 4 / 3.05;
       display: flex; flex-direction: column; justify-content: flex-end;
       isolation: isolate;
+      cursor: pointer;
     }
     .card-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #1c1c1c; }
     .card-media img {
@@ -279,6 +280,14 @@
       font-family: var(--serif); font-weight: 700; letter-spacing: -0.02em;
       line-height: 0.98; font-size: clamp(2rem, 3.6vw, 2.9rem); margin-bottom: 12px;
     }
+    [data-card-title] { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    [data-card-title]::after {
+      content: '→'; flex: none; font-family: Arial, sans-serif;
+      font-size: 0.72em; font-weight: 400; line-height: 1; opacity: 0.65;
+      transition: transform 0.35s var(--ease), opacity 0.3s ease;
+    }
+    .card:hover [data-card-title]::after,
+    .card:focus-visible [data-card-title]::after { transform: translateX(6px); opacity: 1; }
     .card-desc {
       font-size: clamp(0.88rem, 1.05vw, 0.98rem);
       color: rgba(255,255,255,0.78); line-height: 1.62; max-width: 42ch;
@@ -305,6 +314,7 @@
     .card-pill--fill-dark { background: var(--ink); color: #fff; }
     .card-pill--fill-dark:hover { background: #2a2a2a; }
     .card:focus-within { outline: 2px solid var(--ink); outline-offset: 3px; }
+    .card:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
     .card-pill:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
     .card--light .card-pill:focus-visible,
     .card-pill--fill-dark:focus-visible { outline-color: var(--ink); }
@@ -622,99 +632,80 @@
 
       <div class="card-grid">
         <!-- YieldPOS -->
-        <article class="card card--photo">
+        <a href="yieldpos.html" class="card card--photo" aria-label="Open YieldPOS">
           <div class="card-media">
-            <img src="yieldpos.webp" width="1619" height="972" loading="eager" decoding="async" fetchpriority="high" alt="YieldPOS point-of-sale software running on a checkout screen" />
+            <img src="mcpos.png" width="1536" height="1024" loading="eager" decoding="async" fetchpriority="high" alt="YieldPOS point-of-sale software running on a checkout screen" />
           </div>
           <div class="card-content">
             <div class="card-eyebrow-row"><span class="card-eyebrow">Point-of-sale software</span></div>
-            <h3 class="card-title">YieldPOS</h3>
+            <h3 class="card-title" data-card-title="1">YieldPOS</h3>
             <p class="card-desc">Fast, reliable point-of-sale software built for fresh-food and specialty retailers.</p>
-            <div class="card-actions">
-              <a href="yieldpos.html" class="card-pill card-pill--fill-light">Learn more <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              <a href="#contact" class="card-pill card-pill--ghost-light interest-link" data-interest="yieldpos">Enquire</a>
-            </div>
           </div>
-        </article>
+        </a>
 
         <!-- MCBook -->
-        <article class="card card--photo">
+        <a href="mcbook.html" class="card card--photo" aria-label="Open MCBook">
           <div class="card-media">
-            <img src="mcbook.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="MCBook online booking and customer-management dashboard" />
+            <img src="mcbook.png" width="1536" height="1024" loading="lazy" decoding="async" alt="MCBook online booking and customer-management dashboard" />
           </div>
           <div class="card-content">
             <div class="card-eyebrow-row"><span class="card-eyebrow">Web-based booking system</span></div>
-            <h3 class="card-title">MCBook</h3>
+            <h3 class="card-title" data-card-title="1">MCBook</h3>
             <p class="card-desc">A straightforward online booking and customer-management system for appointment and service businesses.</p>
-            <div class="card-actions">
-              <a href="mcbook.html" class="card-pill card-pill--fill-light">Learn more <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              <a href="#contact" class="card-pill card-pill--ghost-light interest-link" data-interest="mcbook">Enquire</a>
-            </div>
           </div>
-        </article>
+        </a>
 
         <!-- MCFlow -->
-        <article class="card card--photo">
-          <div class="card-media card-media--contain">
-            <img src="rpp-workflow-editor.png" width="1574" height="828" loading="lazy" decoding="async" alt="MCFlow workflow editor showing an AI-assisted automation with stock checks, order lookups, drafting, sending and human handoff steps" />
+        <a href="custom-software.html" class="card card--photo" aria-label="Open MCFlow">
+          <div class="card-media">
+            <img src="mcflow.png" width="1536" height="1024" loading="lazy" decoding="async" alt="MCFlow workflow editor displayed on a desktop monitor in a modern office" />
           </div>
           <div class="card-content">
             <div class="card-eyebrow-row">
               <span class="card-eyebrow">AI-integrated business automation</span>
               <span class="card-status">In development</span>
             </div>
-            <h3 class="card-title">MCFlow</h3>
-            <p class="card-desc">A flexible automation framework configured around each business. It maps existing processes, connects tools and information, and uses AI where appropriate to reduce repetitive work while keeping people in control.</p>
-            <div class="card-actions">
-              <a href="custom-software.html" class="card-pill card-pill--fill-light">Explore MCFlow <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              <a href="#contact" class="card-pill card-pill--ghost-light interest-link" data-interest="mcflow">Discuss a workflow</a>
-            </div>
+            <h3 class="card-title" data-card-title="1">MCFlow</h3>
+            <p class="card-desc">An AI-enabled workflow editor and CRM that connects customer information, everyday tools and repeatable business processes in one flexible system.</p>
           </div>
-        </article>
+        </a>
 
         <!-- Onsite Tech Support -->
-        <article class="card card--photo">
+        <a href="technology-support.html" class="card card--photo" aria-label="Open Onsite Tech Support">
           <div class="card-media">
-            <img src="it-support.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Onsite technology support with home networking hardware" />
+            <img src="tech-support.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Onsite technology support helping a customer with a laptop and home network" />
           </div>
           <div class="card-content">
             <div class="card-eyebrow-row"><span class="card-eyebrow">Patient, practical help in Brisbane</span></div>
-            <h3 class="card-title">Onsite Tech Support</h3>
+            <h3 class="card-title" data-card-title="1">Onsite Tech Support</h3>
             <p class="card-desc">In-person help with computers, Wi-Fi, printers, phones, smart TVs, accounts, backups, security and everyday technology.</p>
             <p class="card-note">Patient one-to-one technology support for seniors, explained clearly and at your pace.</p>
-            <div class="card-actions">
-              <a href="technology-support.html" class="card-pill card-pill--fill-light">View support <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              <a href="#contact" class="card-pill card-pill--ghost-light interest-link" data-interest="techsupport">Book a visit</a>
-            </div>
           </div>
-        </article>
+        </a>
 
         <!-- Website Design -->
-        <article class="card card--light">
-          <div class="card-grid-lines"></div>
+        <a href="seo.html" class="card card--photo" aria-label="Open Website Design and SEO">
+          <div class="card-media">
+            <img src="website-seo.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Responsive website design displayed on desktop and mobile screens in a modern studio" />
+          </div>
           <div class="card-content">
             <div class="card-eyebrow-row"><span class="card-eyebrow">Clear, fast and professional websites</span></div>
-            <h3 class="card-title">Website Design</h3>
+            <h3 class="card-title" data-card-title="1">Website Design</h3>
             <p class="card-desc">Responsive websites for businesses that need a credible online presence, clear messaging and a straightforward path for customers to get in touch.</p>
-            <div class="card-actions">
-              <a href="#contact" class="card-pill card-pill--fill-dark interest-link" data-interest="website">Discuss a website <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            </div>
           </div>
-        </article>
+        </a>
 
         <!-- Custom Software Contracting -->
-        <article class="card card--mesh">
-          <div class="card-grid-lines"></div>
+        <a href="custom-software.html" class="card card--photo" aria-label="Open Software Contracting">
+          <div class="card-media">
+            <img src="contracting.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Custom software development workstation with code editor and system architecture tools" />
+          </div>
           <div class="card-content">
             <div class="card-eyebrow-row"><span class="card-eyebrow">Software built around your business</span></div>
-            <h3 class="card-title">Custom Software Contracting</h3>
+            <h3 class="card-title" data-card-title="1">Custom Software Contracting</h3>
             <p class="card-desc">Direct contract development for internal tools, integrations, databases, desktop applications and custom web systems. Clients work directly with Matthias from planning through delivery.</p>
-            <div class="card-actions">
-              <a href="custom-software.html" class="card-pill card-pill--fill-light">Explore contracting <svg width="14" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h13M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              <a href="#contact" class="card-pill card-pill--ghost-light interest-link" data-interest="customsoftware">Discuss a project</a>
-            </div>
           </div>
-        </article>
+        </a>
       </div>
 
       <p style="padding-top: clamp(36px,5vw,56px); font-size:0.95rem; color:var(--muted); line-height:1.7;">
