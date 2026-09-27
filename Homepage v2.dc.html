@@ -63,27 +63,26 @@
 
     /* ── Nav ── */
     .top-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 72px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 clamp(24px, 5.5vw, 80px);
-      background: rgba(232,230,226,0.92);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s var(--ease);
+      position: fixed; top: clamp(9px, 1.2vw, 16px); left: clamp(10px, 2.2vw, 30px); z-index: 100;
+      height: 52px;
+      display: flex; align-items: center; justify-content: flex-start; gap: 2px;
+      width: fit-content; padding: 0 8px 0 6px;
+      background: linear-gradient(180deg, rgba(245,243,240,0.9), rgba(232,230,226,0.8));
+      backdrop-filter: blur(26px) saturate(1.5); -webkit-backdrop-filter: blur(26px) saturate(1.5);
+      border: 1px solid rgba(255,255,255,0.58); border-radius: 100px;
+      box-shadow: 0 0.5px 0 rgba(255,255,255,0.95) inset, 0 16px 40px -26px rgba(5,5,5,0.5);
     }
-    .top-nav.scrolled { border-bottom-color: var(--line); }
     .nav-logo {
-      font-family: var(--serif); font-size: 2rem;
+      font-family: var(--serif); font-size: 25px; padding: 0 12px 4px;
       font-weight: 700; letter-spacing: -0.03em; color: var(--ink);
     }
     .nav-links {
-      display: flex; align-items: center; gap: 40px;
+      display: flex; align-items: center; gap: 2px;
     }
     .nav-links a {
-      font-family: var(--serif); font-size: 19px; font-weight: 400;
-      letter-spacing: 0.01em; color: var(--ink);
-      position: relative; padding-bottom: 2px;
+      font-size: 10px; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.17em; color: #55514b;
+      position: relative; padding: 10px 13px; border-radius: 100px;
     }
     .nav-links a::after {
       content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
@@ -562,10 +561,10 @@
       .problems-aside { text-align: left; }
     }
     @media (max-width: 640px) {
-      .top-nav { height: 52px; padding: 0 20px; }
-      .nav-links { display: none; }
-      .nav-cta { display: none; }
-      .nav-hamburger { display: flex; }
+      .top-nav { padding: 0 5px 0 4px; }
+      .nav-logo { padding: 0 8px 4px; font-size: 23px; }
+      .nav-links { display: flex; gap: 0; }
+      .nav-links a { padding: 10px 8px; font-size: 9px; letter-spacing: 0.12em; }
       .hero { padding: 52px 0 16px; }
       .wordmark { font-size: clamp(48px, 14vw, 80px); top: 50%; width: 90%; }
       .hero-caption { font-size: 13px; white-space: normal; width: 90%; text-align: center; top: 59%; }
@@ -593,19 +592,8 @@
       <li><a href="#services">Services</a></li>
       <li><a href="work.html">Work</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Get in touch</a>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#services" class="mobile-link">Services</a>
-    <a href="work.html" class="mobile-link">Work</a>
-    <a href="about.html" class="mobile-link">About</a>
-    <a href="#contact" class="mobile-link">Contact</a>
-  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -872,22 +860,6 @@
     });
     window.addEventListener('focus', () => {
       if (bgVideo) bgVideo.play().catch(() => {});
-    });
-
-    // Mobile menu
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
     });
 
     // Set a dropdown value programmatically (used by the two enquiry-path buttons)
