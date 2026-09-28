@@ -37,3 +37,11 @@ Exact prompts: [assets/IMAGE-PROMPTS.md](assets/IMAGE-PROMPTS.md). Original gene
 ## Replacing assets later
 
 Replace the file at its existing path or update its src. Keep screenshots proportional and captions accurate. AI service imagery can be replaced with real photography when available. Keep the portrait's face and keyboard buttons visible on mobile.
+
+## Refreshed website previews
+
+The homepage and web design page use assets/previews/*-settled.webp. These browser captures wait for page load, font readiness and ten additional seconds. The Edwin capture waits a further eight seconds after opening the book introduction and shows the author section. All are static WebP files; the homepage does not load preview videos.
+
+## Owner-selected screenshots
+
+The homepage and web design page now use the three screenshots supplied by Matthias, compressed as assets/previews/*-provided.webp. They replace the selected and settled captures above. Full compositions and source dimensions are preserved.

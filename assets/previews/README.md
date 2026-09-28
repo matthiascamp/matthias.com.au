@@ -1,9 +1,9 @@
-# Selected website preview screenshots
+# Website preview images
 
-The homepage uses three static, lazy-loaded 960 x 720 WebP screenshots, selected on 28 September 2026:
+The homepage and web design page use the three screenshots supplied by Matthias:
 
-- crisp-selected.webp: the existing 1440 x 1080 storefront capture, showing the full navigation, produce carousel and category cards.
-- cblends-selected.webp: a fresh 1200 x 900 browser capture with the complete logo, tagline and booking button in a tighter composition.
-- edwin-selected.webp: the existing 1440 x 1080 homepage capture after opening the book introduction, showing the actual site heading and navigation.
+- crisp-provided.webp: Screenshot 2026-09-28 181334.png
+- cblends-provided.webp: Screenshot 2026-09-28 181403.png
+- edwin-provided.webp: Screenshot 2026-09-28 181601.png
 
-The images preserve the website designs. No video or live external site is loaded. Older posters and MP4 files remain as source assets only. Card layouts and Visit site links are unchanged.
+WebP copies use quality 85 to reduce download size. Original PNGs are preserved. Images retain their original dimensions and full composition, without cropping or hover zoom on the homepage. Older captures and videos are not used by these previews.
