@@ -31,8 +31,8 @@ Exact prompts: [assets/IMAGE-PROMPTS.md](assets/IMAGE-PROMPTS.md). Original gene
 - matthias-portrait.png: supplied Downloads/headshot.png, used on About with the full portrait visible.
 - MCBook new pic.png: supplied MCBook dashboard. The page also uses accurately labeled schedule and revenue details from this screen. No fabricated calendar or customer-record screens are used.
 - rpp-workflow-editor.png: existing RPP email workflow editor, shown as related workflow work, not a finished MCFlow screen.
-- yieldpos-keyboard.webp: existing MCPOS keyboard editor. CSS focuses on the key canvas at source x=465, y=155, width=1040, height=560. The original remains unchanged and is linked for full-size viewing.
-- Existing MCPOS dashboard/customer-display images remain in use. Product mockups such as mcpos-card.webp are product visuals, not direct application screenshots.
+- yieldpos-keyboard.webp: existing YieldPOS keyboard editor. CSS focuses on the key canvas at source x=465, y=155, width=1040, height=560. The original remains unchanged and is linked for full-size viewing.
+- Existing YieldPOS dashboard/customer-display images remain in use. Product mockups such as yieldpos-card.webp are product visuals, not direct application screenshots.
 
 ## Replacing assets later
 

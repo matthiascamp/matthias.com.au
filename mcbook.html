@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MCBook — Online Booking System for Appointment Businesses</title>
-  <meta name="description" content="MCBook is a booking system for appointment- and service-based businesses. Online bookings, a managed calendar, customer records and automated reminders — in one calm place. Running live at CBlends, Runcorn.">
+  <meta name="description" content="MCBook lets service businesses accept online bookings, take payments, and manage customers — all from one simple dashboard. Embed a booking widget on any website in seconds.">
   <link rel="canonical" href="https://matthias.com.au/mcbook.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="MCBook — Online Booking System for Appointment Businesses">
@@ -15,267 +15,500 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="subpages.css">
   <link rel="stylesheet" href="mcbook.css">
+  <link rel="stylesheet" href="site-nav.css">
 </head>
 <body class="mcbook-page">
 
   <div id="spProgressBar" style="position:fixed;top:0;left:0;height:2px;width:0%;z-index:300;pointer-events:none;background:linear-gradient(90deg,rgba(5,5,5,.2),#050505);transition:width .1s linear;" aria-hidden="true"></div>
 
   <!-- Nav -->
-  <div class="sp-nav-outer" role="navigation" aria-label="Site navigation">
-    <nav class="sp-nav-pill" id="spNav">
-      <a href="index.html" class="sp-mc" aria-label="Matthias Campbell — home">MC.</a>
-      <span class="sp-sep" aria-hidden="true"></span>
-      <div class="sp-links">
-        <a href="#features">Features</a>
-        <a href="index.html#work">Live sites</a>
+  <div class="site-nav-outer" style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: clamp(9px, 1.2vw, 16px) clamp(10px, 2.2vw, 30px); pointer-events: none; display: flex;">
+<nav id="nav" aria-label="Site navigation" data-bubble="left" data-glass="1" style="pointer-events: auto; display: flex; align-items: center; gap: 2px; height: 52px; padding: 0 8px 0 6px; background: linear-gradient(180deg, rgba(245,243,240,0.9) 0%, rgba(232,230,226,0.8) 100%); backdrop-filter: blur(26px) saturate(1.5); -webkit-backdrop-filter: blur(26px) saturate(1.5); border: 1px solid rgba(255,255,255,0.58); border-radius: 100px; box-shadow: 0 0.5px 0 rgba(255,255,255,0.95) inset, 0 16px 40px -26px rgba(5,5,5,0.5);">
+        <a href="index.html" aria-label="Matthias Campbell — home" data-mc="1" style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 12px 4px; font-family: Cormorant, 'Cormorant Garamond', Georgia, serif; font-size: 25px; font-weight: 600; letter-spacing: -0.04em; line-height: 1;">MC.</a>
+        <span style="width: 1px; height: 18px; margin: 0 6px; background: rgba(5,5,5,0.12);"></span>
+        <a href="index.html#services" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">Services</a>
+        <a href="index.html#work" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">Work</a>
+        <a href="about.html" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">About</a>
+      </nav>
+  </div>
+
+  
+
+  <main class="mb-main">
+
+    <!-- ══ HERO ══════════════════════════════════════════════════════════════════ -->
+    <section class="mb-hero">
+      <div class="mb-grid-bg"></div>
+      <div class="mb-glow-blob"></div>
+      <div class="mb-glow-blob"></div>
+
+      <div class="mb-hero-badge mb-fade-up">
+        <span class="mb-hero-badge-dot"></span>
+        Exclusive to MC Development clients
       </div>
-      <span class="sp-sep sp-sep--right" aria-hidden="true"></span>
-      <a href="index.html#contact" class="sp-nav-cta">Enquire</a>
-      <button class="sp-burger" id="spBurger" aria-label="Open menu" aria-expanded="false" aria-controls="spOverlay">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-  </div>
 
-  <div class="sp-overlay" id="spOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <button class="sp-overlay-close" id="spOverlayClose" aria-label="Close menu">&#215;</button>
-    <a href="#features">Features</a>
-    <a href="index.html#work">Live sites</a>
-    <a href="index.html">← matthias.com.au</a>
-    <a href="index.html#contact" class="sp-overlay-contact">Enquire</a>
-  </div>
+      <h1 class="mb-fade-up mb-delay-1">
+        Online bookings, payments<br>
+        and <span class="mb-accent-word">no-show protection</span>
+      </h1>
 
-  <main>
+      <p class="mb-hero-sub mb-fade-up mb-delay-2">
+        MCBook is a fully custom booking system built exclusively for MC Development clients. Get a professional booking page, embeddable widget, Stripe-powered payments, and a customer dashboard &mdash; all included in your custom website bundle.
+      </p>
 
-    <!-- ── HERO ── -->
-    <section class="pg-hero mcbook-hero">
-      <div class="wrap">
-        <div class="pg-hero-grid pg-hero-grid--center">
-          <div>
-            <div class="mcbook-kicker-row">
-              <p class="pg-kicker"><span></span>Web-based booking system<span></span></p>
-              <span class="mcbook-live-status">Running live</span>
-            </div>
-            <h1 class="pg-h1">Bookings,<br>in one<br>calm place.</h1>
-            <p class="pg-lead">MCBook is a booking system for appointment- and service-based businesses that have outgrown a paper diary or a run of text messages. Customers book online, you manage it all from one calendar, and everything stays in one place instead of scattered across messages and sticky notes.</p>
-            <div class="mcbook-hero-actions">
-              <a href="index.html#contact" class="btn">Enquire about MCBook</a>
-              <a href="#features" class="btn-txt">See features &nbsp;↓</a>
-            </div>
-          </div>
+      <div class="mb-hero-cta mb-fade-up mb-delay-3">
+        <a href="#contact">
+          <button class="mb-btn-primary-lg">Get your custom site &#8594;</button>
+        </a>
+        <a href="#how-it-works">
+          <button class="mb-btn-secondary-lg">See how it works</button>
+        </a>
+      </div>
+      <p class="mb-hero-note mb-fade-up mb-delay-4">Included in your MC Development bundle &nbsp;&#183;&nbsp; Small fee on card payments only &nbsp;&#183;&nbsp; No monthly subscription</p>
 
-          <!-- MCBook dashboard — real screenshot -->
-          <div>
-            <div class="img-browser" data-reveal>
-              <div class="img-browser-bar">
-                <span class="img-browser-dot"></span>
-                <span class="img-browser-dot"></span>
-                <span class="img-browser-dot"></span>
-                <span class="img-browser-url">MCBook — Dashboard</span>
-              </div>
-              <div class="img-browser-body">
-                <img src="MCBook new pic.png" width="980" height="610" loading="eager" decoding="async" alt="MCBook booking dashboard — today's schedule, revenue and upcoming bookings">
-              </div>
-            </div>
-            <p class="mcbook-screen-caption mcbook-screen-caption--right">Real screenshot — Live MCBook dashboard</p>
-          </div>
+      <div class="mb-hero-visual mb-fade-up mb-delay-4">
+        <div class="mb-img-frame">
+          <img src="assets/mcbook-dashboard.png" alt="MCBook dashboard" class="mb-site-img" style="width:100%;display:block;border-radius:var(--mb-radius-xl);">
         </div>
       </div>
     </section>
 
-    <!-- ── CAPABILITY STRIP ── -->
-    <div class="cap-strip" aria-label="Key capabilities">
-      <div class="cap-cell">
-        <p class="cap-big">Online</p>
-        <p class="cap-label">Customers book themselves in, any time of day.</p>
+    <!-- ══ PROOF BAR ═════════════════════════════════════════════════════════════ -->
+    <div class="mb-proof-bar">
+      <div class="mb-proof-item">
+        <div class="mb-proof-icon">&#9889;</div>
+        <div class="mb-proof-text">
+          <strong>Set up in minutes</strong>
+          <span>No technical skills needed</span>
+        </div>
       </div>
-      <div class="cap-cell">
-        <p class="cap-big">Calendar</p>
-        <p class="cap-label">One clear view of the day and week.</p>
+      <div class="mb-proof-item">
+        <div class="mb-proof-icon">&#128274;</div>
+        <div class="mb-proof-text">
+          <strong>Stripe-secured payments</strong>
+          <span>Bank-grade encryption</span>
+        </div>
       </div>
-      <div class="cap-cell">
-        <p class="cap-big">Records</p>
-        <p class="cap-label">Customer details and history kept together.</p>
+      <div class="mb-proof-item">
+        <div class="mb-proof-icon">&#127760;</div>
+        <div class="mb-proof-text">
+          <strong>Works on any website</strong>
+          <span>WordPress, Wix, Squarespace &amp; more</span>
+        </div>
       </div>
-      <div class="cap-cell">
-        <p class="cap-big">Reminders</p>
-        <p class="cap-label">Automated prompts that cut down no-shows.</p>
+      <div class="mb-proof-item">
+        <div class="mb-proof-icon">&#128200;</div>
+        <div class="mb-proof-text">
+          <strong>Reduce no-shows</strong>
+          <span>Card-on-file protection</span>
+        </div>
+      </div>
+      <div class="mb-proof-item">
+        <div class="mb-proof-icon">&#127381;</div>
+        <div class="mb-proof-text">
+          <strong>Small fee on payments</strong>
+          <span>No subscription, ever</span>
+        </div>
       </div>
     </div>
 
-    <!-- ── FEATURES ── -->
-    <section class="pg-section" id="features">
-      <div class="wrap">
-        <div class="sec-head" data-reveal>
-          <div>
-            <p class="sec-kicker">What it does</p>
-            <h2 class="sec-h2">Built around<br>the booking.</h2>
-          </div>
-          <p class="sec-aside">Six things that together handle the whole cycle — from a customer booking in to knowing the history when they return.</p>
-        </div>
+    <!-- ══ HOW IT WORKS ══════════════════════════════════════════════════════════ -->
+    <section class="mb-how-section" id="how-it-works">
+      <div class="mb-grid-bg"></div>
+      <div class="mb-section-inner">
+        <div class="mb-section-tag">How it works</div>
+        <h2 class="mb-section-heading">Up and running in four steps</h2>
+        <p class="mb-section-sub">MCBook is built for business owners, not developers. If you can fill out a form, you can set up MCBook.</p>
 
-        <div class="mcbook-feat-rows" data-reveal>
-          <div class="mcbook-feat-item">
-            <div>
-              <span class="mcbook-feat-num">01</span>
-              <h3 class="mcbook-feat-name">Online booking</h3>
-            </div>
-            <p class="mcbook-feat-body">A simple booking flow customers can use themselves, without needing to call during business hours. Available around the clock.</p>
+        <div class="mb-steps-grid" data-reveal>
+          <div class="mb-step-card">
+            <div class="mb-step-number">01</div>
+            <div class="mb-step-icon">&#127968;</div>
+            <h3>Get your custom website</h3>
+            <p>MC Development builds your business website and sets up MCBook as part of the bundle. Your booking system and dashboard access are ready to go from day one.</p>
           </div>
-          <div class="mcbook-feat-item">
-            <div>
-              <span class="mcbook-feat-num">02</span>
-              <h3 class="mcbook-feat-name">Managed calendar</h3>
-            </div>
-            <p class="mcbook-feat-body">See and manage every booking in one place. Set your availability, block time, and handle changes — all from one clear view.</p>
+          <div class="mb-step-card">
+            <div class="mb-step-number">02</div>
+            <div class="mb-step-icon">&#10024;</div>
+            <h3>Add your services</h3>
+            <p>List your services with names, durations, prices, and payment options. Choose to save a card at booking, charge after the appointment, add a no-show fee, or just take contact details.</p>
           </div>
-          <div class="mcbook-feat-item">
-            <div>
-              <span class="mcbook-feat-num">03</span>
-              <h3 class="mcbook-feat-name">Customer records</h3>
-            </div>
-            <p class="mcbook-feat-body">Contact details and booking history kept together, so you always have context when someone comes back.</p>
+          <div class="mb-step-card">
+            <div class="mb-step-number">03</div>
+            <div class="mb-step-icon">&#128197;</div>
+            <h3>Set your availability</h3>
+            <p>Tell MCBook which days and hours you're open. Block out dates for holidays. Set minimum notice so you're never double-booked at the last minute.</p>
           </div>
-          <div class="mcbook-feat-item">
-            <div>
-              <span class="mcbook-feat-num">04</span>
-              <h3 class="mcbook-feat-name">Reminders</h3>
-            </div>
-            <p class="mcbook-feat-body">Automated reminders help reduce missed appointments and last-minute gaps — sent without any manual effort.</p>
-          </div>
-          <div class="mcbook-feat-item">
-            <div>
-              <span class="mcbook-feat-num">05</span>
-              <h3 class="mcbook-feat-name">Your availability</h3>
-            </div>
-            <p class="mcbook-feat-body">Set the hours, services and slots that make sense for how you actually work. Customers only see what's actually free.</p>
-          </div>
-          <div class="mcbook-feat-item">
-            <div>
-              <span class="mcbook-feat-num">06</span>
-              <h3 class="mcbook-feat-name">Fits your business</h3>
-            </div>
-            <p class="mcbook-feat-body">Set up for your services and adjusted to suit — not a generic SaaS platform but a system built to match your actual workflow.</p>
+          <div class="mb-step-card">
+            <div class="mb-step-number">04</div>
+            <div class="mb-step-icon">&#127758;</div>
+            <h3>Share &amp; embed</h3>
+            <p>Share your booking page link on Instagram, Google, or anywhere. Or paste one line of code into your website to embed the booking widget directly.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── SECOND SCREENSHOT ── -->
-    <section class="pg-section mcbook-shots-section">
-      <div class="wrap">
-        <div class="mcbook-ss-grid" data-reveal>
+    <!-- ══ FEATURES ══════════════════════════════════════════════════════════════ -->
+    <section class="mb-features-section" id="features">
+      <div class="mb-section-inner">
+        <div class="mb-section-tag">Everything you need</div>
+        <h2 class="mb-section-heading">All the tools, none of the complexity</h2>
+        <p class="mb-section-sub">Every feature in MCBook is designed to save you time and get more bookings &mdash; without needing to hire a developer.</p>
+
+        <div class="mb-features-grid" data-reveal>
+
+          <!-- Large card -->
+          <div class="mb-feature-card mb-feature-large">
+            <div>
+              <div class="mb-feature-icon">&#128279;</div>
+              <h3>Your own booking page</h3>
+              <p>Every MCBook account comes with a beautiful, mobile-friendly booking page at your personal link. Share it anywhere &mdash; social media, email signatures, Google My Business. Your customers arrive, pick a time, and book. Done.</p>
+              <br>
+              <p style="font-size:0.78rem;color:var(--mb-text-3);">Includes your business name, tagline, description, and location &mdash; all customisable from your dashboard.</p>
+            </div>
+            <div class="mb-feature-large-img">
+              <img src="assets/mcbook-booking-view.png" alt="MCBook booking widget" class="mb-site-img" style="width:100%;display:block;">
+            </div>
+          </div>
+
+          <div class="mb-feature-card">
+            <div class="mb-feature-icon">&#128203;</div>
+            <h3>Booking management</h3>
+            <p>See all your upcoming and past appointments in one place. Cancel bookings, mark as no-show and charge the fee, or waive the fee if you choose. Active and cancelled bookings are shown separately so your list stays clean.</p>
+          </div>
+
+          <div class="mb-feature-card">
+            <div class="mb-feature-icon">&#128100;</div>
+            <h3>Customer database</h3>
+            <p>Every person who books with you is saved to your customer list &mdash; name, email, and phone. Build a real relationship with your clients over time and see their booking history at a glance.</p>
+          </div>
+
+          <div class="mb-feature-card">
+            <div class="mb-feature-icon">&#128197;</div>
+            <h3>Smart availability</h3>
+            <p>Set your working hours day by day. Block out specific dates for holidays or time off. Set a minimum notice period so customers can only book slots with enough lead time for you to prepare.</p>
+          </div>
+
+          <div class="mb-feature-card">
+            <div class="mb-feature-icon">&#10024;</div>
+            <h3>Flexible services</h3>
+            <p>Create as many services as you offer &mdash; each with its own name, duration, price, and payment mode. A haircut, a colour treatment, and a beard trim can all have completely different settings.</p>
+          </div>
+
+          <div class="mb-feature-card">
+            <div class="mb-feature-icon">&#128176;</div>
+            <h3>Stripe payouts</h3>
+            <p>Connect your Stripe account and receive payments directly into your bank. MCBook handles the checkout flow &mdash; you just show up for the appointment and get paid.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PAYMENTS SECTION ══════════════════════════════════════════════════════ -->
+    <section class="mb-payments-section" id="payments">
+      <div class="mb-grid-bg"></div>
+      <div class="mb-section-inner">
+        <div class="mb-payments-grid" data-reveal>
+
           <div>
-            <div class="img-browser">
-              <div class="img-browser-bar">
-                <span class="img-browser-dot"></span>
-                <span class="img-browser-dot"></span>
-                <span class="img-browser-dot"></span>
-                <span class="img-browser-url">MCBook — Today's schedule</span>
+            <div class="mb-section-tag">Payments</div>
+            <h2 class="mb-section-heading">Collect payment, your way</h2>
+            <p class="mb-section-sub" style="margin-bottom:8px;">
+              Every service can have a different payment mode. Choose the one that makes sense for your business &mdash; or mix and match across services.
+            </p>
+
+            <div class="mb-payment-modes">
+              <div class="mb-payment-mode-card">
+                <div class="mb-payment-mode-icon">&#128179;</div>
+                <div>
+                  <h4>Charge after appointment</h4>
+                  <p>The customer's card is saved securely at booking &mdash; nothing is charged yet. Once the appointment is done, you charge them the service fee from your bookings dashboard. A small platform fee applies on the transaction.</p>
+                </div>
               </div>
-              <div class="img-browser-body" style="overflow:hidden;">
-                <div style="aspect-ratio:805/375; overflow:hidden; position:relative;">
-                  <img src="MCBook new pic.png" width="1911" height="890" loading="lazy" decoding="async" alt="MCBook — today's schedule panel showing appointments and time slots" style="position:absolute; width:237.39%; height:auto; max-width:none; left:-34.16%; top:-70.93%; display:block; transition:none;">
+              <div class="mb-payment-mode-card">
+                <div class="mb-payment-mode-icon">&#128683;</div>
+                <div>
+                  <h4>No-show fee protection</h4>
+                  <p>The customer saves their card at booking but is only ever charged if they don't show up. You set the no-show fee per service. If they do show up, you collect payment your way. A small platform fee applies only if the no-show fee is charged.</p>
+                </div>
+              </div>
+              <div class="mb-payment-mode-card">
+                <div class="mb-payment-mode-icon">&#127381;</div>
+                <div>
+                  <h4>Not collected through website</h4>
+                  <p>No card is saved and no payment is taken online. Customers fill in their name, email, and phone and book a time. Payment is arranged directly in person or by invoice. Always free &mdash; no MCBook fee applies.</p>
                 </div>
               </div>
             </div>
-            <p class="mcbook-screen-caption">Today's schedule</p>
           </div>
+
+          <div class="mb-payments-visual">
+            <div class="mb-img-frame">
+              <img src="assets/mcbook-card-details.png" alt="MCBook payment step" class="mb-site-img" style="width:100%;display:block;border-radius:var(--mb-radius-xl);">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ EMBED SECTION ═════════════════════════════════════════════════════════ -->
+    <section class="mb-embed-section" id="embed">
+      <div class="mb-section-inner">
+        <div class="mb-embed-grid" data-reveal>
+
           <div>
-            <div class="img-browser">
-              <div class="img-browser-bar">
-                <span class="img-browser-dot"></span>
-                <span class="img-browser-dot"></span>
-                <span class="img-browser-dot"></span>
-                <span class="img-browser-url">MCBook — Revenue at a glance</span>
+            <div class="mb-section-tag">Embed widget</div>
+            <h2 class="mb-section-heading">Paste one line.<br>Bookings everywhere.</h2>
+            <p style="font-size:1rem;color:var(--mb-text-2);line-height:1.7;margin-bottom:28px;font-weight:300;">
+              Already have a website? Don't send customers somewhere else to book. Drop one line of code into your page and the MCBook booking widget appears right there &mdash; matching your site's look and feel.
+            </p>
+            <p style="font-size:0.85rem;color:var(--mb-text-2);line-height:1.65;margin-bottom:28px;font-weight:300;">
+              The widget is completely self-contained. It won't slow your site down or interfere with your existing design. Works on WordPress, Squarespace, Wix, Webflow, Shopify, or any custom HTML page.
+            </p>
+
+            <div class="mb-embed-platforms">
+              <span class="mb-platform-badge">WordPress</span>
+              <span class="mb-platform-badge">Squarespace</span>
+              <span class="mb-platform-badge">Wix</span>
+              <span class="mb-platform-badge">Webflow</span>
+              <span class="mb-platform-badge">Shopify</span>
+              <span class="mb-platform-badge">Custom HTML</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="mb-embed-code-demo">
+              <div class="mb-code-topbar">
+                <div class="mb-code-dot"></div>
+                <div class="mb-code-dot"></div>
+                <div class="mb-code-dot"></div>
               </div>
-              <div class="img-browser-body" style="overflow:hidden;">
-                <div style="aspect-ratio:815/290; overflow:hidden; position:relative;">
-                  <img src="MCBook new pic.png" width="1911" height="890" loading="lazy" decoding="async" alt="MCBook — revenue summary panel" style="position:absolute; width:234.48%; height:auto; max-width:none; left:-133.74%; top:-127.59%; display:block; transition:none;">
+              <div class="mb-code-body">
+<span class="mb-tok-comment">&lt;!-- Paste inside your &lt;body&gt; tag --&gt;</span>
+
+<span class="mb-tok-tag">&lt;script</span>
+  <span class="mb-tok-attr">src</span>=<span class="mb-tok-val">"https://matthiasdev.com/mcbook/widget.js"</span>
+  <span class="mb-tok-attr">data-business-id</span>=<span class="mb-tok-val">"your-id-here"</span>
+<span class="mb-tok-tag">&gt;&lt;/script&gt;</span>
+              </div>
+            </div>
+
+            <div style="margin-top:24px;" class="mb-embed-img-frame">
+              <img src="assets/mcbook-widget-embed.png" alt="MCBook widget embedded on a client website" class="mb-site-img" style="width:100%;display:block;border-radius:var(--mb-radius-xl);">
+            </div>
+
+            <div class="mb-custom-note">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                <span class="mb-custom-note-tag">Custom styling</span>
+                <span class="mb-custom-note-title">Widget designed to match your site</span>
+              </div>
+              <p>For sites built by <a href="https://matthias.com.au" target="_blank" rel="noopener">Matthias Development</a>, the booking widget is fully custom-styled to blend seamlessly with your brand &mdash; matching your colours, fonts, and overall feel. See it live on <a href="https://cblends.github.io" target="_blank" rel="noopener">CBlends</a>.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ BOOKING PAGE SECTION ══════════════════════════════════════════════════ -->
+    <section class="mb-booking-page-section" id="booking-page">
+      <div class="mb-grid-bg"></div>
+      <div class="mb-section-inner">
+        <div class="mb-booking-page-grid" data-reveal>
+
+          <div class="mb-booking-img-frame">
+            <img src="assets/mcbook-shareable-link.png" alt="MCBook shareable booking page" class="mb-site-img" style="width:100%;display:block;border-radius:var(--mb-radius-xl);">
+          </div>
+
+          <div>
+            <div class="mb-section-tag">Booking page</div>
+            <h2 class="mb-section-heading">A full website for your bookings</h2>
+            <p style="font-size:1rem;color:var(--mb-text-2);line-height:1.7;margin-bottom:8px;font-weight:300;">
+              Don't have a website yet? No problem. MCBook gives you a ready-made booking page you can share anywhere &mdash; it looks professional and works on every device.
+            </p>
+
+            <div class="mb-feature-list">
+              <div class="mb-feature-list-item">
+                <div class="mb-feature-list-check">&#10003;</div>
+                <div>
+                  <h4>Your business, front and centre</h4>
+                  <p>Your business name, tagline, description, and location are displayed prominently. Customers know exactly who they're booking with.</p>
+                </div>
+              </div>
+              <div class="mb-feature-list-item">
+                <div class="mb-feature-list-check">&#10003;</div>
+                <div>
+                  <h4>Full booking flow, built in</h4>
+                  <p>Customers choose a service, pick a date and time, enter their details, and pay &mdash; all on one seamless page. No redirects, no confusion.</p>
+                </div>
+              </div>
+              <div class="mb-feature-list-item">
+                <div class="mb-feature-list-check">&#10003;</div>
+                <div>
+                  <h4>Shareable anywhere</h4>
+                  <p>Drop your booking link in your Instagram bio, Google Business profile, email signature, or WhatsApp. Customers tap the link and book instantly.</p>
+                </div>
+              </div>
+              <div class="mb-feature-list-item">
+                <div class="mb-feature-list-check">&#10003;</div>
+                <div>
+                  <h4>Always up to date</h4>
+                  <p>Your availability updates in real time. Customers only ever see slots that are actually open &mdash; no manual blocking required.</p>
                 </div>
               </div>
             </div>
-            <p class="mcbook-screen-caption">Revenue at a glance</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STATS ═════════════════════════════════════════════════════════════════ -->
+    <section class="mb-stats-section">
+      <div class="mb-section-inner">
+        <div class="mb-stats-grid" data-reveal>
+          <div class="mb-stat-cell">
+            <div class="mb-stat-number">0</div>
+            <div class="mb-stat-label">Lines of code needed to get started.<br><span style="color:var(--mb-text-3);font-size:0.78rem;">Just sign up and go.</span></div>
+          </div>
+          <div class="mb-stat-cell">
+            <div class="mb-stat-number" style="font-size:2rem;">Small<br>fee</div>
+            <div class="mb-stat-label">On card payments only.<br><span style="color:var(--mb-text-3);font-size:0.78rem;">No subscription. No setup cost.</span></div>
+          </div>
+          <div class="mb-stat-cell">
+            <div class="mb-stat-number">1</div>
+            <div class="mb-stat-label">Line of code to embed the widget<br>on any existing website.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── PROBLEM / SOLUTION (dark band) ── -->
-    <section class="pg-dark">
-      <div class="wrap">
-        <div class="mcbook-dark-grid" data-reveal>
-          <div>
-            <p class="sec-kicker">In short</p>
-            <h2 class="sec-h2">The problem,<br>and the fix.</h2>
-            <p class="pg-dark-body">Bookings taken by phone, paper or messages are easy to double-book, forget, or lose. MCBook gives customers a way to book themselves in while you keep one clear view of everything that's coming up.</p>
+    <!-- ══ PRICING ═══════════════════════════════════════════════════════════════ -->
+    <section class="mb-pricing-section" id="pricing">
+      <div class="mb-section-inner">
+        <div style="text-align:center;margin-bottom:16px;">
+          <div class="mb-section-tag" style="justify-content:center;">Pricing</div>
+        </div>
+        <h2 class="mb-section-heading" style="text-align:center;">Included in your bundle.</h2>
+        <p class="mb-section-sub" style="text-align:center;margin:0 auto 52px;max-width:640px;">
+          MCBook is built into every MC Development website package. There's no monthly fee &mdash; we only charge a small fee when you take a card payment through the platform.
+        </p>
+
+        <div class="mb-pricing-boxes" data-reveal>
+          <div class="mb-price-box">
+            <div class="mb-price-big">$0</div>
+            <div class="mb-price-label">Monthly fee</div>
           </div>
-          <div class="mcbook-facts">
-            <div class="mcbook-fact">
-              <p class="mcbook-fact-label">Problem</p>
-              <p class="mcbook-fact-value">Bookings by phone, paper or messages — easy to double-book, forget or lose track of.</p>
-            </div>
-            <div class="mcbook-fact">
-              <p class="mcbook-fact-label">Solution built</p>
-              <p class="mcbook-fact-value">Online bookings, a managed calendar, customer records and reminders in one system.</p>
-            </div>
-            <div class="mcbook-fact">
-              <p class="mcbook-fact-label">Approach</p>
-              <p class="mcbook-fact-value">Web-based and quick to set up — easy for non-technical staff to run day to day.</p>
-            </div>
-            <div class="mcbook-fact">
-              <p class="mcbook-fact-label">Benefit</p>
-              <p class="mcbook-fact-value">Less admin, fewer missed bookings, and a clearer picture of what's coming up.</p>
-            </div>
+          <div class="mb-price-box mb-price-box--featured">
+            <div class="mb-price-big" style="font-size:1.5rem;padding-top:6px;">Small<br>fee</div>
+            <div class="mb-price-label">On card payments<br>through MCBook only</div>
           </div>
+          <div class="mb-price-box">
+            <div class="mb-price-big">$0</div>
+            <div class="mb-price-label">Setup cost</div>
+          </div>
+        </div>
+
+        <div class="mb-pricing-includes" data-reveal>
+          <ul>
+            <li><span>&#10003;</span> Unlimited services, customers, and bookings &mdash; no caps, no tiers</li>
+            <li><span>&#10003;</span> Shareable booking page + embeddable widget &mdash; both included, styled to match your site</li>
+            <li><span>&#10003;</span> Stripe payouts, no-show protection, availability, customer database &mdash; all features included</li>
+            <li><span>&#10003;</span> Bookings without online payment are always completely free &mdash; a small fee only applies when a card is charged through the platform</li>
+          </ul>
+        </div>
+
+        <p class="mb-pricing-note">
+          Stripe's standard card processing fees also apply. &nbsp;&#183;&nbsp; <a href="mailto:matthiasdevelopment@gmail.com">Questions? Get in touch.</a>
+        </p>
+        <div style="text-align:center;margin-top:36px;">
+          <a href="#contact"><button class="mb-btn-primary-lg">Get your custom site &rarr;</button></a>
         </div>
       </div>
     </section>
 
-    <!-- ── LIVE EXAMPLE ── -->
-    <section class="pg-section">
-      <div class="wrap">
-        <div class="sec-head" data-reveal>
-          <div>
-            <p class="sec-kicker">Live example</p>
-            <h2 class="sec-h2">Running at<br>CBlends.</h2>
-          </div>
-          <p class="sec-aside">MCBook handles all appointments and customer details for CBlends, a Runcorn barbershop — end to end, since launch.</p>
-        </div>
-        <div class="mcbook-live-grid" data-reveal>
-          <div class="img-browser">
-            <div class="img-browser-bar">
-              <span class="img-browser-dot"></span>
-              <span class="img-browser-dot"></span>
-              <span class="img-browser-dot"></span>
-              <span class="img-browser-url">cblends.github.io</span>
-            </div>
-            <div class="img-browser-body">
-              <img src="assets/cblends-desktop.webp" width="1440" height="1080" loading="lazy" decoding="async" alt="CBlends barbershop website — booking entry point powered by MCBook">
-            </div>
-          </div>
-          <div>
-            <p class="u-prose mcbook-live-prose">CBlends is a Runcorn barbershop. MCBook handles their online booking widget, staff calendar, and customer records — with every booking flowing straight into one place the team can see and manage.</p>
-            <a href="https://cblends.github.io" target="_blank" rel="noopener" class="btn-txt">Visit cblends.github.io &nbsp;→</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ══ CONTACT ══════════════════════════════════════════════════════════════ -->
+    <section class="mb-contact-section" id="contact">
+      <div class="mb-section-inner">
+        <div class="mb-contact-grid" data-reveal>
 
-    <!-- ── CTA ── -->
-    <section class="pg-cta pg-cta--nb">
-      <div class="wrap">
-        <h2 class="cta-h2" data-reveal>Taking bookings<br>the hard way?</h2>
-        <p class="cta-sub" data-reveal>Tell me how your bookings work now and I'll show you how MCBook could fit. Same business-day response.</p>
-        <div class="cta-actions" data-reveal>
-          <a href="index.html#contact" class="btn">Enquire about MCBook</a>
-          <a href="index.html#work" class="btn-txt">See live work &nbsp;→</a>
+          <!-- Left: info -->
+          <div>
+            <div class="mb-section-tag">Get in touch</div>
+            <h2 class="mb-section-heading">Let's build something<br><em style="font-style:italic;font-family:var(--mb-font-display);color:var(--mb-accent);">great together.</em></h2>
+            <p class="mb-contact-body">
+              MCBook is only available as part of a custom website bundle from Matthias Development. If you want a professional website with a built-in booking system, payment processing, and a client dashboard &mdash; reach out below and I'll get back to you within 24 hours.
+            </p>
+            <p class="mb-contact-body" style="margin-bottom:28px;">
+              Already a client? Log in to your dashboard, or email me directly for support.
+            </p>
+            <div class="mb-contact-items">
+              <a href="mailto:matthiasdevelopment@gmail.com" class="mb-contact-item">
+                <div class="mb-contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                matthiasdevelopment@gmail.com
+              </a>
+              <a href="https://matthias.com.au" target="_blank" rel="noopener" class="mb-contact-item">
+                <div class="mb-contact-item-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                matthias.com.au
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: form -->
+          <div>
+            <div class="mb-contact-form-card">
+              <form id="mcbook-contact-form" data-formspree="YOUR_FORM_ID">
+                <div class="mb-cf-row">
+                  <div class="mb-cf-group">
+                    <label for="cf-name">Your name</label>
+                    <input class="mb-cf-input" type="text" id="cf-name" name="name" placeholder="Jane Smith" required>
+                  </div>
+                  <div class="mb-cf-group">
+                    <label for="cf-business">Business name</label>
+                    <input class="mb-cf-input" type="text" id="cf-business" name="business_name" placeholder="Jane's Hair Studio" required>
+                  </div>
+                </div>
+                <div class="mb-cf-group">
+                  <label for="cf-email">Email address</label>
+                  <input class="mb-cf-input" type="email" id="cf-email" name="email" placeholder="jane@example.com" required>
+                </div>
+                <div class="mb-cf-group">
+                  <label for="cf-service">What are you looking for?</label>
+                  <select class="mb-cf-input" id="cf-service" name="service">
+                    <option value="">Select an option&hellip;</option>
+                    <option value="new-site-mcbook">New custom website with MCBook included</option>
+                    <option value="mcbook-only">Already have a website &mdash; want MCBook added</option>
+                    <option value="widget-styling">Widget styling for an existing MCBook client</option>
+                    <option value="general">General enquiry</option>
+                  </select>
+                </div>
+                <div class="mb-cf-group">
+                  <label for="cf-message">Tell me about your project</label>
+                  <textarea class="mb-cf-input" id="cf-message" name="message" rows="4" placeholder="Describe your business, what you need, any questions&hellip;" required></textarea>
+                </div>
+                <button type="submit" class="mb-cf-submit" id="cf-btn">
+                  <span>Send message</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+                <p class="mb-cf-note" id="cf-note"></p>
+              </form>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
   </main>
 
+  <!-- ══ FOOTER ═════════════════════════════════════════════════════════════════ -->
   <footer class="sp-footer">
     <div class="sp-footer-inner">
       <a href="index.html" class="sp-footer-logo">MC.</a>
@@ -292,6 +525,85 @@
     </div>
   </footer>
 
+  <!-- Lightbox overlay -->
+  <div class="mb-lightbox-overlay" id="mb-lightbox">
+    <button class="mb-lightbox-close" id="mb-lightbox-close" aria-label="Close">&#x2715;</button>
+    <img id="mb-lightbox-img" src="" alt="">
+  </div>
+
   <script src="subpages.js"></script>
+  <script>
+    // Lightbox
+    (function() {
+      var lightbox     = document.getElementById('mb-lightbox');
+      var lightboxImg  = document.getElementById('mb-lightbox-img');
+      var lightboxClose = document.getElementById('mb-lightbox-close');
+
+      document.querySelectorAll('.mb-site-img').forEach(function(img) {
+        img.addEventListener('click', function() {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+    })();
+
+    // Contact form (Formspree)
+    (function() {
+      var form = document.getElementById('mcbook-contact-form');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn  = form.querySelector('.mb-cf-submit');
+        var note = form.querySelector('.mb-cf-note');
+        var formId = form.dataset.formspree;
+        if (!formId || formId === 'YOUR_FORM_ID') {
+          note.textContent = 'Contact form not yet configured.';
+          note.className = 'mb-cf-note error';
+          return;
+        }
+        btn.disabled = true;
+        btn.querySelector('span').textContent = 'Sending…';
+        note.textContent = '';
+        note.className = 'mb-cf-note';
+        var data = Object.fromEntries(new FormData(form));
+        fetch('https://formspree.io/f/' + formId, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        })
+        .then(function(res) {
+          if (res.ok) {
+            note.textContent = "Message sent — I'll be in touch soon.";
+            note.className = 'mb-cf-note success';
+            form.reset();
+          } else {
+            return res.json().catch(function() { return {}; }).then(function(body) {
+              note.textContent = (body && body.errors && body.errors[0] && body.errors[0].message) || 'Something went wrong. Please try again.';
+              note.className = 'mb-cf-note error';
+            });
+          }
+        })
+        .catch(function() {
+          note.textContent = 'Network error. Please try again.';
+          note.className = 'mb-cf-note error';
+        })
+        .finally(function() {
+          btn.disabled = false;
+          btn.querySelector('span').textContent = 'Send message';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

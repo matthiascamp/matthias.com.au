@@ -3,81 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCPOS — Point of Sale for Fresh Retail · Brisbane</title>
-  <meta name="description" content="MCPOS is an offline-first Windows point-of-sale system built for grocers, delis, and fresh-food retailers. Fast checkout, weighed produce, EFTPOS, multi-register support, and full back-office control. Running live in a Brisbane grocer.">
+  <title>YieldPOS — Point of Sale for Fresh Retail · Brisbane</title>
+  <meta name="description" content="YieldPOS is an offline-first Windows point-of-sale system built for grocers, delis, and fresh-food retailers. Fast checkout, weighed produce, EFTPOS, multi-register support, and full back-office control. Running live in a Brisbane grocer.">
   <link rel="canonical" href="https://matthias.com.au/yieldpos.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="MCPOS — Point of Sale for Fresh Retail">
-  <meta property="og:description" content="Offline-first Windows POS for grocers, delis and fresh-food retailers. No subscription, no fragile cloud dependency.">
+  <meta property="og:title" content="YieldPOS — Point of Sale for Fresh Retail">
+  <meta property="og:description" content="Windows point-of-sale software for grocers, delis and fresh-food retailers. Checkout, product management and sales reporting with subscription-based pricing.">
   <meta property="og:url" content="https://matthias.com.au/yieldpos.html">
-  <meta property="og:image" content="https://matthias.com.au/mcpos.png">
+  <meta property="og:image" content="https://matthias.com.au/yieldpos.png">
   <meta property="og:locale" content="en_AU">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="subpages.css">
-  <link rel="stylesheet" href="mcpos.css">
+  <link rel="stylesheet" href="yieldpos.css">
+  <link rel="stylesheet" href="site-nav.css">
 </head>
-<body class="mcpos-page">
+<body class="yieldpos-page">
 
   <div id="spProgressBar" style="position:fixed;top:0;left:0;height:2px;width:0%;z-index:300;pointer-events:none;background:linear-gradient(90deg,rgba(5,5,5,.2),#050505);transition:width .1s linear;" aria-hidden="true"></div>
 
   <!-- Nav -->
-  <div class="sp-nav-outer" role="navigation" aria-label="Site navigation">
-    <nav class="sp-nav-pill" id="spNav">
-      <a href="index.html" class="sp-mc" aria-label="Matthias Campbell — home">MC.</a>
-      <span class="sp-sep" aria-hidden="true"></span>
-      <div class="sp-links">
-        <a href="#features">Features</a>
-        <a href="#screenshots">Screenshots</a>
-      </div>
-      <span class="sp-sep sp-sep--right" aria-hidden="true"></span>
-      <a href="index.html#contact" class="sp-nav-cta">Book a demo</a>
-      <button class="sp-burger" id="spBurger" aria-label="Open menu" aria-expanded="false" aria-controls="spOverlay">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
+  <div class="site-nav-outer" style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: clamp(9px, 1.2vw, 16px) clamp(10px, 2.2vw, 30px); pointer-events: none; display: flex;">
+<nav id="nav" aria-label="Site navigation" data-bubble="left" data-glass="1" style="pointer-events: auto; display: flex; align-items: center; gap: 2px; height: 52px; padding: 0 8px 0 6px; background: linear-gradient(180deg, rgba(245,243,240,0.9) 0%, rgba(232,230,226,0.8) 100%); backdrop-filter: blur(26px) saturate(1.5); -webkit-backdrop-filter: blur(26px) saturate(1.5); border: 1px solid rgba(255,255,255,0.58); border-radius: 100px; box-shadow: 0 0.5px 0 rgba(255,255,255,0.95) inset, 0 16px 40px -26px rgba(5,5,5,0.5);">
+        <a href="index.html" aria-label="Matthias Campbell — home" data-mc="1" style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 12px 4px; font-family: Cormorant, 'Cormorant Garamond', Georgia, serif; font-size: 25px; font-weight: 600; letter-spacing: -0.04em; line-height: 1;">MC.</a>
+        <span style="width: 1px; height: 18px; margin: 0 6px; background: rgba(5,5,5,0.12);"></span>
+        <a href="index.html#services" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">Services</a>
+        <a href="index.html#work" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">Work</a>
+        <a href="about.html" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">About</a>
+      </nav>
   </div>
 
-  <div class="sp-overlay" id="spOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <button class="sp-overlay-close" id="spOverlayClose" aria-label="Close menu">&#215;</button>
-    <a href="#features">Features</a>
-    <a href="#screenshots">Screenshots</a>
-    <a href="index.html">← matthias.com.au</a>
-    <a href="index.html#contact" class="sp-overlay-contact">Book a demo</a>
-  </div>
+  
 
   <main>
 
     <!-- ── HERO ── -->
-    <section class="pg-hero mcpos-hero">
+    <section class="pg-hero yieldpos-hero">
       <div class="wrap">
-        <div class="mcpos-hero-grid">
+        <div class="yieldpos-hero-grid">
           <div>
-            <p class="pg-kicker">MCPOS <span></span> Point of sale for fresh retail</p>
-            <h1 class="pg-h1">Fresh retail.<br><em>In full flow.</em></h1>
-            <p class="pg-lead">From the first scan to the end-of-day totals. A complete point-of-sale system for grocers, delis and fresh-food stores, built to keep your checkout moving.</p>
-            <div class="mcpos-tags" aria-label="Product highlights"><span>Offline-first</span><span>Built for Windows</span><span>No subscription</span></div>
-            <div class="mcpos-actions">
+            <p class="pg-kicker">YieldPOS <span></span> Point of sale for fresh retail</p>
+            <h1 class="pg-h1">Point of sale.<br><em>Built for your shop.</em></h1>
+            <p class="pg-lead">YieldPOS brings checkout, product management and sales reporting together in one Windows application. Developed for Crisp on Creek, it supports the everyday needs of grocers, delis and fresh-food retailers.</p>
+            <div class="yieldpos-tags" aria-label="Product highlights"><span>Offline-first</span><span>Built for Windows</span><span>Subscription-based</span></div>
+            <div class="yieldpos-actions">
               <a href="index.html#contact" class="btn">Book a demo</a>
               <a href="#features" class="btn-txt">See features &nbsp;↓</a>
             </div>
           </div>
-          <figure class="mcpos-hero-visual" data-reveal>
-            <img src="mcpos-card.webp" width="1280" height="853" loading="eager" decoding="async" alt="MCPOS point-of-sale software running on a checkout terminal in a fresh-food store">
-            <figcaption><span class="mcpos-status">Made for the shop floor</span><span>Grocers · Delis · Fresh food</span></figcaption>
+          <figure class="yieldpos-hero-visual" data-reveal>
+            <img src="yieldpos-card.webp" width="1280" height="853" loading="eager" decoding="async" alt="YieldPOS point-of-sale software running on a checkout terminal in a fresh-food store">
           </figure>
         </div>
       </div>
     </section>
 
+    <!-- ── THE YIELDPOS STORY ── -->
+    <section class="pg-section yieldpos-story" id="story" aria-labelledby="yieldpos-story-heading">
+      <div class="wrap">
+        <div class="yieldpos-story-grid">
+          <div data-reveal>
+            <p class="sec-kicker">How YieldPOS started</p>
+            <h2 class="sec-h2" id="yieldpos-story-heading">The story behind<br>YieldPOS.</h2>
+            <div class="yieldpos-story-copy">
+              <p>I developed YieldPOS after noticing that Crisp on Creek's point-of-sale system was outdated. I proposed replacing it with a new system designed around the shop's needs, then built and implemented it.</p>
+              <p>YieldPOS is now available for use at other businesses.</p>
+            </div>
+            <a href="index.html#contact" class="btn-txt">Discuss YieldPOS for your shop &nbsp;→</a>
+          </div>
+          <figure class="yieldpos-story-photo" data-reveal>
+            <img src="assets/yieldpos-crisp-checkout.webp" width="1824" height="1368" loading="lazy" decoding="async" alt="YieldPOS running at a Crisp on Creek checkout, with the shop's produce displays behind it">
+            <figcaption>YieldPOS at Crisp on Creek — the shop where it started.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="pg-section yieldpos-tyro" id="tyro" aria-labelledby="tyro-heading">
+      <div class="wrap">
+        <div class="yieldpos-tyro-grid">
+          <div data-reveal>
+            <p class="sec-kicker">Lower-cost EFTPOS</p>
+            <h2 class="sec-h2" id="tyro-heading">Tyro Pro Lite.<br>Tyro's lowest-cost terminal.</h2>
+            <p class="yieldpos-tyro-intro">Tyro Pro Lite is Tyro's lowest-cost EFTPOS terminal and the model planned for YieldPOS. It features a 5-inch touchscreen, WiFi connectivity and mobile network backup, and supports integrated or standalone payments.</p>
+            <div class="yieldpos-tyro-rates">
+              <div><h3>Introductory offer</h3><p class="yieldpos-tyro-rate">1%</p><p>Transaction fee including GST<br>$0 monthly terminal rental</p><p>For eligible businesses transacting over $20,000 per month, until 31 March 2027.</p></div>
+              <div><h3>Standard pricing</h3><p class="yieldpos-tyro-rate">1.3%</p><p>Transaction fee including GST<br>$19 monthly terminal rental</p><p>Contact Tyro for a custom quote when transacting over $20,000 per month.</p></div>
+            </div>
+            <p class="yieldpos-tyro-terms">Intro offer eligibility ends at 9am Sydney time on 24 November 2026 and requires Tyro approval and merchant ID creation within the eligibility period. Conditions include exclusions for partner referrals and recent Tyro merchants. Standard fees apply after the offer unless otherwise agreed with Tyro. Tyro fees are separate from your YieldPOS subscription.</p>
+            <div class="yieldpos-actions"><a href="https://www.tyro.com/payments/in-person/eftpos/" target="_blank" rel="noopener" class="btn-txt">View Tyro pricing &nbsp;↗</a><a href="https://www.tyro.com/legal/terms-and-conditions/1-percent-free-terminal-rental-offer-terms/" target="_blank" rel="noopener" class="btn-txt">Offer terms &nbsp;↗</a></div>
+          </div>
+          <figure class="yieldpos-tyro-image" data-reveal><div class="yieldpos-tyro-product"><img src="assets/tyro-pro-lite.png" width="160" height="250" loading="lazy" decoding="async" alt="Tyro Pro Lite EFTPOS terminal"></div><figcaption>Tyro Pro Lite · Product image courtesy of Tyro</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
     <!-- ── CAPABILITY STRIP ── -->
-    <div class="wrap"><div class="cap-strip mcpos-capabilities" id="features" aria-label="Key capabilities">
+    <div class="wrap"><div class="cap-strip yieldpos-capabilities" id="features" aria-label="Key capabilities">
       <div class="cap-cell">
         <p class="cap-big">Offline</p>
         <p class="cap-label">Runs locally on Windows. Keeps selling when the internet drops.</p>
       </div>
       <div class="cap-cell">
         <p class="cap-big">EFTPOS</p>
-        <p class="cap-label">Linkly Cloud integration. Card payments built in, no extra hardware.</p>
+        <p class="cap-label">Tyro Pro Lite planned for card payments. Terminal and transaction fees apply.</p>
       </div>
       <div class="cap-cell">
         <p class="cap-big">Scales</p>
@@ -91,65 +119,79 @@
 
     </div>
 
-    <!-- ── THREE FEATURE COLUMNS ── -->
-    <section class="pg-section mcpos-features" aria-label="Feature detail">
+    <!-- ── CAPABILITY PANELS ── -->
+    <section class="pg-section yieldpos-features" aria-label="Feature detail">
       <div class="wrap">
         <div class="sec-head"><div><p class="sec-kicker">One system, the whole store</p><h2 class="sec-h2">From counter<br>to back office.</h2></div><p class="sec-aside">The everyday tools your team needs, connected from the shop floor to the daily sales report.</p></div>
-      <div class="feat-trio">
-        <div class="feat-col">
-          <span class="feat-col-kicker">01 / Back office</span>
-          <h2 class="feat-col-h">Full visibility.<br>Real time.</h2>
-          <ul class="feat-col-list">
-            <li>Daily &amp; weekly sales summary</li>
-            <li>Sales by hour, category &amp; payment method</li>
-            <li>Top-selling products at a glance</li>
-            <li>Product, pricing &amp; category management</li>
-            <li>Deals and specials control</li>
-            <li>Staff PIN and role management</li>
-            <li>Stock tracking and low-stock alerts</li>
-            <li>Transaction search and CSV export</li>
-            <li>Shelf label and price tag printing</li>
-            <li>Z reports and end-of-day reconciliation</li>
-          </ul>
+        <div class="yp-panels">
+          <article class="yp-panel" data-reveal>
+            <span class="yp-panel-kicker">01 / Back office</span>
+            <h3 class="yp-panel-h">Full visibility.<br>Real time.</h3>
+            <ul class="yp-panel-highlights">
+              <li>Sales reporting — daily, weekly, by hour, category &amp; payment method</li>
+              <li>Product, pricing &amp; category management</li>
+              <li>Stock tracking and low-stock alerts</li>
+              <li>Z reports and end-of-day reconciliation</li>
+            </ul>
+            <details class="yp-panel-more">
+              <summary>More capabilities</summary>
+              <ul>
+                <li>Top-selling products at a glance</li>
+                <li>Deals and specials control</li>
+                <li>Staff PIN and role management</li>
+                <li>Transaction search and CSV export</li>
+                <li>Shelf label and price tag printing</li>
+              </ul>
+            </details>
+          </article>
+          <article class="yp-panel" data-reveal>
+            <span class="yp-panel-kicker">02 / At the register</span>
+            <h3 class="yp-panel-h">Fast lanes.<br>No slowdowns.</h3>
+            <ul class="yp-panel-highlights">
+              <li>Touchscreen product keyboard</li>
+              <li>Barcode and PLU lookup</li>
+              <li>Held and parked sales with recall</li>
+              <li>Linkly Cloud EFTPOS integration</li>
+            </ul>
+            <details class="yp-panel-more">
+              <summary>More capabilities</summary>
+              <ul>
+                <li>Staff PIN login with roles</li>
+                <li>Product search by name or category</li>
+                <li>Cash tender with change calculation</li>
+                <li>Returns and refunds</li>
+                <li>Receipt printing and reprint</li>
+                <li>No-sale and open-drawer functions</li>
+              </ul>
+            </details>
+          </article>
+          <article class="yp-panel" data-reveal>
+            <span class="yp-panel-kicker">03 / Fresh retail</span>
+            <h3 class="yp-panel-h">Built for weighed<br>produce.</h3>
+            <ul class="yp-panel-highlights">
+              <li>Serial scale integration (Mettler Toledo)</li>
+              <li>Per-kg pricing and weight lookup</li>
+              <li>Open-price weighed products</li>
+              <li>Visual produce categories on touchscreen</li>
+            </ul>
+            <details class="yp-panel-more">
+              <summary>More capabilities</summary>
+              <ul>
+                <li>Each and kg unit types per product</li>
+                <li>Product images for fast visual ID</li>
+                <li>Configurable keyboard pages</li>
+                <li>Fruit &amp; veg quick-select buttons</li>
+              </ul>
+            </details>
+          </article>
         </div>
-        <div class="feat-col">
-          <span class="feat-col-kicker">02 / At the register</span>
-          <h2 class="feat-col-h">Fast lanes.<br>No slowdowns.</h2>
-          <ul class="feat-col-list">
-            <li>Staff PIN login with roles</li>
-            <li>Touchscreen product keyboard</li>
-            <li>Barcode and PLU lookup</li>
-            <li>Product search by name or category</li>
-            <li>Held and parked sales with recall</li>
-            <li>Cash tender with change calculation</li>
-            <li>Linkly Cloud EFTPOS integration</li>
-            <li>Returns and refunds</li>
-            <li>Receipt printing and reprint</li>
-            <li>No-sale and open-drawer functions</li>
-          </ul>
-        </div>
-        <div class="feat-col">
-          <span class="feat-col-kicker">03 / Fresh retail</span>
-          <h2 class="feat-col-h">Built for weighed<br>produce.</h2>
-          <ul class="feat-col-list">
-            <li>Serial scale integration (Mettler Toledo)</li>
-            <li>Per-kg pricing and weight lookup</li>
-            <li>Open-price weighed products</li>
-            <li>Each and kg unit types per product</li>
-            <li>Produce category pages on touchscreen</li>
-            <li>Product images for fast visual ID</li>
-            <li>Configurable keyboard pages</li>
-            <li>Fruit &amp; veg quick-select buttons</li>
-          </ul>
-        </div>
-      </div>
       </div>
     </section>
 
     <!-- ── CUSTOMER DISPLAY (dark band) ── -->
     <section class="pg-dark">
       <div class="wrap">
-        <div class="mcpos-display-grid" data-reveal>
+        <div class="yieldpos-display-grid" data-reveal>
           <div>
             <p class="sec-kicker">Customer display</p>
             <h2 class="sec-h2" style="color:#e8e6e2; margin-bottom:clamp(18px,2vw,26px);">Your customers see every item.</h2>
@@ -164,7 +206,7 @@
             </ul>
           </div>
           <div class="img-soft" style="border-color:rgba(255,255,255,0.1);">
-            <img src="yieldpos-customer.webp" width="1366" height="768" loading="lazy" decoding="async" alt="MCPOS customer display showing live basket and running total">
+            <img src="yieldpos-customer.webp" width="1366" height="768" loading="lazy" decoding="async" alt="YieldPOS customer display showing live basket and running total">
           </div>
         </div>
       </div>
@@ -173,11 +215,11 @@
     <!-- ── KEYBOARD LAYOUT ── -->
     <section class="pg-section">
       <div class="wrap">
-        <div class="mcpos-keyboard-grid" data-reveal>
+        <div class="yieldpos-keyboard-grid" data-reveal>
           <div>
             <a href="yieldpos-keyboard.webp" class="img-soft" aria-label="Keyboard layout detail — click to view full screenshot" style="display:block;">
               <div class="kbd-crop-wrap" style="aspect-ratio:1040/560; overflow:hidden; position:relative;">
-                <img src="yieldpos-keyboard.webp" width="1920" height="1009" loading="lazy" decoding="async" alt="MCPOS touchscreen keyboard layout — key canvas detail" style="position:absolute; width:184.62%; height:auto; max-width:none; left:-44.71%; top:-27.68%; display:block;">
+                <img src="yieldpos-keyboard.webp" width="1920" height="1009" loading="lazy" decoding="async" alt="YieldPOS touchscreen keyboard layout — key canvas detail" style="position:absolute; width:184.62%; height:auto; max-width:none; left:-44.71%; top:-27.68%; display:block;">
               </div>
             </a>
             <p style="margin-top:8px; font-size:9px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--faint);">Keyboard layout detail &nbsp;·&nbsp; <a href="yieldpos-keyboard.webp" style="color:var(--faint); border-bottom:1px solid rgba(5,5,5,0.2);">View full screenshot</a></p>
@@ -207,23 +249,23 @@
             <p class="sec-kicker">Screenshots</p>
             <h2 class="sec-h2">See it in action.</h2>
           </div>
-          <p class="sec-aside">Real screens from a live MCPOS installation at a Brisbane grocer.</p>
+          <p class="sec-aside">Real screens from a live YieldPOS installation at a Brisbane grocer.</p>
         </div>
-        <div class="gallery-grid mcpos-gallery" data-reveal>
+        <div class="gallery-grid yieldpos-gallery" data-reveal>
           <div class="gallery-item gallery-item--wide">
-            <a href="yieldpos-dashboard.webp" aria-label="View full sales dashboard screenshot"><img src="yieldpos-dashboard.webp" width="1440" height="1024" loading="lazy" decoding="async" alt="MCPOS sales dashboard showing daily revenue and top products"></a>
+            <a href="yieldpos-dashboard.webp" aria-label="View full sales dashboard screenshot"><img src="yieldpos-dashboard.webp" width="1440" height="1024" loading="lazy" decoding="async" alt="YieldPOS sales dashboard showing daily revenue and top products"></a>
             <div class="gallery-caption"><span>01 / Sales dashboard</span><span>View full screen &#8599;</span></div>
           </div>
           <div class="gallery-item">
             <a href="yieldpos-keyboard.webp" aria-label="Keyboard layout detail — click to view full screenshot" style="display:block; overflow:hidden;">
               <div class="kbd-crop-wrap" style="aspect-ratio:1040/560; overflow:hidden; position:relative;">
-                <img src="yieldpos-keyboard.webp" width="1920" height="1009" loading="lazy" decoding="async" alt="MCPOS keyboard layout — key canvas detail" style="position:absolute; width:184.62%; height:auto; max-width:none; left:-44.71%; top:-27.68%; display:block; transition:none;">
+                <img src="yieldpos-keyboard.webp" width="1920" height="1009" loading="lazy" decoding="async" alt="YieldPOS keyboard layout — key canvas detail" style="position:absolute; width:184.62%; height:auto; max-width:none; left:-44.71%; top:-27.68%; display:block; transition:none;">
               </div>
             </a>
             <div class="gallery-caption"><span>02 / Keyboard layout</span><span>View full screen &#8599;</span></div>
           </div>
           <div class="gallery-item">
-            <a href="yieldpos-customer.webp" aria-label="View full customer display screenshot"><img src="yieldpos-customer.webp" width="1366" height="768" loading="lazy" decoding="async" alt="MCPOS customer display with live sale in progress"></a>
+            <a href="yieldpos-customer.webp" aria-label="View full customer display screenshot"><img src="yieldpos-customer.webp" width="1366" height="768" loading="lazy" decoding="async" alt="YieldPOS customer display with live sale in progress"></a>
             <div class="gallery-caption"><span>03 / Customer display</span><span>View full screen &#8599;</span></div>
           </div>
         </div>
@@ -233,10 +275,10 @@
     <!-- ── CTA ── -->
     <section class="pg-cta pg-cta--nb">
       <div class="wrap">
-        <h2 class="cta-h2" data-reveal>Ready to see MCPOS<br>in your store?</h2>
-        <p class="sec-kicker">MCPOS / Built in Brisbane</p>
+        <h2 class="cta-h2" data-reveal>Ready to see YieldPOS<br>in your store?</h2>
+        <p class="sec-kicker">YieldPOS / Built in Brisbane</p>
         <p class="cta-sub" data-reveal>Book a demo or get in touch to talk through what you need. Same business-day response.</p>
-        <p class="mcpos-product-note">Previously known as YieldPOS. Same product, now MCPOS.</p>
+        <p class="yieldpos-product-note">Point of sale built for fresh-food retailers.</p>
         <div class="cta-actions" data-reveal>
           <a href="index.html#contact" class="btn">Book a demo</a>
           <a href="index.html" class="btn-txt">← matthias.com.au</a>

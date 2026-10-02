@@ -14,35 +14,24 @@
   <meta property="og:locale" content="en_AU">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="subpages.css">
+  <link rel="stylesheet" href="site-nav.css">
 </head>
 <body>
 
   <div id="spProgressBar" style="position:fixed;top:0;left:0;height:2px;width:0%;z-index:300;pointer-events:none;background:linear-gradient(90deg,rgba(5,5,5,.2),#050505);transition:width .1s linear;" aria-hidden="true"></div>
 
   <!-- Nav -->
-  <div class="sp-nav-outer" role="navigation" aria-label="Site navigation">
-    <nav class="sp-nav-pill" id="spNav">
-      <a href="index.html" class="sp-mc" aria-label="Matthias Campbell — home">MC.</a>
-      <span class="sp-sep" aria-hidden="true"></span>
-      <div class="sp-links">
-        <a href="#help">What I help with</a>
-        <a href="#pricing">Pricing</a>
-      </div>
-      <span class="sp-sep sp-sep--right" aria-hidden="true"></span>
-      <a href="index.html#contact" class="sp-nav-cta">Book support</a>
-      <button class="sp-burger" id="spBurger" aria-label="Open menu" aria-expanded="false" aria-controls="spOverlay">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
+  <div class="site-nav-outer" style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: clamp(9px, 1.2vw, 16px) clamp(10px, 2.2vw, 30px); pointer-events: none; display: flex;">
+<nav id="nav" aria-label="Site navigation" data-bubble="left" data-glass="1" style="pointer-events: auto; display: flex; align-items: center; gap: 2px; height: 52px; padding: 0 8px 0 6px; background: linear-gradient(180deg, rgba(245,243,240,0.9) 0%, rgba(232,230,226,0.8) 100%); backdrop-filter: blur(26px) saturate(1.5); -webkit-backdrop-filter: blur(26px) saturate(1.5); border: 1px solid rgba(255,255,255,0.58); border-radius: 100px; box-shadow: 0 0.5px 0 rgba(255,255,255,0.95) inset, 0 16px 40px -26px rgba(5,5,5,0.5);">
+        <a href="index.html" aria-label="Matthias Campbell — home" data-mc="1" style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 12px 4px; font-family: Cormorant, 'Cormorant Garamond', Georgia, serif; font-size: 25px; font-weight: 600; letter-spacing: -0.04em; line-height: 1;">MC.</a>
+        <span style="width: 1px; height: 18px; margin: 0 6px; background: rgba(5,5,5,0.12);"></span>
+        <a href="index.html#services" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">Services</a>
+        <a href="index.html#work" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">Work</a>
+        <a href="about.html" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">About</a>
+      </nav>
   </div>
 
-  <div class="sp-overlay" id="spOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <button class="sp-overlay-close" id="spOverlayClose" aria-label="Close menu">&#215;</button>
-    <a href="#help">What I help with</a>
-    <a href="#pricing">Pricing</a>
-    <a href="index.html">← matthias.com.au</a>
-    <a href="index.html#contact" class="sp-overlay-contact">Book support</a>
-  </div>
+  
 
   <main>
 

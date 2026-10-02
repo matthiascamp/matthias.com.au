@@ -1,139 +1,393 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Website Design &amp; SEO Brisbane — Matthias Campbell</title>
-  <meta name="description" content="Clear, fast, professional websites with obvious messaging and a direct path to get in touch — plus practical SEO for Brisbane businesses. No guaranteed rankings, just the boring things done properly.">
+  <meta name="description" content="Websites and practical SEO for small businesses in Brisbane. Clear design, honest search optimisation, no ranking guarantees. SEO plans from $99/month.">
   <link rel="canonical" href="https://matthias.com.au/seo.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Website Design &amp; SEO Brisbane — Matthias Campbell">
-  <meta property="og:description" content="Responsive websites with clear messaging, and practical technical and local SEO for Brisbane businesses.">
+  <meta property="og:description" content="Websites and practical monthly SEO for small businesses. From $99/month.">
   <meta property="og:url" content="https://matthias.com.au/seo.html">
-  <meta property="og:image" content="https://matthias.com.au/website-seo.png">
+  <meta property="og:image" content="https://matthias.com.au/seo.webp">
   <meta property="og:locale" content="en_AU">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23e8e6e2'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='700' text-anchor='middle' fill='%23050505'%3EMC.%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="subpages.css">
-  <link rel="stylesheet" href="web-design.css">
+  <link rel="stylesheet" href="seo.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Website Design & SEO",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Matthias Campbell",
+      "url": "https://matthias.com.au/"
+    },
+    "description": "Website design and practical SEO for small businesses in Brisbane.",
+    "areaServed": { "@type": "City", "name": "Brisbane" },
+    "offers": [
+      { "@type": "Offer", "name": "Maintain", "price": "99", "priceCurrency": "AUD", "description": "Monthly technical maintenance and on-page improvements." },
+      { "@type": "Offer", "name": "Grow", "price": "149", "priceCurrency": "AUD", "description": "Monthly content, local visibility and keyword tracking, plus technical maintenance." },
+      { "@type": "Offer", "name": "Compete", "price": "299", "priceCurrency": "AUD", "description": "Content and search-led page improvements with competitor tracking and quarterly reviews." },
+      { "@type": "Offer", "name": "Scale", "price": "499", "priceCurrency": "AUD", "description": "Regular content, relevant link outreach and monthly strategy calls." }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="site-nav.css">
 </head>
-<body class="web-design">
+<body class="seo-page">
 
   <div id="spProgressBar" style="position:fixed;top:0;left:0;height:2px;width:0%;z-index:300;pointer-events:none;background:linear-gradient(90deg,rgba(5,5,5,.2),#050505);transition:width .1s linear;" aria-hidden="true"></div>
 
   <!-- Nav -->
-  <div class="sp-nav-outer" role="navigation" aria-label="Site navigation">
-    <nav class="sp-nav-pill" id="spNav">
-      <a href="index.html" class="sp-mc" aria-label="Matthias Campbell — home">MC.</a>
-      <span class="sp-sep" aria-hidden="true"></span>
-      <div class="sp-links">
-        <a href="#websites">Websites</a>
-        <a href="#seo">SEO</a>
-        <a href="#process">Process</a>
-      </div>
-      <span class="sp-sep sp-sep--right" aria-hidden="true"></span>
-      <a href="index.html#contact" class="sp-nav-cta">Get a quote</a>
-      <button class="sp-burger" id="spBurger" aria-label="Open menu" aria-expanded="false" aria-controls="spOverlay">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-  </div>
-
-  <div class="sp-overlay" id="spOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
-    <button class="sp-overlay-close" id="spOverlayClose" aria-label="Close menu">&#215;</button>
-    <a href="#websites">Websites</a>
-    <a href="#seo">SEO</a>
-    <a href="#process">Process</a>
-    <a href="index.html">← matthias.com.au</a>
-    <a href="index.html#contact" class="sp-overlay-contact">Get a quote</a>
+  <div class="site-nav-outer" style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: clamp(9px, 1.2vw, 16px) clamp(10px, 2.2vw, 30px); pointer-events: none; display: flex;">
+<nav id="nav" aria-label="Site navigation" data-bubble="left" data-glass="1" style="pointer-events: auto; display: flex; align-items: center; gap: 2px; height: 52px; padding: 0 8px 0 6px; background: linear-gradient(180deg, rgba(245,243,240,0.9) 0%, rgba(232,230,226,0.8) 100%); backdrop-filter: blur(26px) saturate(1.5); -webkit-backdrop-filter: blur(26px) saturate(1.5); border: 1px solid rgba(255,255,255,0.58); border-radius: 100px; box-shadow: 0 0.5px 0 rgba(255,255,255,0.95) inset, 0 16px 40px -26px rgba(5,5,5,0.5);">
+        <a href="index.html" aria-label="Matthias Campbell — home" data-mc="1" style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 12px 4px; font-family: Cormorant, 'Cormorant Garamond', Georgia, serif; font-size: 25px; font-weight: 600; letter-spacing: -0.04em; line-height: 1;">MC.</a>
+        <span style="width: 1px; height: 18px; margin: 0 6px; background: rgba(5,5,5,0.12);"></span>
+        <a href="index.html#services" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">Services</a>
+        <a href="index.html#work" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">Work</a>
+        <a href="about.html" style="font-size: 10px; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; color: #55514b; padding: 10px 13px; border-radius: 100px; white-space: nowrap; transition: color .3s, background .3s;" style-hover="color: #050505; background: rgba(255,255,255,0.7);">About</a>
+      </nav>
   </div>
 
   <main>
-    <section class="wd-hero">
-      <div class="wrap wd-intro">
-        <div>
-          <p class="pg-kicker">Matthias Campbell &nbsp;/&nbsp; Web design, Brisbane</p>
-          <h1>A website that<br>feels like <em>your business.</em></h1>
-        </div>
-        <div>
-          <p>I design and build websites for small businesses. That might be a place to explain your services, take bookings, or sell products online.</p>
-          <p class="wd-copy">You work with me on the design and the build. Here are a few examples of what that can look like.</p>
-          <div class="wd-actions"><a href="index.html#contact" class="btn">Discuss your website</a><a href="#websites" class="btn-txt">See my work &darr;</a></div>
-        </div>
-      </div>
-    </section>
 
-    <section class="wd-section wd-work" id="websites" aria-labelledby="work-heading">
+    <!-- ── HERO ── -->
+    <section class="pg-hero seo-hero">
       <div class="wrap">
-        <header class="wd-section-head"><h2 id="work-heading">Selected websites</h2><p>Designed and built by Matthias Campbell</p></header>
-        <article class="wd-feature">
-          <a class="wd-shot" href="https://crisponcreek.com.au" target="_blank" rel="noopener" aria-label="Visit the Crisp on Creek website (opens in a new tab)"><img src="assets/previews/crisp-provided.webp" width="1902" height="905" fetchpriority="high" decoding="async" alt="Crisp on Creek storefront with product categories and fresh produce"></a>
-          <div class="wd-project-copy">
-            <p class="wd-label">Online store &nbsp;/&nbsp; Mt Gravatt East</p>
-            <h3>Crisp on Creek</h3>
-            <p>A website for a local grocer, with products and pricing connected to its MCPOS system. Customers can browse the range and place an order online.</p>
-            <a href="https://crisponcreek.com.au" target="_blank" rel="noopener" class="btn-txt">Visit Crisp on Creek &nearr;</a>
+        <p class="pg-kicker"><span></span>Web design &amp; SEO · Brisbane<span></span></p>
+        <h1 class="pg-h1">A website that<br>works <em>for you.</em></h1>
+        <div class="seo-hero-bottom">
+          <p class="pg-lead">I design websites and look after SEO for small businesses. Clear pages, useful content and practical monthly work to help the right people find you.</p>
+          <div class="seo-hero-actions">
+            <a href="index.html#contact" class="btn">Get in touch</a>
+            <a href="#work" class="btn-txt">See my work &darr;</a>
           </div>
-        </article>
-        <div class="wd-projects">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SELECTED WEBSITES ── -->
+    <section class="pg-section seo-work" id="work">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <div>
+            <p class="sec-kicker">Selected websites</p>
+            <h2 class="sec-h2">Built by me.</h2>
+          </div>
+        </div>
+
+        <div class="seo-feature" data-reveal>
+          <a href="https://crisponcreek.com.au" target="_blank" rel="noopener" aria-label="Visit Crisp on Creek">
+            <div class="img-browser">
+              <div class="img-browser-bar">
+                <span class="img-browser-dot"></span>
+                <span class="img-browser-dot"></span>
+                <span class="img-browser-dot"></span>
+                <span class="img-browser-url">crisponcreek.com.au</span>
+              </div>
+              <div class="img-browser-body">
+                <img src="assets/previews/crisp-provided.webp" width="1902" height="905" fetchpriority="high" decoding="async" alt="Crisp on Creek website — online store for a Brisbane grocer">
+              </div>
+            </div>
+          </a>
+          <div class="seo-project-copy">
+            <p class="seo-label">Online store · Mt Gravatt East</p>
+            <h3>Crisp on Creek</h3>
+            <p>Products and pricing connected to the shop's POS. Customers browse the range and order online.</p>
+            <a href="https://crisponcreek.com.au" target="_blank" rel="noopener" class="btn-txt">Visit site &nearr;</a>
+          </div>
+        </div>
+
+        <div class="seo-projects" data-reveal>
           <article>
-            <a class="wd-shot" href="https://cblends.github.io" target="_blank" rel="noopener" aria-label="Visit the CBlends website (opens in a new tab)"><img src="assets/previews/cblends-provided.webp" width="1891" height="901" loading="lazy" decoding="async" alt="CBlends website with black and gold branding and an appointment booking link"></a>
-            <div class="wd-project-copy"><p class="wd-label">Barber &nbsp;/&nbsp; Runcorn</p><h3>CBlends</h3><p>A website for Caleb Lau's barbering business. Customers can find the location, choose a service and book an appointment through MCBook.</p><a href="https://cblends.github.io" target="_blank" rel="noopener" class="btn-txt">Visit CBlends &nearr;</a></div>
+            <a href="https://cblends.github.io" target="_blank" rel="noopener" aria-label="Visit CBlends">
+              <div class="img-browser">
+                <div class="img-browser-bar">
+                  <span class="img-browser-dot"></span>
+                  <span class="img-browser-dot"></span>
+                  <span class="img-browser-dot"></span>
+                  <span class="img-browser-url">cblends.github.io</span>
+                </div>
+                <div class="img-browser-body">
+                  <img src="assets/previews/cblends-provided.webp" width="1891" height="901" loading="lazy" decoding="async" alt="CBlends barbershop website">
+                </div>
+              </div>
+            </a>
+            <div class="seo-project-meta">
+              <h3>CBlends</h3>
+              <p class="seo-label">Barber · Runcorn</p>
+            </div>
           </article>
           <article>
-            <a class="wd-shot" href="https://jesusisthehighwaytoheaven.com" target="_blank" rel="noopener" aria-label="Visit Edwin Lewis's website (opens in a new tab)"><img src="assets/previews/edwin-provided.webp" width="1915" height="904" loading="lazy" decoding="async" alt="Edwin Lewis's website showing the book introduction"></a>
-            <div class="wd-project-copy"><p class="wd-label">Author &nbsp;/&nbsp; Personal website</p><h3>Edwin Lewis</h3><p>A home for Edwin's autobiography and audio recordings, with chapters to read online and photographs from his life.</p><a href="https://jesusisthehighwaytoheaven.com" target="_blank" rel="noopener" class="btn-txt">Visit Edwin's website &nearr;</a></div>
+            <a href="https://jesusisthehighwaytoheaven.com" target="_blank" rel="noopener" aria-label="Visit Edwin Lewis's site">
+              <div class="img-browser">
+                <div class="img-browser-bar">
+                  <span class="img-browser-dot"></span>
+                  <span class="img-browser-dot"></span>
+                  <span class="img-browser-dot"></span>
+                  <span class="img-browser-url">jesusisthehighwaytoheaven.com</span>
+                </div>
+                <div class="img-browser-body">
+                  <img src="assets/previews/edwin-provided.webp" width="1915" height="904" loading="lazy" decoding="async" alt="Edwin Lewis personal website">
+                </div>
+              </div>
+            </a>
+            <div class="seo-project-meta">
+              <h3>Edwin Lewis</h3>
+              <p class="seo-label">Author · Personal website</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="wd-section" id="services">
-      <div class="wrap wd-split">
-        <div><p class="wd-label">What I can help with</p><h2>Start with what<br>your site needs to do.</h2><p class="wd-copy">Some businesses need a few useful pages and a contact form. Others need bookings, a product catalogue, or a connection to their existing software. We can work out the scope together.</p></div>
-        <div class="wd-services">
-          <div><h3>A new website</h3><p>Page layouts, mobile design, your business information and the forms or links customers need to contact you.</p></div>
-          <div><h3>An existing site that needs work</h3><p>A clearer layout, updated content, mobile fixes or a rebuild. Send me the current address and tell me what is getting in the way.</p></div>
-          <div><h3>Bookings and custom features</h3><p>Online appointments, product browsing and connections to other software. The CBlends and Crisp on Creek sites above show two examples.</p></div>
+    <!-- ── SERVICES ── -->
+    <section class="pg-section" id="services">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <div>
+            <p class="sec-kicker">Services</p>
+            <h2 class="sec-h2">Design, build<br>and improve.</h2>
+          </div>
+          <p class="sec-aside">New websites, redesigns and ongoing SEO — chosen around what your business needs now.</p>
+        </div>
+
+        <div class="feat-grid" data-reveal>
+          <div class="feat-cell">
+            <span class="feat-num">01</span>
+            <h3 class="feat-title">New websites</h3>
+            <p class="feat-desc">Page layouts, mobile design, business information and the forms or links customers need to reach you.</p>
+          </div>
+          <div class="feat-cell">
+            <span class="feat-num">02</span>
+            <h3 class="feat-title">Redesigns</h3>
+            <p class="feat-desc">Clearer layout, updated content, mobile fixes or a full rebuild. Send me the current address.</p>
+          </div>
+          <div class="feat-cell">
+            <span class="feat-num">03</span>
+            <h3 class="feat-title">Service pages</h3>
+            <p class="feat-desc">Answer the questions customers ask before enquiring. Better titles, headings and useful detail.</p>
+          </div>
+          <div class="feat-cell">
+            <span class="feat-num">04</span>
+            <h3 class="feat-title">Content</h3>
+            <p class="feat-desc">Articles, case studies and guides based on real customer questions and your experience.</p>
+          </div>
+          <div class="feat-cell">
+            <span class="feat-num">05</span>
+            <h3 class="feat-title">Local visibility</h3>
+            <p class="feat-desc">Google Business Profile, relevant business listings and genuine customer review requests.</p>
+          </div>
+          <div class="feat-cell">
+            <span class="feat-num">06</span>
+            <h3 class="feat-title">Reporting</h3>
+            <p class="feat-desc">Track searches, clicks and enquiries. Show what changed. Choose next month's priorities.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="wd-section" id="process" aria-labelledby="process-heading">
-      <div class="wrap"><div class="wd-process">
-        <p class="wd-label">Working together</p><h2 id="process-heading">From the first conversation<br>to the finished site.</h2>
-        <div class="wd-steps">
-          <div><span>01</span><h3>Work out the scope</h3><p>We talk about your business, the pages you need and any features you have in mind. I'll use that to put together a quote.</p></div>
-          <div><span>02</span><h3>Review the design</h3><p>You see the layout and content as the site takes shape, so there is time to discuss changes before it goes live.</p></div>
-          <div><span>03</span><h3>Check and launch</h3><p>We check the pages, links and forms on desktop and mobile, then arrange the domain and hosting details for launch.</p></div>
+    <!-- ── SEO PRICING ── -->
+    <section class="pg-section" id="pricing">
+      <div class="wrap">
+        <div class="seo-pricing-head" data-reveal>
+          <p class="sec-kicker">Monthly SEO plans</p>
+          <h2 class="sec-h2">Pick a plan.</h2>
+          <p class="seo-pricing-sub">Month-to-month, no lock-in. Change or cancel with 30 days' notice.</p>
         </div>
-      </div></div>
+
+        <div class="seo-grid" data-reveal>
+
+          <div class="seo-card">
+            <p class="seo-card-tier">Maintain</p>
+            <p class="seo-card-price">$99 <span>/month</span></p>
+            <p class="seo-card-desc">Technical health checks and on-page fixes.</p>
+            <ul class="seo-card-items">
+              <li>Monthly technical health check</li>
+              <li>Fix crawl errors and broken links</li>
+              <li>Google Search Console monitoring</li>
+              <li>On-page fixes (titles, descriptions)</li>
+              <li>Monthly summary email</li>
+            </ul>
+            <div class="seo-card-cta">
+              <a href="index.html#contact" class="btn-out btn-out--sm">Get started</a>
+            </div>
+          </div>
+
+          <div class="seo-card seo-card--featured">
+            <span class="seo-card-badge">Best value</span>
+            <p class="seo-card-tier">Grow</p>
+            <p class="seo-card-price">$149 <span>/month</span></p>
+            <p class="seo-card-desc">Content, local SEO and keyword tracking.</p>
+            <ul class="seo-card-items">
+              <li>Everything in Maintain</li>
+              <li>Google Business Profile management</li>
+              <li>One content piece per month</li>
+              <li>Relevant business listing updates</li>
+              <li>Keyword tracking (20 keywords)</li>
+              <li>Quarterly progress report</li>
+            </ul>
+            <div class="seo-card-cta">
+              <a href="index.html#contact" class="btn btn--sm">Get started</a>
+            </div>
+          </div>
+
+          <div class="seo-card">
+            <p class="seo-card-tier">Compete</p>
+            <p class="seo-card-price">$299 <span>/month</span></p>
+            <p class="seo-card-desc">More content, competitor tracking, strategy reviews.</p>
+            <ul class="seo-card-items">
+              <li>Everything in Grow</li>
+              <li>Competitor tracking (3 competitors)</li>
+              <li>Two content pieces per month</li>
+              <li>Page speed optimisation</li>
+              <li>Keyword tracking (50 keywords)</li>
+              <li>Quarterly strategy call</li>
+            </ul>
+            <div class="seo-card-cta">
+              <a href="index.html#contact" class="btn-out btn-out--sm">Get started</a>
+            </div>
+          </div>
+
+          <div class="seo-card">
+            <p class="seo-card-tier">Scale</p>
+            <p class="seo-card-price">$499 <span>/month</span></p>
+            <p class="seo-card-desc">Full programme with outreach and monthly calls.</p>
+            <ul class="seo-card-items">
+              <li>Everything in Compete</li>
+              <li>Four content pieces per month</li>
+              <li>Relevant link and partnership outreach</li>
+              <li>Monthly strategy call</li>
+              <li>Keyword tracking (100 keywords)</li>
+              <li>Priority response</li>
+            </ul>
+            <div class="seo-card-cta">
+              <a href="index.html#contact" class="btn-out btn-out--sm">Get started</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
-    <section class="wd-section wd-search" id="seo">
-      <div class="wrap wd-split">
-        <div><p class="wd-label">Search engine optimisation</p><h2>Help people find<br>the right page.</h2><p class="wd-copy">SEO is part of looking after a website. I can review an existing site or include the initial setup in a new build.</p></div>
-        <div>
-          <ul class="wd-search-list">
-            <li>Give each page a useful title and a clear description of the service it covers.</li>
-            <li>Check that search engines can access the pages, and fix broken links or missing information.</li>
-            <li>Review loading speed, image sizes and how the site works on a phone.</li>
-            <li>Check local business details and use Google Search Console to see how people find the site.</li>
+    <!-- ── HOW IT WORKS ── -->
+    <section class="pg-section" id="how-it-works">
+      <div class="wrap">
+        <div class="sec-head" data-reveal>
+          <div>
+            <p class="sec-kicker">How it works</p>
+            <h2 class="sec-h2">Straightforward<br>from the start.</h2>
+          </div>
+        </div>
+
+        <div class="seo-steps" data-reveal>
+          <div class="seo-step">
+            <span class="seo-step-num">01</span>
+            <h3>Send me your site</h3>
+            <p>Your URL and what you need.</p>
+          </div>
+          <div class="seo-step">
+            <span class="seo-step-num">02</span>
+            <h3>I run an audit</h3>
+            <p>Technical health, content, local listings and search data.</p>
+          </div>
+          <div class="seo-step">
+            <span class="seo-step-num">03</span>
+            <h3>We agree on a plan</h3>
+            <p>I recommend a level and explain the first month.</p>
+          </div>
+          <div class="seo-step">
+            <span class="seo-step-num">04</span>
+            <h3>Monthly work and reporting</h3>
+            <p>I do the work and report what changed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SETTING EXPECTATIONS (dark band) ── -->
+    <section class="pg-dark seo-expect" id="expectations">
+      <div class="wrap">
+        <div class="seo-expect-grid" data-reveal>
+          <div>
+            <p class="sec-kicker">Setting expectations</p>
+            <h2 class="sec-h2" style="color:#e8e6e2;">Honest about<br>what SEO can do.</h2>
+          </div>
+          <ul class="seo-expect-items">
+            <li>SEO takes time. Results are assessed over several months.</li>
+            <li>I don't guarantee rankings. Results depend on competition, industry and algorithm changes.</li>
+            <li>Lower-tier plans have scope limits. I'll be clear about what's included.</li>
+            <li>Reporting is honest. I show what changed and what didn't.</li>
           </ul>
-          <p class="wd-note">For ongoing SEO work, we'll agree on the changes and reporting you need. Search rankings depend on several factors, so I don't guarantee a particular position.</p>
         </div>
       </div>
     </section>
 
-    <section class="wd-section wd-contact" id="packages">
-      <div class="wrap wd-split">
-        <div><p class="wd-label">Tell me about your project</p><h2>What do you<br>have in mind?</h2><p class="wd-copy">Send your current website, if you have one, and a few words about what you need. Examples of sites you like are useful too.</p><div class="wd-actions"><a href="index.html#contact" class="btn">Get in touch</a><a href="mailto:hello@matthias.com.au" class="btn-txt">Email Matthias &nearr;</a></div></div>
-        <div>
-          <details><summary>How much will it cost?</summary><p>It depends on the number of pages, the content and any custom features. Once we've discussed those, I can give you a quote for the work.</p></details>
-          <details><summary>Can you work with my existing website?</summary><p>Send me the address and let me know what you'd like changed. I'll look at how it is built before recommending an update or a rebuild.</p></details>
-          <details><summary>What should I have ready?</summary><p>Your business details, logo, photos and any text you already have are a useful start. If something is missing, we can discuss what is needed when we plan the site.</p></details>
+    <!-- ── FAQ ── -->
+    <section class="pg-section seo-faq" id="faq">
+      <div class="wrap">
+        <div class="seo-faq-grid" data-reveal>
+          <div>
+            <p class="sec-kicker">Questions</p>
+            <h2 class="sec-h2">Frequently<br>asked.</h2>
+          </div>
+          <div>
+            <details>
+              <summary>How much does a website cost?</summary>
+              <p>It depends on the number of pages and any custom features. I give a quote once we've discussed what you need.</p>
+            </details>
+            <details>
+              <summary>Do I need a website before starting SEO?</summary>
+              <p>Yes. If you need one built, we can discuss both together.</p>
+            </details>
+            <details>
+              <summary>What counts as a content piece?</summary>
+              <p>An article, case study or substantial page update chosen around your customers' needs. New content starts with Grow; Maintain focuses on technical upkeep.</p>
+            </details>
+            <details>
+              <summary>Can I change plans?</summary>
+              <p>Yes, move up or down any time with 30 days' notice.</p>
+            </details>
+            <details>
+              <summary>Do you guarantee rankings?</summary>
+              <p>No. I do the work properly and report honestly on the results.</p>
+            </details>
+            <details>
+              <summary>What happens if I cancel?</summary>
+              <p>30 days' notice. You keep everything — content, reports and any changes made to your site.</p>
+            </details>
+            <details>
+              <summary>What if I'm not in Brisbane?</summary>
+              <p>The work is done remotely, so location doesn't matter for SEO. Website projects can also be done remotely.</p>
+            </details>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- ── DISCLAIMER ── -->
+    <div class="seo-disclaimer">
+      <div class="wrap">
+        <p>All prices in Australian dollars, excluding GST. SEO results depend on many factors including competition, industry and algorithm changes. No ranking guarantees. Content created under any plan remains your property.</p>
+      </div>
+    </div>
+
+    <!-- ── CTA ── -->
+    <section class="pg-cta pg-cta--nb">
+      <div class="wrap">
+        <h2 class="cta-h2" data-reveal>What do you<br>have in mind?</h2>
+        <p class="cta-sub" data-reveal>Send your current website, or tell me what you need. Same business-day reply.</p>
+        <div class="cta-actions" data-reveal>
+          <a href="index.html#contact" class="btn">Get in touch</a>
+          <a href="mailto:hello@matthias.com.au" class="btn-txt">Email Matthias &nearr;</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="sp-footer">

@@ -1,0 +1,7 @@
+/* Shared homepage navigation on the site's other pages. */
+.site-nav-outer nav a { text-decoration: none; }
+.site-nav-outer nav a:hover { color: #050505 !important; background: rgba(255,255,255,.7); }
+.site-nav-outer nav a:focus-visible { outline: 2px solid #050505; outline-offset: 2px; }
+@media (max-width: 380px) {
+  .site-nav-outer nav a:not([data-mc]) { padding: 10px 9px !important; letter-spacing: .12em !important; }
+}
