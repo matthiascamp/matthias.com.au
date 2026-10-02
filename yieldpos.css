@@ -187,7 +187,7 @@
 
 /* Tyro payment pricing. */
 .yieldpos-tyro { border-top: 1px solid var(--line); }
-.yieldpos-tyro-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.yieldpos-tyro-grid { display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(320px, .82fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
 .yieldpos-tyro-grid > * { min-width: 0; }
 .yieldpos-tyro-intro { margin-top: 24px; font-size: 15px; line-height: 1.8; color: var(--muted); }
 .yieldpos-tyro-rates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 28px 0; }
@@ -197,8 +197,13 @@
 .yieldpos-tyro-rates p { font-size: 13px; line-height: 1.7; color: var(--muted); }
 .yieldpos-tyro-rates p + p { margin-top: 12px; }
 .yieldpos-tyro-terms { font-size: 12px; line-height: 1.8; color: var(--muted); }
-.yieldpos-tyro-image { overflow: hidden; border: 1px solid #d0cdc5; border-radius: 18px; background: #ebe9e4; box-shadow: 0 24px 50px -38px #27221c99; }
-.yieldpos-tyro-product { display: grid; min-height: 430px; place-items: center; padding: 42px; background: radial-gradient(circle at 50% 45%, #f8f7f4 0, #ebe9e4 68%); }
-.yieldpos-tyro-image img { display: block; width: min(64%, 210px); height: auto; filter: drop-shadow(0 24px 22px rgba(20, 18, 16, .22)); }
-.yieldpos-tyro-image figcaption { padding: 15px 18px; border-top: 1px solid #d0cdc5; text-align: center; font-size: 11px; color: var(--muted); background: #f2f0eb; }
-@media (max-width: 760px) { .yieldpos-tyro-grid, .yieldpos-tyro-rates { grid-template-columns: 1fr; } .yieldpos-tyro-product { min-height: 340px; } }
+.yieldpos-tyro-image { position: relative; overflow: hidden; isolation: isolate; border: 1px solid #cdc9bd; border-radius: 24px; background: #e9e6df; box-shadow: 0 34px 70px -48px rgba(25, 22, 18, .72); }
+.yieldpos-tyro-product { position: relative; display: grid; min-height: 520px; place-items: end center; padding: 70px 34px 0; background: radial-gradient(circle at 50% 46%, #fff 0, #f4f2ed 36%, #dfdbd0 100%); }
+.yieldpos-tyro-product::before { position: absolute; inset: auto 12% 4%; height: 38%; border-radius: 50%; background: color-mix(in srgb, var(--pos-green) 18%, transparent); filter: blur(42px); content: ""; }
+.yieldpos-tyro-badge { position: absolute; z-index: 2; top: 22px; left: 22px; padding: 8px 11px; border: 1px solid rgba(39, 34, 28, .14); border-radius: 999px; background: rgba(255, 255, 255, .66); color: #3f3a34; font-size: 10px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; backdrop-filter: blur(12px); }
+.yieldpos-tyro-image img { position: relative; z-index: 1; display: block; width: min(92%, 340px); height: auto; margin-bottom: -56px; filter: drop-shadow(0 30px 24px rgba(20, 18, 16, .25)); }
+.yieldpos-tyro-image figcaption { position: relative; z-index: 2; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 17px 20px; border-top: 1px solid rgba(39, 34, 28, .12); background: rgba(246, 244, 239, .9); color: var(--muted); font-size: 11px; line-height: 1.45; backdrop-filter: blur(14px); }
+.yieldpos-tyro-image figcaption span:first-child { color: var(--ink); font-size: 12px; font-weight: 600; }
+@media (max-width: 900px) { .yieldpos-tyro-grid { grid-template-columns: minmax(0, 1fr) minmax(280px, .62fr); gap: 36px; } .yieldpos-tyro-product { min-height: 460px; padding-inline: 24px; } .yieldpos-tyro-image img { width: min(94%, 300px); } }
+@media (max-width: 760px) { .yieldpos-tyro-grid, .yieldpos-tyro-rates { grid-template-columns: 1fr; } .yieldpos-tyro-image { width: min(100%, 430px); margin-inline: auto; } .yieldpos-tyro-product { min-height: 470px; } .yieldpos-tyro-image img { width: min(82%, 320px); } }
+@media (max-width: 420px) { .yieldpos-tyro-product { min-height: 410px; padding-inline: 20px; } .yieldpos-tyro-image img { margin-bottom: -44px; } .yieldpos-tyro-image figcaption { align-items: flex-start; flex-direction: column; gap: 2px; } }
