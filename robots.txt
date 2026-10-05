@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /proposal-template.html
 
 Sitemap: https://matthias.com.au/sitemap.xml
