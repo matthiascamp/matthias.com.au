@@ -1537,3 +1537,10 @@ button, input, select, textarea { font-family: inherit; }
   .sp-mc { font-size: 20px !important; padding: 0 8px 4px !important; }
   .sp-nav-pill { padding: 0 6px 0 4px !important; }
 }
+/* Technology support inline grids need an explicit phone layout. */
+@media (max-width: 780px) {
+  .ts-price-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 30px !important; }
+  .ts-price-grid .hiw-list { margin-top: 0 !important; }
+  .ts-photo-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .ts-photo-grid > :last-child { display: none; }
+}
