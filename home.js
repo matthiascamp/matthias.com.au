@@ -159,6 +159,8 @@ const bar = document.createElement('div');
       if (getComputedStyle(tile).position === 'static') tile.style.position = 'relative';
       tile.style.transitionDelay = Math.min(i % 3, 2) * 90 + 'ms';
 
+      if (tile.hasAttribute('data-static-card')) return;
+
       const img = tile.querySelector('img:not([data-site-preview])');
       if (img) { img.style.transition = 'transform 1.2s cubic-bezier(.22,.61,.36,1)'; }
 
@@ -324,3 +326,71 @@ const bar = document.createElement('div');
 const home = new HomePage();
 home.componentDidMount();
 document.getElementById("contact-form").addEventListener("submit", event => home.submit(event));
+
+// Step through selected work in the same direction as the visible controls.
+(() => {
+  const row = document.querySelector('[data-tilegrid="sites"]');
+  if (!row) return;
+  const cards = [...row.querySelectorAll(':scope > article')];
+  if (cards.length < 2) return;
+  const pauseButton = document.querySelector('[data-work-pause]');
+  const prevButton = document.querySelector('[data-work-prev]');
+  const nextButton = document.querySelector('[data-work-next]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const state = { visible: false, focus: false, hover: false, interacting: false, userPaused: reducedMotion.matches };
+  let timer;
+  let resumeTimer;
+  let autoDirection = 1;
+  const maxScroll = () => Math.max(0, row.scrollWidth - row.clientWidth);
+  const syncArrows = () => {
+    if (prevButton) prevButton.disabled = row.scrollLeft <= 3;
+    if (nextButton) nextButton.disabled = row.scrollLeft >= maxScroll() - 3;
+  };
+  const go = direction => {
+    const current = row.scrollLeft;
+    const end = maxScroll();
+    const offsets = cards.map(card => card.offsetLeft - cards[0].offsetLeft);
+    const target = direction > 0
+      ? Math.min(offsets.find(offset => offset > current + 5) ?? end, end)
+      : Math.max(offsets.filter(offset => offset < current - 5).pop() ?? 0, 0);
+    if (Math.abs(target - current) < 2) return;
+    row.scrollTo({ left: target, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+  };
+  const canRun = () => state.visible && !state.userPaused && !state.focus && !state.hover && !state.interacting && !document.hidden && !reducedMotion.matches && maxScroll() > 5;
+  const schedule = () => {
+    clearInterval(timer);
+    timer = canRun() ? setInterval(() => {
+      if (row.scrollLeft >= maxScroll() - 3) autoDirection = -1;
+      else if (row.scrollLeft <= 3) autoDirection = 1;
+      go(autoDirection);
+    }, 5500) : undefined;
+  };
+  const syncPauseButton = () => {
+    if (!pauseButton) return;
+    pauseButton.dataset.paused = String(state.userPaused);
+    pauseButton.setAttribute('aria-label', state.userPaused ? 'Play automatic scrolling' : 'Pause automatic scrolling');
+  };
+  const interact = () => {
+    state.interacting = true;
+    schedule();
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => { state.interacting = false; schedule(); }, 4000);
+  };
+  prevButton?.addEventListener('click', () => { autoDirection = -1; go(-1); schedule(); });
+  nextButton?.addEventListener('click', () => { autoDirection = 1; go(1); schedule(); });
+  pauseButton?.addEventListener('click', () => { state.userPaused = !state.userPaused; syncPauseButton(); schedule(); });
+  row.addEventListener('scroll', syncArrows, { passive: true });
+  row.addEventListener('mouseenter', () => { state.hover = true; schedule(); });
+  row.addEventListener('mouseleave', () => { state.hover = false; schedule(); });
+  row.addEventListener('focusin', () => { state.focus = true; schedule(); });
+  row.addEventListener('focusout', event => { if (!row.contains(event.relatedTarget)) { state.focus = false; schedule(); } });
+  ['pointerdown', 'touchstart', 'wheel'].forEach(type => row.addEventListener(type, interact, { passive: true }));
+  window.addEventListener('resize', () => { syncArrows(); schedule(); });
+  document.addEventListener('visibilitychange', schedule);
+  reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) state.userPaused = true; syncPauseButton(); schedule(); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => { state.visible = entries[0].isIntersecting; schedule(); }, { threshold: 0.15 }).observe(row);
+  } else { state.visible = true; schedule(); }
+  syncPauseButton();
+  syncArrows();
+})();

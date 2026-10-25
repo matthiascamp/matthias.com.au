@@ -1,131 +1,16 @@
-/* Software contracting page. Shared navigation and site typography live in subpages.css. */
-.contracting-page main [id] { scroll-margin-top: 90px; }
-.contracting-page .pg-kicker { font-size: 10px; letter-spacing: .2em; flex-wrap: wrap; }
-.contracting-page .sec-kicker { font-size: 10px; letter-spacing: .22em; }
-
-/* ── Audience strip ── */
-.contracting-aud { padding: clamp(28px, 4vw, 48px) 0; }
-.contracting-aud .sec-kicker { margin-bottom: 14px; }
-.contracting-aud .aud-strip { margin-top: 0; gap: 8px 10px; }
-
-/* ── Live products (the one supporting visual) ── */
-.contracting-products {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(16px, 2vw, 24px);
-}
-.contracting-product {
-  display: block;
-  border: 1px solid var(--line);
-  border-radius: clamp(10px, 1.2vw, 14px);
-  overflow: hidden;
-  background: var(--surface);
-  transition: transform .4s var(--ease), box-shadow .4s;
-}
-.contracting-product:hover { transform: translateY(-3px); box-shadow: 0 20px 44px -28px rgba(5,5,5,.28); color: var(--ink); }
-.contracting-product-img { aspect-ratio: 16/9; border-bottom: 1px solid var(--line); overflow: hidden; }
-.contracting-product-img img { width: 100%; height: 100%; object-fit: cover; }
-.contracting-product-body { padding: clamp(16px, 2vw, 26px); min-width: 0; }
-.contracting-product-type { font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--label); margin-bottom: 8px; }
-.contracting-product-name { font-family: var(--serif); font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 400; letter-spacing: -.02em; line-height: 1.05; margin-bottom: 6px; }
-.contracting-product-name small { font-family: var(--sans); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--label); vertical-align: middle; }
-.contracting-product-desc { font-size: .9rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
-.contracting-page .sc-products-grid { gap: clamp(14px, 2vw, 24px) !important; }
-.contracting-page .sc-products-grid > a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
-
-/* ── How it works (dark band) ── */
-.contracting-hiw-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(32px, 6vw, 80px);
-  align-items: start;
-}
-.contracting-hiw-grid .sec-h2 { margin-bottom: clamp(20px, 2.5vw, 36px); }
-.contracting-hiw-grid .hiw-list { margin-top: clamp(44px, 6vw, 80px); }
-.contracting-hiw-grid .hiw-list strong { color: #e8e6e2; font-weight: 500; }
-.contracting-tool-label { font-size: 10px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: rgba(232,230,226,.5); margin-bottom: 12px; }
-.contracting-tool-h { font-family: var(--serif); font-size: clamp(1.6rem, 2.6vw, 2.2rem); font-weight: 400; letter-spacing: -.02em; line-height: 1; color: #e8e6e2; margin-bottom: 14px; }
-.contracting-tool-card .pg-dark-body { color: rgba(232,230,226,.62); }
-.contracting-tool-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-.contracting-tool-tags li { padding: 7px 14px; border: 1px solid rgba(232,230,226,.2); border-radius: 100px; font-size: 12px; color: rgba(232,230,226,.8); }
-
-/* ── Sample review layout (placeholders only — not real client feedback) ── */
-.contracting-reviews-label {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 7px 14px; margin-bottom: 18px;
-  border: 1px dashed rgba(5,5,5,.35); border-radius: 100px;
-  font-size: 10px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--ink);
-}
-.contracting-reviews {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 24px);
-}
-.contracting-review {
-  display: flex; flex-direction: column; gap: 16px;
-  padding: clamp(20px, 2.4vw, 30px);
-  border: 1px dashed #bdb8b0;
-  border-radius: clamp(10px, 1.2vw, 14px);
-  background: var(--surface);
-}
-.contracting-review-flag {
-  align-self: flex-start;
-  padding: 5px 10px;
-  border-radius: 6px;
-  background: #e0ddd7;
-  font-size: 11px; font-weight: 500; line-height: 1.4; color: var(--ink);
-}
-.contracting-review-text {
-  font-family: var(--serif); font-style: italic;
-  font-size: clamp(1.15rem, 1.6vw, 1.35rem); font-weight: 400; line-height: 1.4;
-  color: var(--muted); text-wrap: pretty;
-}
-.contracting-review-meta { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12px; color: var(--label); }
-
-/* ── Responsive ── */
-@media (max-width: 860px) {
-  .contracting-reviews { grid-template-columns: 1fr; }
-}
-@media (max-width: 800px) {
-  .contracting-hiw-grid { grid-template-columns: 1fr; }
-  .contracting-hiw-grid .hiw-list { margin-top: 0; }
-}
-@media (max-width: 760px) {
-  .contracting-page .sc-products-grid { grid-template-columns: 1fr !important; }
-  .contracting-page .sc-products-grid > a {
-    display: grid !important;
-    grid-template-columns: 112px minmax(0, 1fr);
-    min-height: 112px;
-  }
-  .contracting-page .sc-products-grid > a > div:first-child {
-    aspect-ratio: 1 / 1 !important;
-    height: 100%;
-    border-right: 1px solid var(--line);
-    border-bottom: 0 !important;
-  }
-  .contracting-page .sc-products-grid > a > div:last-child { padding: 14px !important; }
-  /* Products become compact rows: thumbnail beside text instead of three tall cards. */
-  .contracting-products { grid-template-columns: 1fr; gap: 12px; }
-  .contracting-product { display: grid; grid-template-columns: minmax(96px, 36%) minmax(0, 1fr); align-items: center; }
-  .contracting-product-img { aspect-ratio: 1 / 1; height: 100%; border-bottom: 0; border-right: 1px solid var(--line); }
-}
-@media (max-width: 560px) {
-  .contracting-page .contracting-proof { padding: 48px 0; }
-  .contracting-page .contracting-proof .sec-head { margin-bottom: 22px; }
-  .contracting-page .pg-hero { padding-bottom: 40px; }
-  .contracting-page .pg-section { padding: 48px 0; }
-  .contracting-page .contracting-aud { padding: 28px 0; }
-  .contracting-page .pg-dark { padding: 56px 0; }
-  .contracting-page .note-band { padding: 36px 0; }
-  .contracting-page .pg-cta { padding: 64px 0 72px; }
-  .contracting-page .sec-head { margin-bottom: 24px; padding-bottom: 20px; }
-  .contracting-page .feat-cell { padding: 20px 18px; }
-  .contracting-page .feat-num { margin-bottom: 10px; }
-  .contracting-page .feat-title { font-size: 1.3rem; margin-bottom: 8px; }
-  .contracting-page .feat-desc { font-size: .9rem; line-height: 1.7; }
-  .contracting-page .aud-tag { height: 36px; padding: 0 14px; font-size: 1.05rem; }
-  .contracting-page .price-card { padding: 22px 20px; }
-  .contracting-page .hiw-list li { font-size: .92rem; }
-  .contracting-page .cta-sub { margin-bottom: 28px; }
-  .contracting-product-body { padding: 12px 14px; }
+/* Contracting page details on the shared tech-support layout. */
+.sc-hero .ts-hero__title { max-width: none; font-size: clamp(3.4rem, 5.5vw, 5rem); }
+.sc-hero .ts-hero__media img { object-position: 55% center; }
+.sc-reviews .ts-reviews__intro { max-width: 64ch; }
+.sc-reviews .ts-review-card { min-height: 220px; }
+.sc-reviews .ts-review-card__person { align-items: flex-start; }
+.sc-sample-tag { flex: none; padding: 5px 8px; border: 1px solid #b4ada3; border-radius: 100px; color: #514b44; font-size: .6rem; font-weight: 600; letter-spacing: .08em; line-height: 1; text-transform: uppercase; white-space: nowrap; }
+.sc-explore .ts-tabs__arrow { font-size: 1.1rem; line-height: 1; }
+.sc-panel-proof { margin-top: 20px !important; }
+.sc-panel-proof a { color: #f5f2eb; text-decoration: underline; text-underline-offset: 3px; }
+.sc-panel-proof a:hover { color: #fff; }
+@media (max-width: 700px) {
+  .sc-hero .ts-hero__title { font-size: clamp(2.85rem, 12vw, 3.4rem); }
+  .sc-reviews .ts-review-card { min-height: 0; }
+  .sc-sample-tag { font-size: .55rem; }
 }

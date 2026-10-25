@@ -258,6 +258,8 @@
       background: linear-gradient(to top, rgba(4,4,4,0.88) 0%, rgba(4,4,4,0.35) 45%, rgba(4,4,4,0.05) 70%);
     }
     .card:hover .card-media img { transform: scale(1.045); }
+    .card--static { cursor: default; }
+    .card--static:hover .card-media img { transform: none; }
 
     .card-content {
       position: relative; z-index: 2;
@@ -645,7 +647,7 @@
         </a>
 
         <!-- MCFlow -->
-        <a href="custom-software.html" class="card card--photo" aria-label="Open MCFlow">
+        <article class="card card--photo card--static">
           <div class="card-media">
             <img src="mcflow-card.webp" width="1280" height="853" loading="lazy" decoding="async" alt="MCFlow workflow editor displayed on a desktop monitor in a modern office" />
           </div>
@@ -654,10 +656,10 @@
               <span class="card-eyebrow">AI-integrated business automation</span>
               <span class="card-status">In development</span>
             </div>
-            <h3 class="card-title" data-card-title="1">MCFlow</h3>
+            <h3 class="card-title">MCFlow</h3>
             <p class="card-desc">An AI-enabled workflow editor and CRM that connects customer information, everyday tools and repeatable business processes in one flexible system.</p>
           </div>
-        </a>
+        </article>
 
         <!-- Onsite Tech Support -->
         <a href="technology-support.html" class="card card--photo" aria-label="Open Onsite Tech Support">

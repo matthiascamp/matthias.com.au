@@ -298,7 +298,7 @@
     [data-tile-copy] > div:last-child a { height: 38px !important; font-size: 9px !important; padding: 0 16px !important; }
     [data-tile] a svg { display: none !important; }
     [data-tile] span[style*="In development"], [data-tile] > div > div > span { font-size: 7.5px !important; padding: 3px 8px !important; }
-    [data-tilegrid="sites"] [data-tile] > div:nth-child(2) { aspect-ratio: 16 / 11 !important; }
+    [data-tilegrid="sites"] [data-tile] > div:nth-of-type(2) { aspect-ratio: 16 / 11 !important; }
     [data-sechead] { text-align: center !important; justify-items: center !important; gap: 16px !important; }
     [data-sechead] p { max-width: 34ch !important; justify-self: center !important; }
   }
@@ -332,3 +332,47 @@
 .home-interaction-181:focus {border-color: rgba(5,5,5,0.55); background: rgba(255,255,255,0.92); box-shadow: 0 0 0 3px rgba(5,5,5,0.06);}
 .home-interaction-183:hover {background: #262320; box-shadow: 0 0.5px 0 rgba(255,255,255,0.2) inset, 0 16px 32px -14px rgba(5,5,5,0.85); transform: translateY(-1px);}
 #top { min-height: 100vh; }
+
+.work-showcase { max-width: 1400px; margin: 0 auto; padding: clamp(20px,3vw,44px) clamp(16px,3vw,44px) clamp(48px,7vw,96px); }
+.work-showcase__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding-bottom: clamp(24px,3vw,44px); border-bottom: 1px solid #d9d6d0; }
+.work-showcase__kicker { margin-bottom: 18px; color: #6b665f; font-size: clamp(8.5px,1.1vw,9px); font-weight: 500; letter-spacing: .28em; text-transform: uppercase; }
+.work-showcase__head h2 { font: 400 clamp(2.4rem,6.4vw,5.2rem)/.94 Cormorant,Georgia,serif; letter-spacing: -.028em; }
+.work-controls { display: flex; flex: none; gap: 10px; }
+.work-controls button { display: grid; place-items: center; width: 52px; height: 52px; padding: 0; border: 1px solid #8f897f; border-radius: 50%; background: transparent; color: #1d1a17; cursor: pointer; transition: background .2s, color .2s; }
+.work-controls button:not(:disabled):hover { background: #151411; color: #f0eee9; }
+.work-controls button:disabled { opacity: .38; cursor: default; }
+.work-controls .work-ico-play, .work-controls [data-paused="true"] .work-ico-pause { display: none; }
+.work-controls [data-paused="true"] .work-ico-play { display: block; }
+.work-controls button:focus-visible, [data-tilegrid="sites"]:focus-visible { outline: 2px solid #24211e; outline-offset: 3px; }
+[data-tilegrid="sites"] { display: flex; align-items: stretch; gap: 20px; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; margin-top: clamp(22px,3vw,44px); padding: 7px 2px 10px; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; }
+[data-tilegrid="sites"]::-webkit-scrollbar { display: none; }
+[data-tilegrid="sites"] > article { position: relative; flex: 0 0 calc((100% - 40px) / 3); min-width: 0; scroll-snap-align: start; cursor: pointer; }
+.work-card { overflow: hidden; display: flex; flex-direction: column; border: 1px solid #d6d1c8; border-radius: 20px; background: #f4f2ee; transition: transform .25s,box-shadow .25s; }
+.work-card:hover, .work-card:focus-within { transform: translateY(-3px); box-shadow: 0 18px 38px -24px rgba(5,5,5,.55); }
+.work-card__image { position: relative; aspect-ratio: 2.1 / 1; flex: none; overflow: hidden; background: #d9d6d0; }
+.work-card__image img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+.work-card__copy { display: flex; flex: 1; flex-direction: column; gap: 7px; padding: 18px 20px 21px; }
+.work-card__type { color: #6b665f; font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.work-card__copy h3 { color: #171615; font: 400 clamp(1.4rem,1.8vw,1.7rem)/1.08 Cormorant,Georgia,serif; letter-spacing: -.02em; }
+.work-card__description { color: #5a554f; font-size: .86rem; line-height: 1.5; text-wrap: pretty; }
+[data-tilegrid="sites"] .site-card-link::after { content: ''; position: absolute; inset: 0; z-index: 8; border-radius: inherit; }
+[data-tilegrid="sites"] .site-card-link:focus-visible::after { outline: 3px solid #050505; outline-offset: -4px; }
+.work-card h3::after { content: '\2197'; display: inline-block; margin-left: .35em; font-family: Arial,sans-serif; font-size: .58em; vertical-align: middle; }
+@media (max-width: 1023px) { [data-tilegrid="sites"] > article { flex-basis: calc((100% - 20px) / 2); } }
+@media (max-width: 700px) { .work-showcase__head { flex-direction: column; align-items: flex-start; gap: 18px; } .work-controls button { width: 44px; height: 44px; } [data-tilegrid="sites"] > article { flex-basis: 86%; } .work-card__copy h3 { font-size: 1.45rem; } .work-card__description { font-size: .88rem; } }
+.home-interaction-48:hover { transform: none; box-shadow: none; }
+
+/* Let the product imagery and descriptions carry the mobile layout. */
+@media (max-width: 700px) {
+  [data-tilegrid="products"] { grid-template-columns: minmax(0, 1fr) !important; gap: 22px !important; }
+  [data-tilegrid="products"] [data-tile] { display: flex !important; flex-direction: column !important; align-items: stretch !important; border-radius: 20px !important; }
+  [data-tilegrid="products"] [data-tile] > div:first-child { width: 100% !important; flex: none !important; aspect-ratio: 16 / 10 !important; }
+  [data-tilegrid="products"] [data-tile-copy] { padding: 22px 22px 26px !important; gap: 12px !important; justify-content: flex-start !important; }
+  [data-tilegrid="products"] [data-tile-copy] > p:first-child,
+  [data-tilegrid="products"] [data-tile-copy] > div:first-child > p { display: block !important; font-size: 10px !important; }
+  [data-tilegrid="products"] [data-tile-body] { display: block !important; font-size: 14px !important; line-height: 1.65 !important; }
+  [data-tilegrid="products"] h3 { font-size: clamp(1.85rem, 8vw, 2.3rem) !important; }
+  [data-tilegrid="sites"] { gap: 20px !important; }
+  [data-tilegrid="sites"] [data-hide-phone] { display: flex !important; }
+  [data-tilegrid="sites"] [data-tile-body] { display: block !important; font-size: 14px !important; }
+}

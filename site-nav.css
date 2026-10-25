@@ -1,7 +1,30 @@
-/* Shared homepage navigation on the site's other pages. */
-.site-nav-outer nav a { text-decoration: none; }
-.site-nav-outer nav a:hover { color: #050505 !important; background: rgba(255,255,255,.7); }
-.site-nav-outer nav a:focus-visible { outline: 2px solid #050505; outline-offset: 2px; }
-@media (max-width: 380px) {
-  .site-nav-outer nav a:not([data-mc]) { padding: 10px 9px !important; letter-spacing: .12em !important; }
+/* Shared navigation */
+.site-header { position: fixed; inset: 0 0 auto; z-index: 250; display: flex; flex-direction: column; align-items: center; padding: 14px clamp(16px, 3vw, 44px); pointer-events: none; }
+.site-header * { box-sizing: border-box; }
+.site-header__bar { width: max-content; max-width: 100%; min-height: 56px; display: flex; align-items: center; gap: 6px; padding: 5px 11px 5px 14px; border: 1px solid rgba(255,255,255,.74); border-radius: 999px; background: rgba(239,237,233,.92); box-shadow: 0 12px 36px rgba(5,5,5,.11); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); pointer-events: auto; }
+.site-header a { text-decoration: none; }
+.site-header__brand { color: #050505; font-family: Cormorant, 'Cormorant Garamond', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1; letter-spacing: -.055em; white-space: nowrap; padding: 0 9px 3px 8px; border-right: 1px solid #c8c4bd; }
+.site-header__links { display: flex; align-items: center; gap: 2px; }
+.site-header__links a { color: #48443f; font: 500 13px 'DM Sans', Arial, sans-serif; letter-spacing: 0; padding: 10px 15px; border-radius: 999px; transition: background .2s, color .2s; white-space: nowrap; }
+.site-header__links a:hover, .site-header__links a[aria-current="page"] { color: #050505; background: rgba(255,255,255,.8); }
+.site-header__contact { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 17px; border-left: 1px solid #c8c4bd; color: #24221f; background: transparent; font: 500 13px 'DM Sans', Arial, sans-serif; letter-spacing: 0; white-space: nowrap; transition: color .2s; }
+.site-header__contact:hover { color: #7b6551; }
+.site-header__toggle { display: none; align-items: center; gap: 10px; margin-left: auto; padding: 10px 12px; min-height: 44px; border: 0; border-radius: 999px; background: transparent; color: #050505; font: 500 13px 'DM Sans', Arial, sans-serif; letter-spacing: 0; cursor: pointer; }
+.site-header__toggle-icon { display: grid; gap: 5px; width: 18px; }
+.site-header__toggle-icon::before, .site-header__toggle-icon::after { content: ''; width: 18px; height: 1.5px; background: currentColor; transition: transform .2s; }
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-icon::before { transform: translateY(3.25px) rotate(45deg); }
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-icon::after { transform: translateY(-3.25px) rotate(-45deg); }
+.site-header__panel[hidden] { display: none !important; }
+.site-header a:focus-visible, .site-header button:focus-visible { outline: 2px solid #050505; outline-offset: 3px; }
+@media (max-width: 760px) {
+  .site-header { padding: 10px 12px; }
+  .site-header__bar { min-height: 55px; gap: 12px; padding: 6px 7px 6px 12px; }
+  .site-header__brand { font-size: 29px; }
+  .site-header__links, .site-header__bar > .site-header__contact { display: none; }
+  .site-header__toggle { display: inline-flex; margin-left: 0; }
+  .site-header__panel { pointer-events: auto; width: min(360px, calc(100vw - 24px)); margin: 7px auto 0; padding: 12px; border: 1px solid rgba(255,255,255,.75); border-radius: 20px; background: #f0eeea; box-shadow: 0 20px 50px rgba(5,5,5,.18); }
+  .site-header__panel a { display: flex; align-items: center; justify-content: space-between; min-height: 49px; padding: 10px 14px; border-radius: 11px; color: #201e1b; font: 600 13px 'DM Sans', Arial, sans-serif; }
+  .site-header__panel a:hover { background: #e2dfd9; }
+  .site-header__panel a::after { content: '↗'; font-size: 17px; font-weight: 400; }
+  .site-header__panel .site-header__contact { margin-top: 7px; border-left: 0; border-top: 1px solid #c8c4bd; border-radius: 0; justify-content: space-between; }
 }
