@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="ts-hero__media" data-reveal>
-            <img src="matthias-portrait.png" loading="eager" decoding="async" width="1148" height="1370" alt="Matthias Campbell">
+            <img src="tech-support-card.webp" loading="eager" decoding="async" width="1280" height="853" alt="Technology support — helping a customer with a laptop in a home setting">
           </div>
         </div>
         <div class="ts-hero__band">
@@ -87,7 +87,13 @@
             <button type="button" data-review-next aria-label="Next review"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
           </div>
         </div>
-        <p class="ts-reviews__intro">Five-star reviews from people I've helped with their everyday technology.</p>
+        <div class="ts-reviews__about">
+          <img class="ts-reviews__portrait" src="matthias-portrait.png" width="1148" height="1370" alt="Portrait of Matthias Campbell" loading="lazy" decoding="async">
+          <div class="ts-reviews__about-copy">
+            <p class="ts-reviews__intro">Five-star reviews from people I've helped with their everyday technology.</p>
+            <p class="ts-reviews__hello">I'm Matthias. I come to you, work through the problem with you, and explain each step in a way that makes sense.</p>
+          </div>
+        </div>
         <ul class="ts-review-grid" role="list" tabindex="0" aria-label="Client reviews">
 <li class="ts-review-card"><div class="ts-review-card__person"><cite>Cliff Cameron</cite><div class="ts-review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div></div><blockquote><p>Thank you, Matthias, for your help with housekeeping my PC. You did it with ease and helped me understand where the error was. I look forward to future appointments with you with various aspects!</p></blockquote></li>
 <li class="ts-review-card"><div class="ts-review-card__person"><cite>Anne Moretto</cite><div class="ts-review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div></div><blockquote><p>Exceptional and reassuring clearance of my phone by Matthias, who responded with patience and courtesy to all of my queries—a lovely young man.</p></blockquote></li>
@@ -95,7 +101,6 @@
 <li class="ts-review-card"><div class="ts-review-card__person"><cite>Muriel Munro</cite><div class="ts-review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div></div><blockquote><p>I was absolutely delighted with the service I received from Matthias Campbell today. He arrived on time, willingly solved my many problems, and was so patient explaining how easy it could be!</p></blockquote></li>
 <li class="ts-review-card ts-review-card--expandable"><div class="ts-review-card__person"><cite>Pat and Marie Nolan</cite><div class="ts-review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div></div><blockquote><p>Matt&#x27;s visit to cover our many difficulties with using our very good television resulted in every single question resolved. Mat explains very simply and patiently, and has provided helpful guide sheets for reference. We are much relieved after some time of frustration and will readily recommend Matthias to our neighbours.</p></blockquote><button class="ts-review-more" type="button" aria-expanded="false">Read full review</button></li>
 </ul>
-        <p class="ts-reviews__note">Review text lightly edited for punctuation and spelling. One review is shown as an excerpt.</p>
       </div>
     </section>
 
@@ -158,7 +163,7 @@
           <div class="ts-response__review-copy"><p class="sec-kicker">Share your experience</p><h3>Leave a review.</h3><p>Tell me how I helped. Your review is sent to me first and will only appear on this site if you give permission.</p></div>
           <form action="https://formspree.io/f/mwvgjozj" method="post" data-ts-form="review"><input type="hidden" name="form_type" value="Technology support review"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="ts-honeypot" aria-hidden="true">
             <div class="ts-form-row"><label>Your name<input name="name" type="text" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label></div>
-            <label>Rating<select name="rating" required><option value="">Choose a rating</option><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select></label>
+            <fieldset class="ts-rating"><legend>Rating</legend><div class="ts-rating__stars"><input type="radio" name="rating" id="rating-5" value="5" required><label for="rating-5"><span class="ts-rating__star" aria-hidden="true">★</span><span class="ts-sr">5 stars</span></label><input type="radio" name="rating" id="rating-4" value="4"><label for="rating-4"><span class="ts-rating__star" aria-hidden="true">★</span><span class="ts-sr">4 stars</span></label><input type="radio" name="rating" id="rating-3" value="3"><label for="rating-3"><span class="ts-rating__star" aria-hidden="true">★</span><span class="ts-sr">3 stars</span></label><input type="radio" name="rating" id="rating-2" value="2"><label for="rating-2"><span class="ts-rating__star" aria-hidden="true">★</span><span class="ts-sr">2 stars</span></label><input type="radio" name="rating" id="rating-1" value="1"><label for="rating-1"><span class="ts-rating__star" aria-hidden="true">★</span><span class="ts-sr">1 star</span></label></div></fieldset>
             <label>Your review<textarea name="review" rows="5" required placeholder="How did the visit go?"></textarea></label>
             <label class="ts-check"><input name="permission_to_publish" type="checkbox" value="yes"><span>You may publish my review on this website.</span></label>
             <button type="submit">Send review <span aria-hidden="true">→</span></button><p class="ts-form-status" role="status" aria-live="polite"></p>

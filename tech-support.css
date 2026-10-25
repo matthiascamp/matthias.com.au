@@ -41,7 +41,15 @@
 .ts-reviews { padding-top: clamp(56px, 7vw, 104px); padding-bottom: clamp(56px, 7vw, 104px); background: #e8e6e2; }
 .ts-reviews__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(28px, 3.5vw, 48px); }
 .ts-reviews__head .sec-h2 { margin: 0; }
-.ts-reviews__intro { max-width: 45ch; margin: -14px 0 28px; color: #5a554f; font-size: 1rem; line-height: 1.7; }
+.ts-reviews__about { display: flex; align-items: center; gap: clamp(18px, 2.5vw, 30px); margin: -14px 0 28px; }
+.ts-reviews__portrait { flex: none; display: block; width: clamp(108px, 12.6vw, 153px); height: auto; aspect-ratio: 1148 / 1370; object-fit: cover; object-position: 50% 20%; border-radius: 14px; background: #d8d5cf; box-shadow: 0 20px 36px -28px rgba(5,5,5,.55); }
+.ts-reviews__about-copy { max-width: 45ch; }
+.ts-reviews__intro { margin: 0; color: #1d1a17; font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.5; }
+.ts-reviews__hello { margin: 8px 0 0; color: #5a554f; font-size: .92rem; line-height: 1.6; }
+@media (max-width: 700px) {
+  .ts-reviews__about { align-items: center; gap: 16px; }
+  .ts-reviews__portrait { width: 108px; }
+}
 .ts-review-controls { display: flex; flex: none; gap: 10px; }
 .ts-review-controls button { display: grid; place-items: center; width: 52px; height: 52px; padding: 0; border: 1px solid #8f897f; border-radius: 50%; background: transparent; color: #1d1a17; cursor: pointer; transition: background .2s, color .2s; }
 .ts-review-controls button:not(:disabled):hover { background: #151411; color: #f0eee9; }
@@ -63,7 +71,6 @@
 .ts-review-card blockquote p { color: #24211e; font: 400 1.32rem/1.42 Cormorant, Georgia, serif; }
 .ts-review-card--expandable blockquote p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; }
 .ts-review-card--expandable.is-expanded blockquote p { display: block; }
-.ts-reviews__note { margin-top: 20px; color: #716b64; font-size: .74rem; line-height: 1.5; }
 .ts-review-more { display: inline-block; min-height: 32px; margin-top: 10px; padding: 0; border: 0; background: none; color: #36312c; font: 600 .75rem 'DM Sans', Arial, sans-serif; letter-spacing: .06em; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 @media (max-width: 1000px) { .ts-review-card { flex-basis: calc((100% - 20px) / 2); } }
 @media (max-width: 700px) {
@@ -180,6 +187,18 @@
 .ts-response__review input::placeholder, .ts-response__review textarea::placeholder { color: #b8b0a5; }
 .ts-response__review button { border: 1px solid #f5f2eb; background: #f5f2eb; color: #171613; }
 .ts-response__review button:hover { background: #dfdad2; }
+/* Star rating: radios in reverse DOM order + row-reverse, so "~" fills every star up to the chosen one */
+.ts-rating { min-width: 0; margin: 0; padding: 0; border: 0; }
+.ts-rating legend { padding: 0; margin-bottom: 9px; font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+.ts-rating__stars { display: inline-flex; flex-direction: row-reverse; justify-content: flex-end; gap: 4px; position: relative; }
+.ts-response .ts-rating input[type="radio"] { position: absolute; width: 1px; min-height: 0; height: 1px; padding: 0; border: 0; opacity: 0; pointer-events: none; }
+.ts-response .ts-rating label { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; color: #6f685f; font-size: 1.9rem; line-height: 1; letter-spacing: 0; cursor: pointer; transition: color .15s, transform .15s; }
+.ts-response .ts-rating label:hover { transform: scale(1.08); }
+.ts-response .ts-rating .ts-rating__stars:not(:hover) input[type="radio"]:checked ~ label { color: #f5f2eb; }
+.ts-response .ts-rating .ts-rating__stars:hover label { color: #6f685f; }
+.ts-response .ts-rating .ts-rating__stars:hover label:hover, .ts-response .ts-rating .ts-rating__stars:hover label:hover ~ label { color: #f5f2eb; }
+.ts-rating input:focus-visible + label { outline: 2px solid #f5f2eb; outline-offset: 2px; }
+.ts-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .ts-response .ts-check { display: flex; align-items: flex-start; gap: 10px; color: #d2cbc1; font-size: .78rem; font-weight: 400; letter-spacing: 0; line-height: 1.5; text-transform: none; }
 .ts-check input { flex: none; width: 18px; height: 18px; margin: 1px 0 0; accent-color: #e8e6e2; }
 .ts-honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; opacity: 0; }
@@ -190,4 +209,4 @@
   .ts-response__form-head { flex-wrap: wrap; }
   .ts-response label { font-size: .75rem; }
 }
-@media (prefers-reduced-motion: reduce) { .ts-panel { animation: none; } .ts-response button, .ts-tabs button, .ts-review-controls button { transition: none; } .ts-tabs button:hover { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ts-panel { animation: none; } .ts-response button, .ts-tabs button, .ts-review-controls button { transition: none; } .ts-tabs button:hover { transform: none; } .ts-response .ts-rating label { transition: none; } .ts-response .ts-rating label:hover { transform: none; } }
