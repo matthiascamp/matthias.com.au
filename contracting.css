@@ -1,16 +1,10 @@
 /* Contracting page details on the shared tech-support layout. */
 .sc-hero .ts-hero__title { max-width: none; font-size: clamp(3.4rem, 5.5vw, 5rem); }
 .sc-hero .ts-hero__media img { object-position: 55% center; }
-.sc-reviews .ts-reviews__intro { max-width: 64ch; }
-.sc-reviews .ts-review-card { min-height: 220px; }
-.sc-reviews .ts-review-card__person { align-items: flex-start; }
-.sc-sample-tag { flex: none; padding: 5px 8px; border: 1px solid #b4ada3; border-radius: 100px; color: #514b44; font-size: .6rem; font-weight: 600; letter-spacing: .08em; line-height: 1; text-transform: uppercase; white-space: nowrap; }
 .sc-explore .ts-tabs__arrow { font-size: 1.1rem; line-height: 1; }
 .sc-panel-proof { margin-top: 20px !important; }
 .sc-panel-proof a { color: #f5f2eb; text-decoration: underline; text-underline-offset: 3px; }
 .sc-panel-proof a:hover { color: #fff; }
 @media (max-width: 700px) {
   .sc-hero .ts-hero__title { font-size: clamp(2.85rem, 12vw, 3.4rem); }
-  .sc-reviews .ts-review-card { min-height: 0; }
-  .sc-sample-tag { font-size: .55rem; }
 }
